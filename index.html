@@ -1,164 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" /> <!-- Define la codificación de caracteres como UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Hace la página responsive en móviles -->
-  <title>KLUB DEL LIBRE</title> <!-- Título en la pestaña del navegador -->
-
-  <!-- Favicon -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KLUB DEL LIBRE</title>
   <link rel="icon" href="favicon.ico?v=1" sizes="any" />
-
-  <!-- Tipografía incrustada (opcional, descomenta si subes el .woff2) -->
-  <!--
   <style>
-    @font-face {
-      font-family: "Bahnschrift Light SemiCondensed";
-      src: url("/fonts/bahnschrift-light-semicondensed.woff2") format("woff2");
-      font-weight: 300;
-      font-style: normal;
-    }
-  </style>
-  -->
-
-  <!-- Estilos inline para facilitar Edición en un solo archivo -->
-  <style>
-    /* Variables CSS */
     :root {
       --bg: #fff;
       --fg: #000;
-      --accent: #000;
       --font: "Bahnschrift Light SemiCondensed","Bahnschrift","Montserrat","Arial Narrow",sans-serif;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { width: 100%; height: 100%; scroll-behavior: smooth; }
+    body { width: 100%; height: 100%; background: var(--bg); color: var(--fg); font-family: var(--font); }
 
-    /* ---------------- BOTÓN HAMBURGUESA ---------------- */
-    .hamburger {
-      position: fixed; top: 0.8rem; right: 0.8rem; z-index: 1100;
-      width: 34px; height: 26px; cursor: pointer;
-      display: flex; flex-direction: column; justify-content: space-between;
-    }
-    .hamburger span {
-      display: block; height: 3px; background: var(--fg); transition: all .3s ease;
-    }
+    .logo-header { position: fixed; top: 1rem; left: 1rem; width: clamp(120px, 15vw, 200px); height: auto; z-index: 1200; }
+    .hamburger { position: fixed; top: 1rem; right: 1rem; z-index: 1100; width: 34px; height: 26px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+    .hamburger span { display: block; height: 3px; background: var(--fg); transition: transform .3s ease, opacity .3s ease; }
     .hamburger.active span:nth-child(1) { transform: translateY(11.5px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-11.5px) rotate(-45deg); }
 
-    /* ---------------- MENÚ PRINCIPAL ---------------- */
-    nav#menu {
-      position: fixed; inset: 0; z-index: 1000;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 1.5rem; background: #fff; /* Fondo blanco total */
-      opacity: 0; pointer-events: none; transition: opacity .3s ease;
-    }
+    nav#menu { position: fixed; inset: 0; z-index: 1050; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
     nav#menu.open { opacity: 1; pointer-events: auto; }
-    nav#menu a {
-      color: var(--fg); text-decoration: none;
-      font-size: clamp(1.6rem, 5vw, 3rem); /* Aumenta tamaño del menú */
-      letter-spacing: .08em;
-    }
-    nav#menu a:hover { text-decoration: underline; }
+    nav#menu a { color: var(--fg); font-size: clamp(1.6rem, 5vw, 3rem); text-decoration: none; margin: .5rem 0; }
 
-    /* ---------------- HERO / INICIO ---------------- */
-    #inicio {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 4vh 1rem 6vh; /* Menos margen lateral y superior */
-      text-align: center; width: 100%; /* Ocupa todo el ancho */
-    }
-    #inicio img.logo {
-      width: clamp(260px, 65vw, 600px); margin: 0 auto 2.5rem; display: block;
-    }
-    #inicio p.tagline {
-      /* Permite varias líneas en móviles */
-      font-size: clamp(1.4rem, 4vw, 2.2rem);
-      margin: 0; line-height: 1.3; max-width: 90%; /* Ocupa casi todo el ancho */
+    #inicio { display: flex; align-items: center; justify-content: center; height: 100vh; padding-top: clamp(150px, 20vh, 200px); text-align: center; width: 100%; }
+    #inicio .tagline { font-size: clamp(1.4rem, 4vw, 2.2rem); line-height: 1.3; max-width: 90%; margin: 0 auto; }
+
+    section.section { padding: clamp(80px, 15vh, 100px) 1rem 6vh; width: 100%; }
+    h2 { font-size: clamp(3rem, 8vw, 6rem); text-align: left; padding-left: 1rem; margin-bottom: 1rem; }
+
+    /* Texto justificado y a todo ancho para la sección INFO */
+    #info-text {
+      text-align: justify;
+      max-width: 100%;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      margin: 0 1rem 2rem;
     }
 
-    /* ---------------- SECCIONES ---------------- */
-    section.section {
-      min-height: 100vh;
-      padding: 12vh 1rem 6vh; /* Menos margen lateral y superior */
-      width: 100%; /* Ocupa todo el ancho */
-    }
-    /* Títulos más grandes y alineados a la izquierda */
-    h2 {
-      margin: 0 0 1.5rem;
-      font-size: clamp(2.5rem, 7vw, 5rem); /* Aumenta aún más tamaño */
-      text-align: left; padding-left: 1rem; /* Ajustado al margen */
-      letter-spacing: .04em;
-    }
-    p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      line-height: 1.6; margin: 0 auto 1rem; max-width: 75ch;
-      text-align: left;
-    }
+    /* Otros párrafos generales */
+    p { max-width: 75ch; margin: 0 1rem 1rem; text-align: left; font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.6; }
 
-    /* ---------------- INFO ---------------- */
-    .info-grid { display: grid; gap: 1.5rem; margin-top: 2.5rem; width: 100%; }
-    .info-location {
-      border: 1px solid #333; padding: 1.5rem; border-radius: 0; width: 100%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .info-team {
-      display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      margin-top: 2.5rem; width: 100%;
-    }
-    .team-card {
-      border: 1px solid #333; padding: 1rem; border-radius: 0;
-    }
-    .team-card img { width: 100%; height: auto; margin-bottom: .6rem; }
-    .team-card h3 { margin: .4rem 0 .6rem; font-size: 1.1rem; }
-    .team-card p { margin: 0; font-size: .9rem; }
-
-    /* ---------------- CICLOS ---------------- */
-    .ciclos-list {
-      display: grid; gap: 1.5rem; margin-top: 2.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); width: 100%;
-    }
-    .ciclo-card {
-      border: 1px solid #333; border-radius: 0; overflow: hidden;
-      display: flex; flex-direction: column; text-align: left;
-    }
-    .ciclo-card img { width: 100%; height: 160px; object-fit: cover; }
-    .ciclo-content { padding: 1rem; flex: 1; display: flex; flex-direction: column; gap: .5rem; }
-    .ciclo-title { font-size: 1.2rem; }
-    .ciclo-desc { font-size: .9rem; }
-    .lecturas { margin-top: auto; border-top: 1px solid #333; padding-top: .5rem; }
-
-    /* ---------------- EDICIONES ---------------- */
-    .ediciones-wrap {
-      margin-top: 2.5rem; border: 1px solid #333; border-radius: 0;
-      max-height: 60vh; overflow-y: auto; padding: 1.2rem; text-align: left; width: 100%;
-    }
-    .doc-card { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #333; }
-    .doc-title { font-size: 1.1rem; margin: 0 0 .3rem; }
-    .doc-desc { font-size: .9rem; margin: 0 0 .5rem; }
-    .btn-download { padding: .4rem .8rem; }
-
-    /* ---------------- APOYO ---------------- */
-    .apoyo-box {
-      margin-top: 2.5rem; border: 1px solid #333; border-radius: 0;
-      padding: 1.5rem; width: 100%;
-    }
-
-    /* ---------------- FOOTER ---------------- */
-    footer { text-align: center; padding: 1.5rem 1rem; font-size: .8rem; color: #555; width: 100%; }
-
-    /* Responsive ajustes */
-    @media (min-width: 768px) { .info-grid { grid-template-columns: 1fr 1fr; } }
+    footer { text-align: center; padding: 2rem 1rem; font-size: .8rem; color: #555; width: 100%; }
   </style>
 </head>
 <body>
-
-  <!-- Botón hamburguesa -->
-  <div class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" role="button" tabindex="0">
-    <span></span><span></span><span></span>
-  </div>
-
-  <!-- Menú hamburguesa -->
+  <img src="LOGO+LETRAS.png" alt="KLUB DEL LIBRE" class="logo-header" />
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   <nav id="menu" aria-hidden="true">
     <a href="#inicio" onclick="closeMenu()">Inicio</a>
     <a href="#info" onclick="closeMenu()">INFO</a>
@@ -167,71 +57,43 @@
     <a href="#apoyo" onclick="closeMenu()">APOYO</a>
   </nav>
 
-  <!-- Sección Inicio -->
   <section id="inicio">
-    <img src="LOGO+LETRAS.png" alt="KLUB DEL LIBRE" class="logo" />
     <p class="tagline">Un laboratorio de investigación y creación para pensar el Futuro como Proyecto.</p>
   </section>
 
-  <!-- Sección INFO -->
   <section id="info" class="section">
     <h2>INFO</h2>
-    <p id="info-text">KLUB DEL LIBRE es una asociación cultural de investigación y creación colectiva. 
-
-Nos dedicamos al aprendizaje grupal, la estimulación del debate público y la activación ciudadana. 
-
-Nuestro estudio es multidisciplinar, situándonos en la intersección entre el estudio de las humanidades y la alfabetización tecnológica de la sociedad civil. Cartografiamos los procesos en los que la técnica reordena los flujos de poder de nuestras sociedades, buscando redirigir la aceleración del presente hacia objetivos de libertad y justicia social.
-
-Ante todo, mediante nuestro trabajo tratamos de pensar el Futuro como Proyecto.</p>
-    <div class="info-grid">
-      <div class="info-location"><p>[Mapa / Dirección en Valencia aquí]</p></div>
-    </div>
-    <div class="info-team" id="team">
-      <article class="team-card"><img src="equipo1.jpg" alt="Nombre 1" /><h3>Nombre 1</h3><p>Breve rol.</p></article>
-      <article class="team-card"><img src="equipo2.jpg" alt="Nombre 2" /><h3>Nombre 2</h3><p>Breve rol.</p></article>
-      <article class="team-card"><img src="equipo3.jpg" alt="Nombre 3" /><h3>Nombre 3</h3><p>Breve rol.</p></article>
-    </div>
+    <p id="info-text">KLUB DEL LIBRE es una asociación cultural de investigación y creación colectiva. Nos dedicamos al aprendizaje grupal, la estimulación del debate público y la activación ciudadana. Nuestro estudio es multidisciplinar, situándonos en la intersección entre el estudio de las humanidades y la alfabetización tecnológica de la sociedad civil. Cartografiamos los procesos en los que la técnica reordena los flujos de poder de nuestras sociedades, buscando redirigir la aceleración del presente hacia objetivos de libertad y justicia social. Ante todo, mediante nuestro trabajo tratamos de pensar el Futuro como Proyecto.</p>
   </section>
 
-  <!-- Sección CICLOS -->
   <section id="ciclos" class="section">
     <h2>CICLOS</h2>
     <p>Registro de los ciclos de lectura en curso y finalizados.</p>
-    <div class="ciclos-list" id="ciclos-list">
-      <article class="ciclo-card"><img src="ciclo-ejemplo.jpg" alt="Título del Ciclo" /><div class="ciclo-content"><h3 class="ciclo-title">Título del CICLO</h3><p class="ciclo-desc">Breve descripción.</p><ul class="lecturas"><li><strong>Libro 1</strong> — Autor (Año).</li></ul></div></article>
-    </div>
   </section>
 
-  <!-- Sección EDICIONES -->
   <section id="ediciones" class="section">
     <h2>EDICIONES</h2>
     <p>Aquí se recogen los hallazgos investigativos de los participantes.</p>
-    <div class="ediciones-wrap" id="ediciones-wrap">
-      <div class="doc-card"><h3 class="doc-title">Título doc</h3><p class="doc-desc">Sinopsis.</p><a class="btn-download" href="docs/ejemplo.pdf" download>Descargar PDF</a></div>
-    </div>
   </section>
 
-  <!-- Sección APOYO -->
   <section id="apoyo" class="section">
     <h2>APOYO</h2>
-    <div class="apoyo-box"><p>[Modalidades de participación]</p></div>
+    <p>[Modalidades de participación]</p>
   </section>
 
-  <!-- Footer con año dinámico -->
   <footer>© <span id="year"></span> KLUB DEL LIBRE.</footer>
 
-  <!-- Scripts para menú y año -->
   <script>
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('menu');
-    function openMenu(){ hamburger.classList.add('active'); menu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); }
-    function closeMenu(){ hamburger.classList.remove('active'); menu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }
-    hamburger.addEventListener('click',()=> menu.classList.contains('open')? closeMenu() : openMenu());
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
-    menu.addEventListener('click',e=>{ if(e.target.tagName==='NAV') closeMenu(); });
+    function openMenu(){ hamburger.classList.add('active'); menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); }
+    function closeMenu(){ hamburger.classList.remove('active'); menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); }
+    hamburger.addEventListener('click', ()=> menu.classList.contains('open') ? closeMenu() : openMenu());
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
 
 
