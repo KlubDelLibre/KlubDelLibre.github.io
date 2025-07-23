@@ -8,44 +8,281 @@
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico?v=1" sizes="any" />
 
-  <!-- Estilos inline para no liarnos con más archivos -->
+  <!-- TIPOGRAFÍA -->
+  <!-- Si subes la fuente Bahnschrift Light SemiCondensed como WOFF2, descomenta este bloque y pon el nombre correcto del archivo -->
+  <!--
+  <style>
+    @font-face{
+      font-family:"Bahnschrift Light SemiCondensed";
+      src:url("/fonts/bahnschrift-light-semicondensed.woff2") format("woff2");
+      font-weight:300;
+      font-style:normal;
+    }
+  </style>
+  -->
+
   <style>
     :root{
-      --bg:#fff;
-      --fg:#000;
+      --bg:#fff;                     /* fondo */
+      --fg:#000;                     /* texto */
+      --accent:#000;                 /* color de enlaces/menu */
       --font:"Bahnschrift Light SemiCondensed","Bahnschrift","Montserrat","Arial Narrow",sans-serif;
+      --max-width:1000px;            /* ancho máximo de contenido */
     }
-    html,body{height:100%;margin:0;}
-    body{
-      background:var(--bg);
-      color:var(--fg);
-      font-family:var(--font);
-      display:flex;
-      justify-content:center;
-      text-align:center;
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);}    
+
+    /* ---------------- NAV / HAMBURGER ---------------- */
+    .hamburger{
+      position:fixed;top:1.2rem;right:1.2rem;z-index:1100;
+      width:34px;height:26px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;
     }
-    main{
-      margin-top:12vh;           /* baja el bloque */
-      max-width:900px;
-      padding:0 2rem;
+    .hamburger span{
+      display:block;height:3px;background:var(--fg);transition:all .3s ease;
     }
-    .logo{
-      width:clamp(180px,45vw,420px);
-      height:auto;
-      display:block;
-      margin:0 auto 3rem;        /* centrado + espacio debajo */
+    .hamburger.active span:nth-child(1){transform:translateY(11.5px) rotate(45deg);} 
+    .hamburger.active span:nth-child(2){opacity:0;} 
+    .hamburger.active span:nth-child(3){transform:translateY(-11.5px) rotate(-45deg);} 
+
+    nav#menu{
+      position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:2rem;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s ease;
     }
-    .tagline{
-      font-size:clamp(1rem,3vw,1.6rem);
-      line-height:1.4;
-      margin:0;
+    nav#menu.open{opacity:1;pointer-events:auto;}
+    nav#menu a{
+      color:var(--accent);text-decoration:none;font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.08em;
+    }
+    nav#menu a:hover{text-decoration:underline;}
+
+    /* ---------------- HERO ---------------- */
+    #inicio{
+      min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:6vh 2rem 8vh; /* hueco arriba/abajo */
+      text-align:center;max-width:var(--max-width);margin:0 auto;
+    }
+    #inicio img.logo{
+      width:clamp(220px,55vw,520px); /* más grande que antes */
+      height:auto;margin:0 auto 3rem;display:block;
+    }
+    #inicio p.tagline{
+      white-space:nowrap;             /* fuerza una sola línea */
+      font-size:clamp(1rem,2.5vw,1.8rem);
+      margin:0 auto;line-height:1.2;max-width:100%;
+      overflow:hidden;text-overflow:ellipsis; /* por si una pantalla super pequeña no cabe */
+    }
+    /* Si prefieres que en móviles (muy estrechos) sí pueda cortar línea, quita white-space:nowrap; */
+
+    /* ---------------- SECCIONES GENERALES ---------------- */
+    section.section{
+      min-height:100vh; padding:16vh 2rem 8rem; max-width:var(--max-width); margin:0 auto; text-align:center;
+    }
+    h2{
+      margin:0 0 2.5rem;font-size:clamp(1.8rem,5vw,3.2rem);letter-spacing:.04em;
+    }
+    p{
+      font-size:clamp(1rem,2.5vw,1.2rem);line-height:1.6;margin:0 auto 1.2rem;max-width:75ch;
+    }
+
+    /* ---------------- INFO ---------------- */
+    .info-grid{
+      display:grid;gap:2rem;margin-top:3rem;
+    }
+    .info-location{
+      border:1px solid #333;padding:2rem;border-radius:12px;min-height:200px;display:flex;align-items:center;justify-content:center;
+    }
+    .info-team{
+      display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:3rem;
+    }
+    .team-card{border:1px solid #333;padding:1.2rem;border-radius:12px;}
+    .team-card img{width:100%;height:auto;border-radius:8px;margin-bottom:.8rem;}
+    .team-card h3{margin:.4rem 0 .6rem;font-size:1.1rem;letter-spacing:.04em;}
+    .team-card p{margin:0;font-size:.95rem;line-height:1.45;}
+
+    /* ---------------- CICLOS ---------------- */
+    .ciclos-list{
+      display:grid;gap:2rem;margin-top:3rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+    .ciclo-card{border:1px solid #333;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;text-align:left;}
+    .ciclo-card img{width:100%;height:180px;object-fit:cover;}
+    .ciclo-content{padding:1.2rem;flex:1;display:flex;flex-direction:column;gap:.6rem;}
+    .ciclo-title{font-size:1.1rem;margin:0;letter-spacing:.04em;}
+    .ciclo-desc{font-size:.95rem;line-height:1.45;margin:0 0 .6rem;}
+    .lecturas{
+      margin-top:auto;border-top:1px solid #333;padding-top:.6rem;font-size:.9rem;line-height:1.4;
+    }
+    .lecturas li{margin-bottom:.3rem;}
+
+    /* ---------------- EDICIONES ---------------- */
+    .ediciones-wrap{
+      margin-top:3rem;border:1px solid #333;border-radius:12px;max-height:60vh;overflow-y:auto;padding:1.5rem;text-align:left;
+    }
+    .doc-card{margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #333;}
+    .doc-card:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+    .doc-title{margin:0 0 .3rem;font-size:1.05rem;letter-spacing:.03em;}
+    .doc-desc{margin:0 0 .6rem;font-size:.92rem;line-height:1.45;}
+    .btn-download{
+      display:inline-block;padding:.45rem 1rem;border:1px solid #fff;border-radius:8px;text-decoration:none;color:#fff;font-size:.9rem;
+    }
+    .btn-download:hover{background:#fff;color:#000;}
+
+    /* ---------------- APOYO ---------------- */
+    .apoyo-box{margin-top:3rem;border:1px solid #333;padding:2rem;border-radius:12px;}
+
+    /* ---------------- FOOTER ---------------- */
+    footer{
+      text-align:center;padding:2rem 1rem 3rem;font-size:.8rem;color:#bbb;
+    }
+
+    /* ---------------- RESPONSIVE EXTRAS ---------------- */
+    @media (min-width:768px){
+      .info-grid{grid-template-columns:1fr 1fr;} /* descripción / ubicación lado a lado en pantallas grandes */
     }
   </style>
 </head>
 <body>
-  <main>
+
+  <!-- BOTÓN HAMBURGUESA -->
+  <div class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- MENÚ -->
+  <nav id="menu" aria-hidden="true">
+    <a href="#inicio" onclick="closeMenu()">Inicio</a>
+    <a href="#info" onclick="closeMenu()">INFO</a>
+    <a href="#ciclos" onclick="closeMenu()">CICLOS</a>
+    <a href="#ediciones" onclick="closeMenu()">EDICIONES</a>
+    <a href="#apoyo" onclick="closeMenu()">APOYO</a>
+  </nav>
+
+  <!-- HERO / PÁGINA PRINCIPAL -->
+  <section id="inicio">
     <img src="LOGO+LETRAS.png" alt="KLUB DEL LIBRE" class="logo" />
     <p class="tagline">Un laboratorio de investigación y creación para pensar el Futuro como Proyecto.</p>
-  </main>
+  </section>
+
+  <!-- INFO -->
+  <section id="info" class="section">
+    <h2>INFO</h2>
+    <p id="info-text">[Aquí irá la descripción de la organización que me darás luego]</p>
+
+    <div class="info-grid">
+      <!-- Descripción extendida si lo prefieres separado -->
+      <!-- <div class="info-desc"> ... </div> -->
+
+      <!-- Localización estética -->
+      <div class="info-location">
+        <!-- IDEA 1: Una imagen estilizada de un mapa de Valencia. -->
+        <!-- IDEA 2: Un iframe con un mapa (requiere conexión externa). -->
+        <!-- De momento, placeholder: -->
+        <p>[Mapa / Dirección en Valencia aquí]</p>
+      </div>
+    </div>
+
+    <!-- Equipo fundador -->
+    <div class="info-team" id="team">
+      <!-- Ejemplo de tarjeta de miembro -->
+      <!-- Copia/pega y rellena cuando tengas imágenes y textos -->
+      <article class="team-card">
+        <img src="equipo1.jpg" alt="Nombre 1" />
+        <h3>Nombre 1</h3>
+        <p>Breve descripción / rol.</p>
+      </article>
+      <article class="team-card">
+        <img src="equipo2.jpg" alt="Nombre 2" />
+        <h3>Nombre 2</h3>
+        <p>Breve descripción / rol.</p>
+      </article>
+      <article class="team-card">
+        <img src="equipo3.jpg" alt="Nombre 3" />
+        <h3>Nombre 3</h3>
+        <p>Breve descripción / rol.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CICLOS -->
+  <section id="ciclos" class="section">
+    <h2>CICLOS</h2>
+    <p>Registro de los ciclos de lectura en curso y finalizados.</p>
+
+    <div class="ciclos-list" id="ciclos-list">
+      <!-- Tarjeta de ejemplo. Duplica para cada ciclo -->
+      <article class="ciclo-card">
+        <img src="ciclo-ejemplo.jpg" alt="Título del Ciclo" />
+        <div class="ciclo-content">
+          <h3 class="ciclo-title">Título del CICLO</h3>
+          <p class="ciclo-desc">Breve descripción de la temática objeto del ciclo.</p>
+          <ul class="lecturas">
+            <li><strong>Título libro 1</strong> — Autor (Año). Sinopsis breve...</li>
+            <li><strong>Título libro 2</strong> — Autor (Año). Sinopsis breve...</li>
+            <!-- ... -->
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EDICIONES -->
+  <section id="ediciones" class="section">
+    <h2>EDICIONES</h2>
+    <p>Aquí se recogen los hallazgos investigativos de lxs participantes de los CICLOS organizados por el KLUB DEL LIBRE.</p>
+
+    <div class="ediciones-wrap" id="ediciones-wrap">
+      <!-- Repetir este bloque por documento -->
+      <div class="doc-card">
+        <h3 class="doc-title">Título del documento</h3>
+        <p class="doc-desc">Breve descripción / sinopsis del trabajo.</p>
+        <a class="btn-download" href="docs/ejemplo.pdf" download>Descargar PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- APOYO -->
+  <section id="apoyo" class="section">
+    <h2>APOYO</h2>
+    <div class="apoyo-box">
+      <p>[Modalidades de participación / apoyo (por definir)]</p>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> KLUB DEL LIBRE. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    // ------- Hamburger menu toggle -------
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    function openMenu(){
+      hamburger.classList.add('active');
+      menu.classList.add('open');
+      hamburger.setAttribute('aria-expanded','true');
+      menu.setAttribute('aria-hidden','false');
+    }
+    function closeMenu(){
+      hamburger.classList.remove('active');
+      menu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false');
+      menu.setAttribute('aria-hidden','true');
+    }
+
+    hamburger.addEventListener('click',()=>{
+      if(menu.classList.contains('open')){closeMenu();}else{openMenu();}
+    });
+    // cerrar con ESC
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();}});
+
+    // cerrar al hacer click fuera del menú cuando esté abierto (opcional)
+    menu.addEventListener('click', e => {
+      if(e.target.tagName === 'NAV') closeMenu();
+    });
+
+    // Año automático en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
