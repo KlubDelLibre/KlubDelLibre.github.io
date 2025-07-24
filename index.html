@@ -15,7 +15,7 @@
     html { width: 100%; height: 100%; scroll-behavior: smooth; }
     body { width: 100%; min-height: 100vh; background: var(--bg); color: var(--fg); font-family: var(--font); }
 
-    /* pequeño logo fijo */
+    /* Logo superior y menú hamburguesa: sin cambios */
     .logo-header { position: fixed; top: 1rem; left: 1rem; width: clamp(100px, 12vw, 150px); height: auto; z-index: 1200; }
     .hamburger { position: fixed; top: 1rem; right: 1rem; z-index: 1100; width: 34px; height: 26px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
     .hamburger span { display: block; height: 3px; background: var(--fg); transition: transform .3s ease, opacity .3s ease; }
@@ -26,58 +26,60 @@
     nav#menu.open { opacity: 1; pointer-events: auto; }
     nav#menu a { color: var(--fg); font-size: clamp(1.6rem, 5vw, 3rem); text-decoration: none; margin: .5rem 0; }
 
-    /* Sección INICIO */
+    /* SECCIÓN INICIO */
     #inicio { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; padding-top: clamp(80px, 10vh, 100px); text-align: center; width: 100%; }
-    .logo-main { width: clamp(480px, 100vw, 1000px); margin-bottom: 2rem; }
-    .tagline { font-size: clamp(1.4rem, 4vw, 2.2rem); line-height: 1.3; max-width: 90%; margin: 0 1rem; }
+    .logo-main { width: clamp(300px, 80vw, 700px); margin-bottom: 2rem; }
+    .tagline { font-size: clamp(1.1rem, 3vw, 1.8rem); line-height: 1.3; max-width: 90%; margin: 0 1rem; }
 
-    /* Secciones generales ocupan todo el ancho */
-    section.section { padding: clamp(80px, 15vh, 100px) 1rem 6vh; width: 100%; }
-    h2 { font-size: clamp(3rem, 8vw, 6rem); text-align: left; padding-left: 1rem; margin-bottom: 1rem; }
-    p { max-width: 75ch; margin: 0 1rem 1rem; text-align: left; font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.6; }
+    /* Secciones generales */
+    section.section { padding: clamp(40px, 10vh, 60px) 1rem 6vh; width: 100%; }
+    h2 { font-size: clamp(2rem, 5vw, 3.5rem); text-align: left; padding-left: 1rem; margin-bottom: 1rem; }
+    p { max-width: 75ch; margin: 0 1rem 1rem; text-align: left; font-size: clamp(0.8rem, 2vw, 1rem); line-height: 1.6; }
 
     /* INFO */
-    #info-text { text-align: justify; max-width: 100%; font-size: clamp(1.2rem, 3vw, 1.6rem); margin: 0 1rem 2rem; }
+    #info-text { text-align: justify; max-width: 100%; font-size: clamp(1rem, 2.5vw, 1.4rem); margin: 0 1rem 2rem; }
     .info-grid { display: grid; gap: 1.5rem; width: 100%; }
-    .info-location { border: 1px solid #333; padding: 1.5rem; border-radius: 0; display: flex; align-items: center; justify-content: center; }
-    .info-team { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 2.5rem; }
-    .team-card { border: 1px solid #333; padding: 1rem; border-radius: 0; }
-    .team-card img { width: 100%; height: auto; margin-bottom: .6rem; }
-    .team-card h3 { margin: .4rem 0 .6rem; font-size: 1.1rem; }
-    .team-card p { margin: 0; font-size: .9rem; }
+    .info-location { border: 1px solid #333; padding: 1rem; border-radius: 0; display: flex; align-items: center; justify-content: center; }
+    .info-team { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-top: 2rem; }
+    .team-card { border: 1px solid #333; padding: 0.8rem; border-radius: 0; }
+    .team-card img { width: 100%; height: auto; margin-bottom: .4rem; }
+    .team-card h3 { margin: .3rem 0 .4rem; font-size: 1rem; }
+    .team-card p { margin: 0; font-size: 0.8rem; }
 
     /* CICLOS */
-    .ciclos-list { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); width: 100%; }
+    .ciclos-list { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); width: 100%; }
     .ciclo-card { border: 1px solid #333; border-radius: 0; overflow: hidden; display: flex; flex-direction: column; }
-    .ciclo-card img { width: 100%; height: 160px; object-fit: cover; }
-    .ciclo-content { padding: 1rem; flex: 1; display: flex; flex-direction: column; }
-    .ciclo-content h3 { font-size: 1.2rem; margin: 0 0 .5rem; }
-    .ciclo-content p { margin: 0 0 .5rem; font-size: .9rem; }
-    .lecturas { list-style: none; padding: 0; margin-top: auto; border-top: 1px solid #333; padding-top: .5rem; }
-    .lecturas li { margin-bottom: .3rem; }
+    .ciclo-card img { width: 100%; height: 120px; object-fit: cover; }
+    .ciclo-content { padding: 0.8rem; flex: 1; display: flex; flex-direction: column; }
+    .ciclo-content h3 { font-size: 1rem; margin: 0 0 .4rem; }
+    .ciclo-content p { margin: 0 0 .4rem; font-size: 0.8rem; }
+    .lecturas { list-style: none; padding: 0; margin-top: auto; border-top: 1px solid #333; padding-top: .4rem; }
+    .lecturas li { margin-bottom: .2rem; }
 
     /* EDICIONES */
-    .ediciones kdl-wrap { border: 1px solid #333; border-radius: 0; max-height: 60vh; overflow-y: auto; padding: 1.2rem; margin-top: 2.5rem; }
-    .doc-card { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #333; }
+    .ediciones kdl-wrap { border: 1px solid #333; border-radius: 0; max-height: 60vh; overflow-y: auto; padding: 0.8rem; margin-top: 2rem; }
+    .doc-card { margin-bottom: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px solid #333; }
     .doc-card:last-child { border-bottom: none; }
-    .doc-title { font-size: 1.1rem; margin: 0 0 .3rem; }
-    .doc-desc { margin: 0 0 .6rem; font-size: .9rem; }
-    .btn-download { padding: .4rem .8rem; text-decoration: none; border: 1px solid #000; border-radius: 4px; }
+    .doc-title { font-size: 1rem; margin: 0 0 .3rem; }
+    .doc-desc { margin: 0 0 .4rem; font-size: 0.8rem; }
+    .btn-download { padding: 0.3rem 0.6rem; text-decoration: none; border: 1px solid #000; border-radius: 4px; font-size: 0.8rem; }
 
     /* APOYO */
-    .apoyo-box { border: 1px solid #333; border-radius: 0; padding: 1.5rem; margin-top: 2.5rem; }
+    .apoyo-box { border: 1px solid #333; border-radius: 0; padding: 1rem; margin-top: 2rem; font-size: 0.9rem; }
 
     /* BIBLIOTECA */
-    .biblioteca-list { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); width: 100%; }
-    .material-card { border: 1px solid #333; padding: 1rem; border-radius: 0; display: flex; flex-direction: column; }
-    .material-card h3 { font-size: 1.2rem; margin: 0 0 .5rem; }
-    .material-card p { flex: 1; margin: 0 0 .5rem; font-size: .9rem; }
-    .material-card .btn-download { align-self: flex-start; }
+    .biblioteca-list { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); width: 100%; }
+    .material-card { border: 1px solid #333; padding: 0.8rem; border-radius: 0; display: flex; flex-direction: column; }
+    .material-card h3 { font-size: 1rem; margin: 0 0 .4rem; }
+    .material-card p { flex: 1; margin: 0 0 .4rem; font-size: 0.8rem; }
+    .material-card .btn-download { align-self: flex-start; font-size: 0.8rem; }
 
     /* FOOTER */
-    footer { text-align: center; padding: 2rem 1rem; font-size: .8rem; color: #555; width: 100%; }
+    footer { text-align: center; padding: 1.5rem 1rem; font-size: 0.7rem; color: #555; width: 100%; }
 
-    @media (min-width: 768px) { .info-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 768px) { 
+      .info-grid { grid-template-columns: 1fr 1fr; } 
+    }
   </style>
 </head>
 <body>
@@ -99,7 +101,9 @@
 
   <section id="info" class="section">
     <h2>INFO</h2>
-    <p id="info-text">KLUB DEL LIBRE es una asociación cultural de investigación y creación colectiva. Nuestra actividad principal se centra en la formación de Grupos de Lectura. Con ello, nos dedicamos al aprendizaje grupal, la estimulación del debate público y la activación ciudadana. Nuestro estudio es multidisciplinar, situándonos en la intersección entre las humanidades y la alfabetización tecnológica de la sociedad civil. Cartografiamos los procesos en los que la técnica reordena los flujos de poder de nuestras sociedades, buscando redirigir la aceleración del presente hacia objetivos de libertad y justicia social. Ante todo, mediante nuestro trabajo tratamos de pensar el Futuro como Proyecto.</p>
+    <p id="info-text">
+      KLUB DEL LIBRE es una asociación cultural de investigación y creación colectiva. Nuestra actividad principal se centra en la formación de Grupos de Lectura. Con ello, nos dedicamos al aprendizaje grupal, la estimulación del debate público y la activación ciudadana. Nuestro estudio es multidisciplinar, situándonos en la intersección entre las humanidades y la alfabetización tecnológica de la sociedad civil. Cartografiamos los procesos en los que la técnica reordena los flujos de poder de nuestras sociedades, buscando redirigir la aceleración del presente hacia objetivos de libertad y justicia social. Ante todo, mediante nuestro trabajo tratamos de pensar el Futuro como Proyecto.
+    </p>
     <div class="info-grid">
       <div class="info-location"><p>[Mapa / Dirección en Valencia aquí]</p></div>
       <div class="info-team" id="team">
@@ -112,17 +116,34 @@
 
   <section id="ciclos" class="section">
     <h2>CICLOS</h2>
-     <p id="info-text">Articulamos nuestras investigaciones a través de los llamado CICLOS. Cada CICLO, que agrupa obras y textos de todo tipo, constituye un bloque temático diferenciado, a su vez unido con los demás bloques por un hilo conductor común. Con ello, logramos establecer una continuidad en nuestras investigaciones. Abajo dejamos un registro, periódicamente actualizado, de los CICLOS atravesados, en curso y previstos para el futuro.</p>
+    <p id="info-text">
+      Articulamos nuestras investigaciones a través de los llamados CICLOS. Cada CICLO, que agrupa obras y textos de todo tipo, constituye un bloque temático diferenciado, a su vez unido con los demás bloques por un hilo conductor común. Con ello, logramos establecer una continuidad en nuestras investigaciones. Abajo dejamos un registro, periódicamente actualizado, de los CICLOS atravesados, en curso y previstos para el futuro.
+    </p>
     <div class="ciclos-list">
-      <article class="ciclo-card"><img src="ciclo-ejemplo.jpg" alt="Título del Ciclo" /><div class="ciclo-content"><h3>Título del CICLO</h3><p>Breve descripción.</p><ul class="lecturas"><li><strong>Libro 1</strong> — Autor (Año)</li></ul></div></article>
+      <article class="ciclo-card">
+        <img src="ciclo-ejemplo.jpg" alt="Título del Ciclo" />
+        <div class="ciclo-content">
+          <h3>Título del CICLO</h3>
+          <p>Breve descripción.</p>
+          <ul class="lecturas">
+            <li><strong>Libro 1</strong> — Autor (Año)</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </section>
 
   <section id="ediciones kdl" class="section">
     <h2>EDICIONES KDL</h2>
-    <p id="info-text">Nuestro objetivo último es contribuir a fortalecer el conocimiento colectivo acerca de nuestro presente tecnosocial. Por ello, necesitamos ir más allá de la lectura. Con el objetivo de divulgar nuestro trabajo e inspirándonos en las 4 Libertades del Software Libre (de Uso, de Estudio, de Modificación y de Redistribución), KLUB DEL LIBRE funciona como una editorial colaborativa enfocada en recoger y poner a disposición del público nuestros hallazgos y reflexiones. Abajo dejamos un registro, periódicamente actualizado, de este trabajo.</p>
+    <p id="info-text">
+      Nuestro objetivo último es contribuir a fortalecer el conocimiento colectivo acerca de nuestro presente tecnosocial. Por ello, necesitamos ir más allá de la lectura. Con el objetivo de divulgar nuestro trabajo e inspirándonos en las 4 Libertades del Software Libre, KLUB DEL LIBRE funciona como una editorial colaborativa enfocada en recoger y poner a disposición del público nuestros hallazgos y reflexiones. Abajo dejamos un registro, periódicamente actualizado, de este trabajo.
+    </p>
     <div class="ediciones kdl-wrap">
-      <div class="doc-card"><h3 class="doc-title">Título doc</h3><p class="doc-desc">Sinopsis.</p><a class="btn-download" href="#" download>Descargar PDF</a></div>
+      <div class="doc-card">
+        <h3 class="doc-title">Título doc</h3>
+        <p class="doc-desc">Sinopsis.</p>
+        <a class="btn-download" href="#" download>Descargar PDF</a>
+      </div>
     </div>
   </section>
 
@@ -150,7 +171,7 @@
     const menu = document.getElementById('menu');
     function openMenu(){ hamburger.classList.add('active'); menu.classList.add('open'); menu.setAttribute('aria-hidden','false'); }
     function closeMenu(){ hamburger.classList.remove('active'); menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); }
-    hamburger.addEventListener('click', ()=> menu.classList.contains('open') ? closeMenu() : openMenu());
+    hamburger.addEventListener('click', () => menu.classList.contains('open') ? closeMenu() : openMenu());
     document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
