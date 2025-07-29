@@ -26,12 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // Rotación dinámica del título de la pestaña
-(function titleScroller(text) {
-  document.title = text;
-  setTimeout(function() {
-    titleScroller(text.substr(1) + text.substr(0, 1));
-  }, 500);
-})("KLUB DEL LIBRE — Web en constante evolución — ");
-    rotIndex = (rotIndex + 1) % fullTitle.length;
-  }, 300);
+  (function titleScroller(text) {
+    document.title = text;
+    setTimeout(() => {
+      titleScroller(text.substring(1) + text.charAt(0));
+    }, 500);
+  })("KLUB DEL LIBRE — Web en constante evolución — ");
 });
