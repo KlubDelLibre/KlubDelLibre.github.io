@@ -13,3 +13,11 @@ function closeMenu(){
 hamburger.addEventListener('click', () => menu.classList.contains('open') ? closeMenu() : openMenu());
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// Rotación dinámica del título de la pestaña
+tmpTitle = "KLUB DEL LIBRE - Web en constante evolución - ";
+let rotIndex = 0;
+setInterval(() => {
+  document.title = tmpTitle.slice(rotIndex) + tmpTitle.slice(0, rotIndex);
+  rotIndex = (rotIndex + 1) % tmpTitle.length;
+}, 300);
