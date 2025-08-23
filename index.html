@@ -1,108 +1,38 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Asociación cultural KLUB DEL LIBRE dedicada a la investigación y creación colectiva." />
-  <title>KLUB DEL LIBRE</title>
-  <link rel="icon" href="favicon.ico?v=1" sizes="any" />
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <header>
-    <div class="top-bar">
-      <img src="LOGO+LETRAS.png" alt="KLUB DEL LIBRE" class="logo-header" />
-    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
-    </div>
-
-    <nav id="menu" aria-hidden="true" aria-label="Navegación principal">
-      <a href="#inicio" onclick="closeMenu()">INICIO</a>
-      <a href="#info" onclick="closeMenu()">INFO</a>
-      <a href="#ciclos" onclick="closeMenu()">CICLOS</a>
-      <a href="#ediciones-kdl" onclick="closeMenu()">EDICIONES KDL</a>
-      <a href="#apoyo" onclick="closeMenu()">APOYO</a>
-      <a href="#biblioteca" onclick="closeMenu()">BIBLIOTECA</a>
-    </nav>
-  </header>
-    <main>
-
-  <section id="inicio">
-    <img src="LOGO+LETRAS.png" alt="KLUB DEL LIBRE" class="logo-main" />
-    <p class="tagline">Un laboratorio de investigación y creación para pensar el Futuro como Proyecto. Emprendemos la urgente tarea de recoger un relevo activamente depositado por una genealogía viva de autorxes. Su acervo dispone para el resto (aunque expresadas de forma aún genérica, como corresponde a las fases embrionarias de toda reforma) las líneas que deberán seguirse si se quiere erigir una verdadera ecología de las organizaciones, tal y como la imaginaron Nick Srnicek y Alex Williams hace más de una década . 
-
-Por ello, esta iniciativa se concibe como un nodo más, integrante de dicho ecosistema. Aquella red de redes, de inteligencia colectiva distribuida, que deberá mantenerse en constante retroalimentación sobre la base de la heterogeneidad que entraña. Para esa totalidad estratégica somos una contribución más, en la forma de una intervención situada, con sus capacidades propias y con una marcada vocación cooperativa y creativa.
-</p>
-  </section>
-
-  <section id="info" class="section">
-    <h2>INFO</h2>
-        <p class="info-text">
-      KLUB DEL LIBRE es una asociación cultural de investigación y creación colectiva. Nuestra actividad principal se centra en la formación de Grupos de Lectura. Con ello, nos dedicamos al aprendizaje grupal, la estimulación del debate público y la activación ciudadana. Nuestro estudio es multidisciplinar, situándonos en la intersección entre las humanidades y la alfabetización tecnológica de la sociedad civil. Cartografiamos los procesos en los que la técnica reordena los flujos de poder de nuestras sociedades, buscando redirigir la aceleración del presente hacia objetivos de libertad y justicia social. Ante todo, mediante nuestro trabajo tratamos de pensar el Futuro como Proyecto.
-    </p>
-    <div class="info-grid">
-      <div class="info-location"><p>[Mapa / Dirección en Valencia aquí]</p></div>
-      <div class="info-team" id="team">
-        <article class="team-card"><img src="equipo1.jpg" alt="Nombre 1" /><h3>Nombre 1</h3><p>Breve rol.</p></article>
-        <article class="team-card"><img src="equipo2.jpg" alt="Nombre 2" /><h3>Nombre 2</h3><p>Breve rol.</p></article>
-        <article class="team-card"><img src="equipo3.jpg" alt="Nombre 3" /><h3>Nombre 3</h3><p>Breve rol.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="ciclos" class="section">
-    <h2>CICLOS</h2>
-        <p class="info-text">
-      Articulamos nuestras investigaciones a través de los llamados CICLOS. Cada CICLO, que agrupa obras y textos de todo tipo, constituye un bloque temático diferenciado, a su vez unido con los demás bloques por un hilo conductor común. Con ello, logramos establecer una continuidad en nuestras investigaciones. Abajo dejamos un registro, periódicamente actualizado, de los CICLOS atravesados, en curso y previstos para el futuro.
-    </p>
-    <div class="ciclos-list">
-      <article class="ciclo-card">
-        <img src="ciclo-ejemplo.jpg" alt="Título del Ciclo" />
-        <div class="ciclo-content">
-          <h3>Título del CICLO</h3>
-          <p>Breve descripción.</p>
-          <ul class="lecturas">
-            <li><strong>Libro 1</strong> — Autor (Año)</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </section>
-        <section id="ediciones-kdl" class="section">
-    <h2>EDICIONES KDL</h2>
-              <p class="info-text">
-      Nuestro objetivo último es contribuir a fortalecer el conocimiento colectivo acerca de nuestro presente tecnosocial. Por ello, necesitamos ir más allá de la lectura. Con el objetivo de divulgar nuestro trabajo e inspirándonos en las 4 Libertades del Software Libre, KLUB DEL LIBRE funciona como una editorial colaborativa enfocada en recoger y poner a disposición del público nuestros hallazgos y reflexiones. Abajo dejamos un registro, periódicamente actualizado, de este trabajo.
-    </p>
-    <div class="ediciones kdl-wrap">
-      <div class="doc-card">
-        <h3 class="doc-title">Título doc</h3>
-        <p class="doc-desc">Sinopsis.</p>
-        <a class="btn-download" href="#" download>Descargar PDF</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="apoyo" class="section">
-    <h2>APOYO</h2>
-    <div class="apoyo-box"><p>[Modalidades de participación]</p></div>
-  </section>
-
-  <section id="biblioteca" class="section">
-    <h2>BIBLIOTECA</h2>
-        <p class="info-text">AQUÍ RECURSOS DE INTERÉS.</p>
-    <div class="biblioteca-list">
-      <article class="material-card">
-        <h3>Nombre del material</h3>
-        <p>Breve descripción del material.</p>
-        <a class="btn-download" href="ruta-al-material.pdf" download>Descargar PDF</a>
-      </article>
-      <!-- Puedes duplicar este bloque para añadir más materiales -->
-    </div>
-  </section>
-
-  </main>
-
-  <footer>Como indica el metatítulo de esta web, está en constante evolución. Todo su contenido está bajo la Licencia Creative Commons Attribution-Noncommercial-ShareAlike 4.0 International. No es necesario pedir permiso para usarlo, pero por favor: !Recuerda dar crédito a KLUB DEL LIBRE!</footer>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico?v=1" sizes="any">
+    <meta name="ROBOTS" content="INDEX,FOLLOW">
+    <meta name="description" content="KLUB DEL LIBRE es un laboratorio de investigación y creación colectiva para reorientar la aceleración del presente tecnosocial.">
+    <meta name="keywords" content="Club Del Libro, Asociaciones Valencia, Aceleracionismo, Mark Fisher, Valencia, Arte, Ciencia, Tecnología, Ciencias Sociales, Humanidades, Lectura, Estudio, Cultura, cyberfeminism, cybernética, 2x4, , Avant Garde, mind_,  Internet Archive, meta, Ciencia Ficción, tecnoutopía, investigación, colectivo">
+    <meta property="og:url" content="https://klubdellibre.github.io/">
+    <meta property="og:title" content="KLUB DEL LIBRE">
+    <meta property="og:description" content="KLUB DEL LIBRE es un laboratorio de investigación y creación colectiva para reorientar la aceleración del presente tecnosocial.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
-</body>
-</html>
+    <link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="KDL" />
+    <link rel="manifest" href="/assets/img/site.webmanifest" />
 
+
+  </head>
+  <body>
+    <p><strong>KLUB DEL LIBRE</strong> es un club del libro. También es una asociación cultural sin ánimo de lucro, fundada en 2025, situada en la ciudad de <a href="https://maps.app.goo.gl/PVYYwfH9wwjmsXJU9?g_st=ipc">Valencia</a>. Nacemos 
+en un contexto de privatización extrema, caracterizado por la hegemonía de un 
+capital tecnológico sin precedentes dedicado a la vigilancia, el control 
+ideológico y la mercantilización de la vida. En este escenario, nuestro 
+objetivo es la redirección de la aceleración del presente hacia objetivos de libertad y justicia social. <em>Por eso, KLUB DEL LIBRE también es un laboratorio de investigación y creación colectiva, dedicado al análisis de la fenomenología tecnosocial y sus implicaciones políticas, económicas y sociales</em>. En KLUB DEL LIBRE, leemos para pensar el Futuro como Proyecto. Y sí, también tenemos <a>Instagram</a>.</p>
+    <p><strong>CICLOS</strong> — Articulamos nuestras investigaciones a través de CICLOS que agrupan obras entorno a una temática particular. Cada CICLO está enlazado a su vez con los demás CICLOS por un hilo conductor. Con ello, buscamos establecer una continuidad en nuestras investigaciones. En este <a href="https://docs.google.com/spreadsheets/d/1d71xY6tKomR61i5n0qUR5vXkO9jufGgtcQjYSHiIeEk/edit?gid=0#gid=0" target="blank">ÍNDICE<a/> periódicamente actualizado, registramos los CICLOS atravesados, en curso y previstos para el futuro.</p>
+    <p><strong>EDICIONES KDL</strong> — Nuestro objetivo último es fortalecer una red de inteligencia colectiva distribuida al servicio de la sociedad civil. Por ello, vamos más allá de la lectura; adentrándonos en el terreno de la creación. Con el objetivo de divulgar nuestro trabajo e inspirándonos en las 4 Libertades del Software Libre (Libertad de Uso, Estudio, Modificación y Redistribución), KLUB DEL LIBRE funciona como una editorial colaborativa enfocada en recoger y poner a disposición del público nuestros hallazgos y reflexiones. Este SPREADSHEET periódicamente actualizado contiene un registro de nuestro trabajo grupal.</p>
+    <p><strong>BIBLIOTECA</strong> — Con el objetivo de ofrecer un marco teórico para todas las personas interesadas en aprender acerca de la sociedad contemporánea, realizamos un trabajo de curadoría, en constante evolución, que ponemos a disposición del público en nuestro espacio virtual de <a href="https://www.are.na/klub-del-libre-research-creation/kdl-repo">Are.na</a>.</p>
+    <p><strong>CONTACTO Y COLABORACIÓN</strong> — Nos encanta colaborar con instituciones públicas y organizaciones culturales, profesionales especializadxs y, en general, explorar proyectos que amplíen nuestra programación y alcance. Si te interesa involucrarte con nosotros, participar en las actividades del proyecto o simplemente preguntar por información, no dudes en contactarnos por <a href="mailto:info.klubdellibre@gmail.com" target="blank"><strong>email (info . klubdellibre at gmail dot com)</strong><a/>
+    </p>
+    <p class=foot>Como indica el meta-título de esta web, está en constante evolución, por lo que su contenido se irá actualizando periódicamente. Siguiendo el ejemplo de la artista y tecnóloga <a href="https://mindyseu.com/" target="blank">Mindy Seu<a/>, esta web usa el <a href="https://contemporary-home-computing.org/prof-dr-style/" target="blank">estilo Dr.<a/> (con ligeras adiciones) como un esfuerzo por reivindicar la autogestión de la comunidad cybernética del Internet 1.0 y escapar del oligopolio de las plataformas hegemónicas. Todo su contenido está bajo la <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="blank">Licencia<a/> Creative Commons Attribution-Noncommercial-ShareAlike 4.0 International. No es necesario pedir permiso para usarlo, pero por favor, recuerda dar el crédito correspondiente a lxs autoxs del trabajo empleado.<p/>
+  </body>
+</html>
