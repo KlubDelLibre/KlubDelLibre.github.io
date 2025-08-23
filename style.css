@@ -1,51 +1,8 @@
-  html,body {
-	font-family: Arial W05 Narrow5310067, san-serif;
-	margin: 0px 8px 0px 8px;
-	line-height: 1.25;
-}
-
-a {
-	color: #0000ff;
-	text-decoration: none;
-	z-index: 10;
-}
-
-a:hover {
-	color: black;
-	background-color: white;
-}
-
 .foot {
-	font-size: 12px;
+    font-size: 12px;
 }
-
-a.highlight {
-	background-color: blue;
-	color: white;
+html, body {
+    font-family: Arial W05 Narrow5310067, san-serif;
+    margin: 0px 8px 0px 8px;
+    line-height: 1.25;
 }
-
-a.extra {
-	background-color: #00ff00 !important; 
-	color: black !important;
-}
-
-.extraextra {
-	color: fuchsia !important;
-}
-
-.more {
-	display: block;
-}
-
-.less {
-	display: none;
-} 
-
-button {
-	margin-bottom: 15px;
-	margin-left: -5px;
-} 
-
-.button:hover {
-	background-color: white;
-} 
