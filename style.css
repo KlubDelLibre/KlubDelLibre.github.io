@@ -1,10 +1,17 @@
 .foot {
     font-size: 18px;
 }
-html, body {
-    font-size: 25px;
-    margin: 0px 8px 0px 8px;
-    line-height: 1.25;
+html,body {
+	font-family: 'Bahnschrift', sans-serif;
+	margin: 0px 8px 0px 8px;
+	line-height: 1.25;
 }
-
-
+@font-face {
+    font-family: 'Bahnschrift';
+    src: url("assets/fonts/Bahnschrift.woff2") format('woff2'),
+        url("assets/fonts/Bahnschrift.woff") format('woff'),
+        url("assets/fonts/Bahnschrift.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
