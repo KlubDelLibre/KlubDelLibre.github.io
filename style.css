@@ -7,7 +7,7 @@ html,body {
 	line-height: 1.25;
 }
 @font-face {
-    font-family: 'Bahnschrift';
+    font-family: 'Bahnschrift Light Semicondenssed';
     src: url("assets/fonts/Bahnschrift.woff2") format('woff2'),
         url("assets/fonts/Bahnschrift.woff") format('woff'),
         url("assets/fonts/Bahnschrift.ttf") format('truetype');
@@ -15,3 +15,4 @@ html,body {
     font-style: normal;
     font-display: swap;
 }
+
