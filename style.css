@@ -15,6 +15,11 @@ body {
   background-attachment: fixed;
   padding: 0px 8px 0px 8px;
 }
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
 @font-face {
     font-family: 'Bahnschrift';
     src: url("assets/fonts/Bahnschrift.woff2") format('woff2'),
@@ -39,6 +44,7 @@ body {
 .logo {
   height: 40px; /* ajusta según tamaño deseado */
 }
+
 
 
 
