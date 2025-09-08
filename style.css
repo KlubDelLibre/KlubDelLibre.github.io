@@ -17,7 +17,7 @@ body {
 }
 @media (max-width: 768px) {
   body {
-    background-attachment: scroll;
+    background-attachment: fixed;
   }
 }
 @font-face {
@@ -44,6 +44,7 @@ body {
 .logo {
   height: 40px; /* ajusta según tamaño deseado */
 }
+
 
 
 
