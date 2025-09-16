@@ -31,19 +31,18 @@ body {
 }
 .topbar {
   width: 100%;
-  height: 60px;           /* puedes ajustar */
-  background-color: #000; /* color de fondo */
-  display: flex;
-  align-items: center;    /* centra verticalmente */
-  justify-content: center;/* centra horizontalmente */
-  position: fixed;        /* se queda fija arriba */
+  height: 60px;                     /* alto de la franja */
+  background-color: #000;           /* color de fondo negro */
+  background-image: url("assets/img/logo/IINVERT.png"); /* ruta de tu logo */
+  background-repeat: repeat-x;      /* se repite horizontalmente */
+  background-position: center;      /* centrado verticalmente */
+  background-size: auto 40px;       /* ajusta la altura del logo */
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;          /* asegura que quede encima */
+  z-index: 1000;
 }
-.logo {
-  height: 40px; /* ajusta según tamaño deseado */
-}
+
 
 
 
