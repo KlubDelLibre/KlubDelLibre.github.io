@@ -42,6 +42,17 @@ body {
   left: 0;
   z-index: 1000;
 }
+.logo-bottom {
+  text-align: center;     /* centra horizontalmente */
+  margin: 50px 0 30px;    /* espacio arriba y abajo */
+}
+
+.logo-bottom img {
+  max-width: 400px;       /* tamaño máximo del logo */
+  width: 100%;            /* que sea responsive */
+  height: auto;           /* mantiene proporción */
+}
+
 
 
 
