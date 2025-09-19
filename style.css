@@ -16,16 +16,17 @@ html,body {
     font-style: normal;
     font-display: swap;
 }
-.logo-bottom {
+.logo-top {
   text-align: center;     /* centra horizontalmente */
   margin: 50px 0 30px;    /* espacio arriba y abajo */
 }
 
-.logo-bottom img {
+.logo-top img {
   max-width: 290px;       /* tamaño máximo del logo */
   width: 100%;            /* que sea responsive */
   height: auto;           /* mantiene proporción */
 }
+
 
 
 
