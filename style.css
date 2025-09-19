@@ -18,14 +18,15 @@ html,body {
 }
 .logo-top {
   text-align: center;     /* centra horizontalmente */
-  margin: 50px 0 30px;    /* espacio arriba y abajo */
+  margin: 30px 0 30px;    /* espacio arriba y abajo */
 }
 
 .logo-top img {
-  max-width: 290px;       /* tamaño máximo del logo */
+  max-width: 550px;       /* tamaño máximo del logo */
   width: 100%;            /* que sea responsive */
   height: auto;           /* mantiene proporción */
 }
+
 
 
 
