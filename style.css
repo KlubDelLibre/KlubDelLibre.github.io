@@ -4,7 +4,7 @@
 html,body {
 	font-family: 'Bahnschrift Light Semicondenssed', sans-serif;
   line-height: 1.25;
-	margin: 0;
+	margin: 10;
 	height: 100%;
 }
 body {
@@ -47,6 +47,7 @@ body {
   width: 100%;            /* que sea responsive */
   height: auto;           /* mantiene proporción */
 }
+
 
 
 
