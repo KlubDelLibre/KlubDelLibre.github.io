@@ -2,7 +2,7 @@
     font-size: 13px;
 }
 html, body {
-  font-family: 'FiraCode-Regular', sans-serif;
+  font-family: 'Bahnschrift Light Semicondenssed', sans-serif;
   line-height: 1.25;
   margin: 0 auto;
   padding: 0 5%;       /* margen proporcional */
@@ -10,9 +10,9 @@ html, body {
 }
 @font-face {
     font-family: 'Bahnschrift';
-    src: url("assets/fonts/FiraCode-Regular.woff2") format('woff2'),
-        url("assets/fonts/FiraCode-Regular.woff") format('woff'),
-        url("assets/fonts/FiraCode-Regular.ttf") format('truetype');
+    src: url("assets/fonts/Bahnschrift.woff2") format('woff2'),
+        url("assets/fonts/Bahnschrift.woff") format('woff'),
+        url("assets/fonts/Bahnschrift.ttf") format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -27,6 +27,14 @@ html, body {
   width: 100%;            /* que sea responsive */
   height: auto;           /* mantiene proporción */
 }
+a.obra {
+  background-color: #000000 !important;   /* fondo negro */
+  color: #FF2800 !important;              /* rojo Ferrari */
+  font-weight: bold !important;           /* texto en negrita */
+  font-style: italic !important;
+  text-decoration: none;                  /* opcional: quitar subrayado */
+}
+
 
 
 
