@@ -7,14 +7,6 @@ html,body {
 	margin: 10;
 	height: 100%;
 }
-body {
-  background-image: url("assets/img/background/FONDO.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding: 0px 8px 0px 8px;
-}
 @font-face {
     font-family: 'Bahnschrift';
     src: url("assets/fonts/Bahnschrift.woff2") format('woff2'),
@@ -47,6 +39,7 @@ body {
   width: 100%;            /* que sea responsive */
   height: auto;           /* mantiene proporción */
 }
+
 
 
 
