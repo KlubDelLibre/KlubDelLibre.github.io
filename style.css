@@ -34,6 +34,12 @@ a.obra {
   font-style: italic !important;
   text-decoration: none;                  /* opcional: quitar subrayado */
 }
+a.refe {
+	background-color: blue;
+	color: white;
+    font-style: italic !important;
+    text-decoration: none;
+}
 
 
 
