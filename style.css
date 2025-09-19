@@ -2,6 +2,8 @@
     font-size: 13px;
 }
 html, body {
+  font-family: 'Bahnschrift Light Semicondenssed', sans-serif;
+  line-height: 1.25;
   margin: 0 auto;
   padding: 0 5%;       /* margen proporcional */
   max-width: 1200px;   /* no dejes que el texto se expanda demasiado */
@@ -25,6 +27,7 @@ html, body {
   width: 100%;            /* que sea responsive */
   height: auto;           /* mantiene proporción */
 }
+
 
 
 
