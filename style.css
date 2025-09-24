@@ -54,6 +54,10 @@ a.crisis {
 .centrado{
   text-align: center;
 }
+a.nuestro {
+	background-color: #00ff00 !important; 
+	color: black !important;
+}
 
 
 
