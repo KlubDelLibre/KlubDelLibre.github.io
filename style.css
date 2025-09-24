@@ -40,6 +40,11 @@ a.refe {
     font-style: italic !important;
     text-decoration: none;
 }
+a {
+	color: #0000ff;
+	text-decoration: none;
+}
+
 
 
 
