@@ -58,27 +58,6 @@ a.nuestro {
 	background-color: #00ff00 !important; 
 	color: black !important;
 }
-#scroll-progress{
-  position: fixed;
-  top: 0; left: 0;
-  height: 3px;                    /* fina */
-  width: 100%;                    /* pista completa */
-  background: transparent;        /* fondo transparente */
-  pointer-events: none;           /* no bloquea clics */
-  z-index: 9999;                  /* por encima del texto */
-}
-#scroll-progress::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  width: 0%;                      /* se irá llenando */
-  background: rgba(0,0,0,0.25);   /* gris con baja opacidad (see-through) */
-  transform-origin: left;
-  will-change: width, transform;
-}
-
-
-
 
 
 
