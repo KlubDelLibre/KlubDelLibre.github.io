@@ -45,6 +45,12 @@ a {
 	color: #0000ff;
 	text-decoration: none;
 }
+a.crisis {
+  background-color: #000000 !important;  
+  color: #FFFFFF !important;            
+  text-decoration: none; 
+}
+
 
 
 
