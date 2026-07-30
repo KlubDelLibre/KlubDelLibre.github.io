@@ -145,18 +145,23 @@ main {
 .hero {
   min-height: 100vh;
   display: grid;
-  align-items: end;
-  padding: 2rem 3rem 3.5rem;
+  align-items: center;
+  padding: 4rem 3rem;
 }
 
 .hero-inner {
-  width: min(100%, var(--content));
+  width: min(100%, 92rem);
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  column-gap: 3rem;
+  align-items: start;
 }
 
 .hero-wordmark {
-  width: min(100%, 32rem);
+  width: 100%;
   height: auto;
-  margin-bottom: 2.5rem;
+  grid-column: 1 / -1;
+  margin-bottom: 3.5rem;
 }
 
 .eyebrow,
@@ -181,17 +186,19 @@ main {
 }
 
 .hero-lead {
-  max-width: 37rem;
-  margin: 0.9rem 0 0;
-  font-size: 1.24rem;
-  line-height: 1.25;
+  max-width: 50rem;
+  grid-column: 2;
+  margin: 0;
+  font-size: 1.58rem;
+  line-height: 1.2;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  grid-column: 2;
   gap: 0.25rem 1.15rem;
-  margin-top: 1.65rem;
+  margin-top: 2rem;
 }
 
 .button {
@@ -452,8 +459,22 @@ blockquote {
   }
 
   .hero {
-    min-height: 42rem;
+    min-height: calc(100svh - 7rem);
     padding: 2rem 1.35rem 3rem;
+  }
+
+  .hero-inner {
+    display: block;
+  }
+
+  .hero-wordmark {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-lead {
+    max-width: 42rem;
+    margin-top: 1rem;
+    font-size: 1.3rem;
   }
 
   .section,
@@ -481,7 +502,7 @@ blockquote {
   }
 
   .hero {
-    min-height: 34rem;
+    min-height: calc(100svh - 7rem);
   }
 
   .hero-wordmark {
