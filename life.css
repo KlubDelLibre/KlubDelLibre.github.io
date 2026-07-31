@@ -1,0 +1,529 @@
+.life-page {
+  --life-panel: min(21rem, calc(100% - 3.4rem));
+  --life-control: 4.15rem;
+}
+
+.life-page .hero {
+  width: calc(100% + var(--rail));
+  margin-left: calc(-1 * var(--rail));
+}
+
+.life-page .site-nav {
+  background: var(--paper);
+}
+
+.life-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  contain: paint;
+  background: var(--paper);
+}
+
+.life-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  display: block;
+  cursor: crosshair;
+  image-rendering: pixelated;
+  touch-action: none;
+}
+
+.life-toolbar {
+  width: var(--life-panel);
+  position: absolute;
+  top: 1.7rem;
+  left: calc(var(--rail) + 1.7rem);
+  z-index: 4;
+  margin: 0;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.life-toolbar-title {
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.life-toolbar.is-dragging {
+  box-shadow: 0 0 0 2px var(--active);
+}
+
+.life-toolbar.is-dragging .life-toolbar-title {
+  cursor: grabbing;
+}
+
+.life-toolbar-title-actions {
+  width: 100%;
+  min-height: 3.2rem;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.life-title-button,
+.life-title-icon-button {
+  height: 3.2rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid #555;
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  cursor: pointer;
+}
+
+.life-title-button {
+  padding: 0 0.85rem;
+  border-left: 0;
+}
+
+.life-title-icon-button {
+  width: 2.6rem;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.life-title-button:hover,
+.life-title-button:focus-visible,
+.life-title-button[aria-expanded="true"],
+.life-title-icon-button:hover,
+.life-title-icon-button:focus-visible {
+  color: #7ee29a;
+}
+
+.life-info-panel {
+  width: 100%;
+  height: var(--life-toolbar-body-height, 39rem);
+  overflow: auto;
+  padding: 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  letter-spacing: 0;
+  overscroll-behavior: contain;
+}
+
+.life-info-panel[hidden],
+.life-toolbar-body[hidden] {
+  display: none;
+}
+
+.life-info-panel p {
+  margin: 0 0 1rem;
+}
+
+.life-info-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.life-toolbar.is-minimized {
+  background: transparent;
+}
+
+.life-tool-row,
+.life-action-row {
+  min-height: var(--life-control);
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--ink);
+}
+
+.life-action-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-bottom: 0;
+}
+
+.life-action-row .life-icon-button {
+  width: 100%;
+  min-width: 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.life-action-row .life-icon-button:nth-child(3n) {
+  border-right: 0;
+}
+
+.life-action-row .life-icon-button:nth-child(n + 4) {
+  border-bottom: 0;
+}
+
+.life-icon-button {
+  width: var(--life-control);
+  min-width: var(--life-control);
+  height: var(--life-control);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.life-icon-button:last-child {
+  border-right: 0;
+}
+
+.life-icon-button img {
+  width: 1.55rem;
+  height: 1.55rem;
+  max-width: none;
+}
+
+.life-icon-button:hover,
+.life-icon-button:focus-visible,
+.life-icon-button.is-active {
+  background: #dff6e5;
+}
+
+.life-icon-button.is-active,
+.life-primary-action {
+  box-shadow: inset 0 0 0 2px var(--active);
+}
+
+.life-icon-button:disabled {
+  opacity: 0.36;
+  cursor: default;
+}
+
+.life-color-trigger {
+  width: 3.15rem;
+  height: 3.15rem;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 0.85rem;
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.life-color-trigger span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0.38rem solid var(--paper);
+  background: var(--life-selected-color, #111111);
+}
+
+.life-color-trigger:hover,
+.life-color-trigger:focus-visible,
+.life-color-trigger[aria-expanded="true"] {
+  box-shadow: inset 0 0 0 2px var(--active);
+}
+
+.life-color-picker {
+  --life-picker-hue: 0;
+  position: absolute;
+  top: calc(3.2rem + var(--life-control) - 1px);
+  left: -1px;
+  z-index: 8;
+  width: calc(100% + 2px);
+  padding: 0.85rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.life-color-picker[hidden] {
+  display: none;
+}
+
+.life-color-surface {
+  position: relative;
+  width: 100%;
+  height: 10.5rem;
+  border: 1px solid var(--ink);
+  background:
+    linear-gradient(to top, #000, transparent),
+    linear-gradient(to right, #fff, hsl(var(--life-picker-hue) 100% 50%));
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.life-color-handle {
+  position: absolute;
+  left: 0;
+  top: 93.3%;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.life-hue-control,
+.life-color-value {
+  min-height: 3.2rem;
+  display: grid;
+  grid-template-columns: 4.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  font: inherit;
+}
+
+.life-hue-control input {
+  width: 100%;
+  height: 1.55rem;
+  margin: 0;
+  appearance: none;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+  cursor: ew-resize;
+}
+
+.life-hue-control input::-webkit-slider-thumb {
+  width: 0.72rem;
+  height: 2rem;
+  appearance: none;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: rgb(255 255 255 / 82%);
+}
+
+.life-hue-control input::-moz-range-thumb {
+  width: 0.72rem;
+  height: 2rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: rgb(255 255 255 / 82%);
+}
+
+.life-color-value {
+  min-height: 2rem;
+  border-top: 1px solid var(--ink);
+}
+
+.life-color-value output {
+  font: inherit;
+  text-align: right;
+}
+
+.life-field {
+  min-height: 5.1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.85rem 0.8rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.life-field > span,
+.life-toggle span {
+  white-space: nowrap;
+}
+
+.life-field.is-disabled {
+  color: var(--quiet);
+}
+
+.life-field.is-disabled input {
+  cursor: default;
+  opacity: 0.42;
+}
+
+.life-select-field {
+  grid-template-columns: 1fr;
+}
+
+.life-field select,
+.life-field input[type="number"] {
+  width: 100%;
+  min-width: 0;
+  height: 2.65rem;
+  padding: 0 0.65rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+.life-field input[type="number"] {
+  appearance: textfield;
+  text-align: right;
+}
+
+.life-field input[type="number"]::-webkit-inner-spin-button,
+.life-field input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.life-toggle-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.life-toggle {
+  min-height: 3.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.85rem;
+  border-right: 1px solid var(--ink);
+  cursor: pointer;
+}
+
+.life-toggle:last-child {
+  border-right: 0;
+}
+
+.life-toggle input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  border-radius: 0;
+  accent-color: var(--active);
+}
+
+.life-readout {
+  position: absolute;
+  right: 1.7rem;
+  bottom: 1.7rem;
+  z-index: 4;
+  display: flex;
+  gap: 1.1rem;
+  padding: 0.32rem 0.5rem;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: rgb(255 255 255 / 90%);
+  color: var(--ink);
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 0.7rem;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.life-readout output {
+  font: inherit;
+}
+
+.life-page .hero-inner {
+  z-index: 3;
+  left: 1.7rem;
+}
+
+@media (max-width: 920px) {
+  .life-page {
+    --life-panel: min(20rem, calc(100% - 2rem));
+    --life-control: 3.8rem;
+  }
+
+  .life-page .hero {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .life-toolbar {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .life-page .hero-inner {
+    left: 1.35rem;
+  }
+
+  .life-readout {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .life-page {
+    --life-panel: min(18.5rem, calc(100% - 1.5rem));
+    --life-control: 3.45rem;
+  }
+
+  .life-toolbar {
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.92rem;
+  }
+
+  .life-toolbar-title {
+    min-height: 2.8rem;
+  }
+
+  .life-toolbar-title-actions {
+    min-height: 2.8rem;
+  }
+
+  .life-title-button,
+  .life-title-icon-button {
+    height: 2.8rem;
+  }
+
+  .life-title-icon-button {
+    width: 2.35rem;
+  }
+
+  .life-info-panel {
+    font-size: 1rem;
+  }
+
+  .life-field {
+    min-height: 4.35rem;
+    grid-template-columns: 1fr;
+    padding-top: 0.5rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .life-select-field {
+    grid-template-columns: 1fr;
+  }
+
+  .life-field select,
+  .life-field input[type="number"] {
+    height: 2.3rem;
+  }
+
+  .life-toggle {
+    min-height: 3rem;
+  }
+
+  .life-color-picker {
+    top: calc(2.8rem + var(--life-control) - 1px);
+  }
+
+  .life-color-surface {
+    height: 8rem;
+  }
+
+  .life-readout {
+    right: 0.75rem;
+    bottom: 12.5rem;
+    gap: 0.65rem;
+    font-size: 0.62rem;
+  }
+}
