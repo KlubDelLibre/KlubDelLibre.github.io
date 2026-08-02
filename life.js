@@ -159,6 +159,39 @@ if (stage && canvas) {
     [91, 50, 58, 63, 67, 127, 141],
     [92, 58, 63],
   ];
+
+  // Preserve the hand-drawn seed while omitting only the connected arrow component.
+  const invitationArrowCells = (() => {
+    const sourceCells = new Set();
+
+    invitationRuns.forEach(([row, ...runs]) => {
+      for (let index = 0; index < runs.length; index += 2) {
+        for (let column = runs[index]; column <= runs[index + 1]; column += 1) {
+          sourceCells.add(`${column},${row}`);
+        }
+      }
+    });
+
+    const arrowCells = new Set(["182,41"]);
+    const pending = [[182, 41]];
+
+    while (pending.length) {
+      const [column, row] = pending.pop();
+
+      for (let columnOffset = -1; columnOffset <= 1; columnOffset += 1) {
+        for (let rowOffset = -1; rowOffset <= 1; rowOffset += 1) {
+          if (columnOffset === 0 && rowOffset === 0) continue;
+          const neighbor = `${column + columnOffset},${row + rowOffset}`;
+          if (!sourceCells.has(neighbor) || arrowCells.has(neighbor)) continue;
+          arrowCells.add(neighbor);
+          pending.push([column + columnOffset, row + rowOffset]);
+        }
+      }
+    }
+
+    return arrowCells;
+  })();
+
   patterns.pulsar = (() => {
     const cells = [];
     const arms = [2, 3, 4, 8, 9, 10];
@@ -630,6 +663,7 @@ if (stage && canvas) {
         const end = runs[index + 1];
 
         for (let column = start; column <= end; column += 1) {
+          if (invitationArrowCells.has(`${column},${row}`)) continue;
           const targetColumn = column + offsetColumn;
           if (targetColumn < columns) cells.push([targetColumn, targetRow]);
         }
