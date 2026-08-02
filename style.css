@@ -640,7 +640,54 @@ main {
 }
 
 .publication-index-list {
-  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 9rem));
+  display: block;
+  width: 100%;
+  margin-top: 1.25rem;
+  border-top: 1px solid rgb(17 17 17 / 22%);
+}
+
+.publication-index-list > li {
+  border-bottom: 1px solid rgb(17 17 17 / 22%);
+}
+
+.publication-register-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  min-height: 14rem;
+  padding: 0.6rem 0;
+}
+
+.publication-index-list .publication-register-media {
+  width: 9rem;
+  justify-self: start;
+}
+
+.publication-index-list .publication-register-meta,
+.publication-index-list .publication-register-title,
+.publication-index-list .publication-register-description,
+.publication-index-list .publication-register-action {
+  min-width: 0;
+  margin: 0;
+}
+
+.publication-index-list .archive-card .publication-register-meta {
+  color: var(--ink);
+  font-size: var(--section-type);
+}
+
+.publication-index-list .publication-register-title {
+  padding-right: 1rem;
+  text-transform: none;
+}
+
+.publication-index-list .archive-card > .publication-register-description {
+  margin: 0;
+  padding-right: 1rem;
+}
+
+.publication-index-list .publication-register-action {
+  justify-self: end;
 }
 
 .cycle-index-list {
@@ -1344,6 +1391,35 @@ blockquote {
   .cycle-register-action {
     justify-self: start;
     margin-top: 0.25rem;
+  }
+
+  .publication-register-row {
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    gap: 0.25rem 0.85rem;
+    min-height: 0;
+    padding: 0.75rem 0;
+  }
+
+  .publication-index-list .publication-register-media {
+    grid-row: 1 / span 4;
+    width: 5.25rem;
+    align-self: start;
+  }
+
+  .publication-index-list .publication-register-meta,
+  .publication-index-list .publication-register-title,
+  .publication-index-list .publication-register-description,
+  .publication-index-list .publication-register-action {
+    grid-column: 2;
+  }
+
+  .publication-index-list .publication-register-title,
+  .publication-index-list .archive-card > .publication-register-description {
+    padding-right: 0;
+  }
+
+  .publication-index-list .publication-register-action {
+    justify-self: start;
   }
 
   .cycle-foundation > p:not(.card-label),
