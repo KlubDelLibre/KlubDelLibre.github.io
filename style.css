@@ -434,11 +434,6 @@ main {
   color: var(--quiet);
 }
 
-.archive-section + .archive-section,
-.archive-section + .contact {
-  border-top: 1px solid var(--rule);
-}
-
 .archive-register {
   width: 100%;
   margin-top: 1rem;
@@ -666,7 +661,7 @@ main {
   align-items: center;
   gap: 0;
   min-height: 3rem;
-  padding: 0.42rem 0.4rem;
+  padding: 0.42rem 0;
   border-bottom: 1px solid rgb(17 17 17 / 22%);
 }
 
@@ -704,7 +699,7 @@ main {
 }
 
 .cycle-register-action {
-  justify-self: start;
+  justify-self: end;
 }
 
 .cycle-register-action a {
