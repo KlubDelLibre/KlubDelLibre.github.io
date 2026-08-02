@@ -29,7 +29,7 @@
   position: absolute;
   inset: 0 0 auto;
   display: block;
-  cursor: crosshair;
+  cursor: url("assets/img/ui/pencil-cursor.png") 3 30, crosshair;
   image-rendering: pixelated;
   touch-action: none;
   -webkit-mask-image: linear-gradient(
