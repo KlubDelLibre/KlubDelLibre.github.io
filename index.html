@@ -23,34 +23,43 @@
       content="https://klubdellibre.github.io/assets/img/favicon/web-app-manifest-512x512.png"
     />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="stylesheet" href="style.css?v=20260731a" />
-    <link rel="stylesheet" href="life.css?v=20260731i" />
+    <link rel="stylesheet" href="style.css?v=20260802e" />
+    <link rel="stylesheet" href="life.css?v=20260802m" />
     <link rel="icon" type="image/png" href="assets/img/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon/favicon.svg" />
     <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="assets/img/favicon/site.webmanifest" />
     <link rel="me" href="https://kolektiva.social/@klub_del_libre" />
-    <title>KLUB DEL LIBRE — Grupos de Lectura, Investigación y Creación Colectiva —</title>
-    <script src="script.js" defer></script>
-    <script type="module" src="life.js?v=20260731k"></script>
+    <title>KLUB DEL LIBRE — Lectura, Investigación y Creación Colectiva — Website en constante evolución —</title>
+    <script src="script.js?v=20260802l" defer></script>
+    <script type="module" src="life.js?v=20260802h"></script>
   </head>
   <body class="life-page">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header class="site-header" aria-label="Cabecera principal">
       <div class="header-inner">
-        <p class="site-motto">TECNOLOGÍA · HUMANIDADES · FUTURO</p>
         <nav class="site-nav" aria-label="Secciones">
           <a class="nav-row" href="#inicio">INICIO</a>
           <a class="nav-row" href="#manifiesto">MANIFIESTO</a>
-          <a class="nav-row" href="#en-curso">EN CURSO</a>
+          <a class="nav-row registration-alert" href="#en-curso">INSCRIPCIONES ABIERTAS!!!!</a>
+          <a class="nav-row event-alert" href="#actividades">ACTIVIDADES</a>
           <span class="nav-spacer" aria-hidden="true"></span>
+          <a class="nav-row" href="#ciclos">CICLOS PASADOS</a>
           <a class="nav-row" href="#publicaciones">PUBLICACIONES</a>
-          <a class="nav-row" href="#actividades">ACTIVIDADES</a>
-          <a class="nav-row" href="#ciclos">CICLOS</a>
+          <a class="nav-row" href="#curaduria">CURADURÍA</a>
           <span class="nav-spacer" aria-hidden="true"></span>
           <a class="nav-row" href="#contacto">CONTACTO</a>
+          <a
+            class="nav-row nav-partner"
+            href="https://linktr.ee/proyectojuby"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="assets/img/partners/proyecto-juby-mark.png" alt="" />
+            <span>PROYECTO JUBY · LINKTREE</span>
+          </a>
         </nav>
       </div>
     </header>
@@ -163,22 +172,22 @@
                 aria-label="Saturación y luminosidad"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                aria-valuenow="0"
-                aria-valuetext="#111111"
+                aria-valuenow="100"
+                aria-valuetext="#0000FF"
               >
                 <span class="life-color-handle" data-life-color-handle aria-hidden="true"></span>
               </div>
               <label class="life-hue-control">
                 <span>TONO</span>
-                <input data-life-hue type="range" min="0" max="360" value="0" aria-label="Tono" />
+                <input data-life-hue type="range" min="0" max="360" value="240" aria-label="Tono" />
               </label>
               <div class="life-color-value">
                 <span>COLOR</span>
-                <output data-life-color-output>#111111</output>
+                <output data-life-color-output>#0000FF</output>
               </div>
               </div>
 
-              <input data-life-color type="hidden" value="#111111" />
+              <input data-life-color type="hidden" value="#0000ff" />
 
               <label class="life-field life-select-field">
               <span>SEMILLA</span>
@@ -191,19 +200,19 @@
               </select>
               </label>
 
-              <label class="life-field is-disabled">
+              <label class="life-field">
               <span>DENSIDAD</span>
-              <input data-life-density type="number" min="5" max="55" step="1" value="28" inputmode="numeric" disabled />
+              <input data-life-density type="number" min="5" max="55" step="1" value="55" inputmode="numeric" />
               </label>
 
               <label class="life-field">
               <span>VELOCIDAD</span>
-              <input data-life-speed type="number" min="1" max="30" step="1" value="12" inputmode="numeric" />
+              <input data-life-speed type="number" min="1" max="30" step="1" value="9" inputmode="numeric" />
               </label>
 
               <label class="life-field">
               <span>ESCALA</span>
-              <input data-life-scale type="number" min="5" max="14" step="1" value="7" inputmode="numeric" />
+              <input data-life-scale type="number" min="5" max="14" step="1" value="5" inputmode="numeric" />
               </label>
 
               <div class="life-toggle-row">
@@ -227,7 +236,7 @@
               <button class="life-icon-button" type="button" data-life-action="step" aria-label="Avanzar una generación" title="Avanzar una generación">
                 <img src="assets/icons/life/step-forward.svg" alt="" />
               </button>
-              <button class="life-icon-button" type="button" data-life-action="randomize" aria-label="Nuevo universo" title="Nuevo universo">
+              <button class="life-icon-button" type="button" data-life-action="randomize" aria-label="Universo aleatorio" title="Universo aleatorio">
                 <img src="assets/icons/life/dices.svg" alt="" />
               </button>
               <button class="life-icon-button" type="button" data-life-action="reset" aria-label="Reiniciar semilla" title="Reiniciar semilla">
@@ -259,116 +268,82 @@
       </section>
 
       <section class="manifesto" id="manifiesto">
-        <div class="section intro" aria-label="Presentación">
-        <div class="section-grid">
-          <div class="section-heading">
-            <p class="kicker">Qué es</p>
-            <h2>Un nodo para leer el presente y ensayar futuros comunes.</h2>
-          </div>
-          <div class="prose">
-            <p>
-              <strong>KLUB DEL LIBRE</strong> es un club del libro. Es una iniciativa de
-              activación ciudadana situada en la ciudad de València. Un laboratorio de
-              investigación y creación colectiva, dedicado al análisis de la fenomenología
-              tecnosocial y sus implicaciones políticas, económicas y culturales.
-            </p>
-            <p>
-              Además, KDL es un síntoma de la postmodernidad. Es una respuesta al porvenir
-              que asoma en el horizonte, para el que queremos estar preparadxs.
-            </p>
-            <p>
-              Este proyecto sigue el itinerario abierto hace más de una década por
-              <a href="https://es.wikipedia.org/wiki/Nick_Srnicek" target="_blank" rel="noopener noreferrer">Nick Srnicek</a>
-              y
-              <a href="https://www.versobooks.com/blogs/authors/williams-alex" target="_blank" rel="noopener noreferrer">Alex Williams</a>
-              en su
-              <a class="ref-link" href="https://archive.org/details/accelerate_201809/page/n3/mode/2up" target="_blank" rel="noopener noreferrer">
-                <em>Manifesto for an Accelerationist Politics</em>
-              </a>
-              (2013). Muchas de las ideas condensadas en este manifiesto-web son el fruto
-              de conexiones elaboradas entre sus propuestas y los desarrollos posteriores
-              de otrxs autorxs.
-            </p>
-            <p class="intro-actions">
-              <a href="mailto:info.klubdellibre@gmail.com">Escribir</a>
-              <a href="assets/%28ES%29%20DOSSIER%20DE%20PROYECTO.pdf">Dossier</a>
-              <a href="https://www.are.na/klub-del-libre-research-creation/kdl-repo" target="_blank" rel="noopener noreferrer">Archivo Are.na</a>
-            </p>
-          </div>
-        </div>
-        </div>
-
-        <div class="section manifesto-body">
+        <div class="section manifesto-unified" aria-label="Manifiesto de Klub del Libre">
           <div class="section-grid">
-            <div class="section-heading sticky-heading">
-              <p class="kicker">Manifiesto web</p>
-              <h2>Asistimos al amanecer de un nuevo régimen.</h2>
-            </div>
             <div class="prose manifesto-copy">
               <p>
-                Los poderes públicos están paralizados ante la mutabilidad del presente y
-                externalizan funciones esenciales. En ese vacío avanzan las grandes
-                corporaciones y plataformas tecnológicas, nuevos centros de poder capaces
-                de controlar infraestructuras, datos y algoritmos.
+                <strong>KLUB DEL LIBRE</strong> es un club del libro organizado en el <a href="https://www.instagram.com/cc.juby_/" target="_blank" rel="noopener noreferrer">Centro Cultural Proyecto Juby</a>, un espacio autogestionado situado en el barrio de La Petxina, dedicado a la contracultura y al aprendizaje comunal. <strong>KLUB DEL LIBRE</strong> es una iniciativa de activación ciudadana situada en la ciudad de Valencia. Un laboratorio de investigación y creación colectiva, dedicado al análisis de la fenomenología tecnosocial y sus implicaciones políticas, económicas y culturales. Además, KDL es un síntoma de la postmodernidad. Es una respuesta al porvenir que asoma en el horizonte, para el que queremos estar preparadxs.
               </p>
               <p>
-                Los desarrollos tecnológicos, secuestrados por la privatización capitalista,
-                dejan de operar como instrumentos libres al servicio de la mayoría. Las
-                herramientas que podrían transformar el mundo se dedican a la vigilancia,
-                la manipulación y la mercantilización de las personas.
+                Este proyecto sigue el itinerario abierto hace más de una década por <a href="https://es.wikipedia.org/wiki/Nick_Srnicek" target="_blank" rel="noopener noreferrer">Nick Srnicek</a> y <a href="https://www.versobooks.com/blogs/authors/williams-alex" target="_blank" rel="noopener noreferrer">Alex Williams</a> en su <a class="ref-link" href="https://archive.org/details/accelerate_201809/page/n3/mode/2up" target="_blank" rel="noopener noreferrer"><em>Manifesto for an Accelerationist Politics</em></a> (2013). Muchas de las ideas condensadas en este manifiesto-web son el fruto de conexiones elaboradas entre sus propuestas y los desarrollos posteriores de otrxs autorxs. En lo que sigue, podrán encontrarse las referencias a estas obras.
               </p>
               <p>
-                Pero la tecnología también puede entenderse como patrimonio común y como
-                una conquista colectiva. Aún no sabemos lo que un cuerpo tecnosocial moderno
-                puede hacer ni qué futuros puede abrir.
+                Asistimos al amanecer de un nuevo régimen.
               </p>
               <p>
-                Por eso debemos romper el vínculo que mantiene la técnica atada a sus
-                secuestradores. Lo decisivo es quién la emplea, cómo lo hace y con qué fines.
-              </p>
-              <blockquote>
-                Las infraestructuras tecnológicas pueden actuar como palanca de transformación
-                y plataforma de lanzamiento hacia un porvenir liberado de las estructuras de
-                control del capitalismo tardío.
-              </blockquote>
-              <p>
-                En KDL nos centramos en la <strong>alfabetización tecnopolítica</strong>:
-                adquirir conocimientos sociotécnicos para reapropiarnos de las
-                infraestructuras contemporáneas y ponerlas al servicio de la cooperación,
-                la emancipación y la creación de futuros comunes.
+                Los poderes públicos están paralizados ante la alta mutabilidad del presente y abdican de su deber de protegernos, externalizando sus funciones más esenciales (como su deber de garantizar nuestra <a class="crisis-link" href="https://www.euronews.com/my-europe/2025/05/25/tens-of-thousands-protest-in-madrid-against-healthcare-privatisation?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">salud</a>, nuestra <a class="crisis-link" href="https://brokenchalk.org/educational-challenges-in-spain/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">educación</a> o nuestra <a class="crisis-link" href="https://www.npr.org/2025/05/05/nx-s1-5387514/palantir-workers-letter-trump" target="_blank" rel="noopener noreferrer">seguridad</a>...).
               </p>
               <p>
-                KDL se concibe como un nodo dentro de una red de inteligencia colectiva
-                distribuida, orientada a reordenar la aceleración del presente hacia
-                objetivos de libertad y justicia social.
+                En el vacío resultante se adentran progresivamente grandes corporaciones y plataformas tecnológicas, consolidándose como los nuevos imperios del Siglo XXI.
               </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section manifesto-ethos" aria-label="Ethos del manifiesto">
-          <div class="section-grid">
-            <div class="section-heading">
-              <p class="kicker">Ethos</p>
-              <h2>Software libre, DIY, DIWO y cuidado mutuo.</h2>
-            </div>
-            <div class="prose">
-            <p>
-              Situadxs en la dimensión sociopolítica y ética de los desarrollos tecnológicos,
-              estamos vinculadxs a los principios de libertad y democratización propios del
-              movimiento de
-              <a href="https://www.gnu.org/philosophy/free-sw.es.html#mission-statement" target="_blank" rel="noopener noreferrer">Software Libre</a>,
-              así como a la filosofía práctica y colaborativa del DIY
-              <span lang="en">(Do It Yourself)</span> y del DIWO
-              <span lang="en">(Do It With Others)</span>.
-            </p>
-            <ul class="ethos-list">
-              <li>Queremos leer y aprender.</li>
-              <li>Queremos jugar, explorar, reapropiar y subvertir.</li>
-              <li>Queremos ayudar.</li>
-              <li>Queremos abrir nuestro tiempo a la cooperación, al cuidado y al cariño.</li>
-              <li>Queremos divertirnos.</li>
-            </ul>
+              <p>
+                Lo público se repliega mientras lo privado se expande y, como resultado, nos envuelve un capital tecnológico con un poder sin precedentes.
+              </p>
+              <p>
+                Los desarrollos tecnológicos, automáticamente secuestrados por la privatización de la axiomática capitalista, quedan incapacitados para operar como un instrumento neutro, libre y al servicio de la mayoría.
+              </p>
+              <p>
+                Tal y como lo expone el jurista y estratega geoeconómico, director del Consorcio de Geoeconomía de Helsinki, el <a href="https://www.geoeconomics.fi/jens-hillebrand-pohl/" target="_blank" rel="noopener noreferrer">Dr. Jens Hillebrand Pohl</a>, en su informe para la revista 032c <a class="ref-link" href="https://032c.com/magazine/issue-47-techno-feudalism-summer-2025" target="_blank" rel="noopener noreferrer">Techno-Feudalism: I’m Sorry, But You Do Not Have Enough Coins for Democracy</a>: <em>“mediante el control sobre la infraestructura digital, los datos y los algoritmos”</em>, el potencial liberador de la innovación tecnológica queda reducido a una red de infraestructuras puestas al servicio de la acumulación de poder e influencia de una ínfima minoría capaz ahora de doblegar el pensamiento y los deseos de los pueblos de la Tierra.
+              </p>
+              <p>
+                Las herramientas que podrían cambiar el mundo se acaparan y se pervierten, quedando exclusivamente dedicadas a la vigilancia masiva, la manipulación ideológica, la infantilización de la vida y la mercantilización de las personas.
+              </p>
+              <p>
+                La artista y tecnóloga <a href="https://mindyseu.com/" target="_blank" rel="noopener noreferrer">Mindy Seu</a>, en su <a class="ref-link" href="https://cyberfeminismindex.com/" target="_blank" rel="noopener noreferrer">Cyberfeminism Index</a> (2023) resume la situación actual de un modo tan claro y eficiente que vale la pena trasladarlo en sus mismas palabras: <em>"</em> [the Cyberfeminism Index] <em>is being operated in a specific context, one in which platform oligopolies reign supreme, surveillance capitalism commodifies us, and techno-dystopia looms. Its existence reflects that reality"</em>.
+              </p>
+              <p>
+                Al igual que la obra de Seu, la existencia de este proyecto también refleja el mismo escenario, que todxs compartimos.
+              </p>
+              <p>
+                Sin embargo, qué tan distinto podría ser un mundo en el que los desarrollos de la técnica se tuvieran como verdaderas conquistas de la raza humana en su conjunto.
+              </p>
+              <p>
+                Uno en el que la tecnología, como patrimonio de la humanidad, nos brindara la llave de una puerta nunca antes abierta, hacia <em>“futuros de exploración espacial, conmoción futurista y potencial revolucionario”</em>.
+              </p>
+              <p>
+                Como afirmaron Srnicek y Williams, <em>“ciertamente, aún no sabemos lo que un cuerpo tecnosocial moderno puede hacer”</em>, y todavía está por llegar el día en el que el dominio y la superación de las limitaciones de la realidad propicien un verdadero <em>“cambio en la esencia misma de lo “humano””</em>.
+              </p>
+              <p>
+                Por ello, debemos recordar que la tecnología no pertenece a nadie y desnaturalizarla, rompiendo el vínculo que la mantiene atada a sus secuestradores.
+              </p>
+              <p>
+                Debemos reivindicar su verdadera naturaleza, como medio neutral, como una mera herramienta cuyos resultados dependerán en gran medida de las condiciones colectivas y de poder bajo las que se utilice.
+              </p>
+              <p>
+                Lo verdaderamente relevante será quién, cómo y para qué empleemos las herramientas tecnológicas.
+              </p>
+              <p>
+                Tal como apuntaron <a href="https://edicionesholobionte.com/armen-avanessian/" target="_blank" rel="noopener noreferrer">Armen Avanessian</a> y <a href="https://cajanegraeditora.com.ar/tags/mauro-reis/" target="_blank" rel="noopener noreferrer">Mauro Reis</a> en su <em>Introducción</em> a su antología <a class="ref-link" href="https://cajanegraeditora.com.ar/libros/aceleracionismo/" target="_blank" rel="noopener noreferrer">Aceleracionismo: Estrategias para una Transición hacia el Postcapitalismo</a> (2017), <em>“la aceleración contemporánea se presenta de forma ambivalente: como proceso inherente a la globalización y al avance tecnológico, y como posible praxis emancipatoria”</em>
+              </p>
+              <p>
+                <strong>Las infraestructuras tecnológicas, lejos de ser únicamente un sistema a demoler, pueden actuar como palanca de transformación, como una plataforma de lanzamiento hacia un porvenir liberado del sistema de valor, de las estructuras de control y de las patologías limitantes del Capitalismo tardío al que asistimos</strong>.
+              </p>
+              <p>
+                Ante este escenario, en KDL nos centramos en la <strong>alfabetización tecnopolítica</strong>. Defendemos la importancia de adquirir los conocimientos sociotécnicos relativos a las infraestructuras de la sociedad contemporánea con el objetivo de reapropiarnos de ellas y subvertirlas, poniéndolas al servicio de la cooperación, la emancipación y la creación de futuros comunes. Más allá, creemos en el poder transformador que tiene estrechar lazos entre las personas y fortalecer las comunidades de las que formamos parte. Solo mediante este proceso colectivo lograremos ser menos vulnerables a la manipulación, la fragmentación y la explotación narcisista a la que estamos sometidxs bajo el complejo tecnoindustrial contemporáneo, ganando así verdadera agencia sobre nuestro destino como especie.
+              </p>
+              <p>
+                Con esta misión, KDL se concibe como un nodo más de aquella ecología de las organizaciones que imaginaron Srnicek y Williams hace más de una década. <strong>Una red de redes, compuesta por iniciativas operando al unísono con el objetivo común de fortalecer la inteligencia colectiva distribuida necesaria para la redirección de la aceleración del presente hacia objetivos de libertad y justicia social</strong>. Para esa totalidad estratégica somos una contribución más, con una marcada vocación cooperativa y creativa.
+              </p>
+              <p>
+                <strong>ETHOS</strong> — Situadxs en la dimensión sociopolítica y ética de los desarrollos tecnológicos, estamos vinculadxs a los principios de libertad y democratización propios del movimiento de <a class="ref-link" href="https://www.gnu.org/philosophy/free-sw.es.html#mission-statement" target="_blank" rel="noopener noreferrer">Software Libre</a>, así como a la filosofía práctica y colaborativa del DIY (Do It Yourself) y del DIWO (Do It With Others).
+              </p>
+              <p class="manifesto-refrain">
+                Queremos leer y aprender.<br>
+                Queremos jugar, explorar, reapropiar y subvertir.<br>
+                Queremos ayudar.<br>
+                Queremos abrir nuestro tiempo a la cooperación, al cuidado y al cariño.<br>
+                Queremos divertirnos.
+              </p>
             </div>
           </div>
         </div>
@@ -376,38 +351,113 @@
 
       <section class="section archive-section current-cycle" id="en-curso">
         <div class="section-grid archive-intro">
-          <div class="section-heading">
-            <p class="kicker">En curso</p>
-            <h2>El siguiente ciclo está en preparación.</h2>
+          <div class="section-heading has-title-action">
+            <h2>Inscripciones abiertas 2026/2027</h2>
+            <p class="intro-actions title-action">
+              <a href="mailto:info.klubdellibre@gmail.com?subject=Propuesta%20de%20ciclo%20para%20KDL">Proponer un ciclo</a>
+            </p>
           </div>
           <div class="prose">
             <p>
-              Este es el punto de entrada a la actividad presente de KDL. Aquí aparecerán
-              el tema, el calendario, las lecturas y las plazas disponibles de cada nueva
-              convocatoria.
-            </p>
-            <p>
-              Puedes escribirnos para sumarte a la lista de próximas convocatorias o seguir
-              el anuncio público en Instagram.
-            </p>
-            <p class="intro-actions">
-              <a href="mailto:info.klubdellibre@gmail.com?subject=Quiero%20apuntarme%20al%20pr%C3%B3ximo%20ciclo%20de%20KDL">Apuntarse por correo</a>
-              <a href="https://www.instagram.com/klub.del.libre/" target="_blank" rel="noopener noreferrer">Seguir convocatoria</a>
+              Estos son los ciclos abiertos para el curso 2026/2027. Podéis solicitar plaza
+              directamente desde la convocatoria que os interese.
             </p>
           </div>
         </div>
-        <div class="archive-register" aria-label="Estado del próximo ciclo">
-          <p><span>Estado</span> En preparación</p>
-          <p><span>Convocatoria</span> Próximamente</p>
-          <p><span>Participación</span> Lista de interés abierta</p>
+
+        <ol class="cycle-register" aria-label="Ciclos con inscripciones abiertas">
+          <li class="cycle-register-row is-open">
+            <span class="cycle-register-index" aria-hidden="true">01</span>
+            <h3>Pensamiento especulativo</h3>
+            <p class="cycle-register-period">Noviembre 2026 — Marzo 2027</p>
+            <p class="cycle-register-action">
+              <a class="cycle-registration-alert" href="mailto:info.klubdellibre@gmail.com?subject=Inscripci%C3%B3n%20al%20ciclo%2001%20de%20pensamiento%20especulativo">Inscripciones abiertas</a>
+            </p>
+          </li>
+          <li class="cycle-register-row is-open">
+            <span class="cycle-register-index" aria-hidden="true">02</span>
+            <h3>Aceleracionismo y futuros comunes (Nueva Edición)</h3>
+            <p class="cycle-register-period">Noviembre 2026 — Marzo 2027</p>
+            <p class="cycle-register-action">
+              <a class="cycle-registration-alert" href="mailto:info.klubdellibre@gmail.com?subject=Inscripci%C3%B3n%20al%20ciclo%2002%20de%20aceleracionismo%20y%20futuros%20comunes">Inscripciones abiertas</a>
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section archive-section activities" id="actividades">
+        <div class="section-grid archive-intro">
+          <div class="section-heading has-title-action">
+            <h2>Actividades — Encuentros y prácticas más allá de la lectura</h2>
+            <p class="intro-actions title-action">
+              <a href="mailto:info.klubdellibre@gmail.com?subject=Propuesta%20de%20actividad%20para%20KDL">Proponer una actividad</a>
+            </p>
+          </div>
+          <div class="prose">
+            <p>
+              Presentaciones, conversaciones, talleres, sesiones abiertas y colaboraciones
+              tendrán aquí su calendario y su memoria documental.
+            </p>
+            <p>
+              La sección distinguirá las próximas actividades de las ya realizadas para que
+              sea fácil participar y volver sobre lo ocurrido.
+            </p>
+          </div>
         </div>
+
+        <ol class="archive-card-list activity-index-list" aria-label="Próximas actividades">
+          <li>
+            <article class="archive-card" aria-labelledby="jornadas-2026-title">
+              <a class="archive-card-media is-contain" href="actividades/jornadas-aceleracionismo-2026/" aria-label="Ver las I Jornadas de Aceleracionismo y Pensamiento Especulativo">
+                <img src="assets/img/activities/jornadas-aceleracionismo-2026.png" alt="Diagrama orbital de las jornadas" />
+              </a>
+              <p class="card-label">Actividad 01 · 2–3 octubre 2026</p>
+              <h3 id="jornadas-2026-title">I Jornadas de Aceleracionismo y Pensamiento Especulativo</h3>
+              <p>
+                Un laboratorio de urgencia teórica y creatividad radical para especular sobre
+                los futuros contingentes que ya operan en nuestro presente.
+              </p>
+              <p class="cycle-actions">
+                <a href="actividades/jornadas-aceleracionismo-2026/">Ver jornadas</a>
+                <a href="https://form.jotform.com/261442561121042" target="_blank" rel="noopener noreferrer">Enviar una propuesta</a>
+              </p>
+            </article>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section archive-section cycles" id="ciclos">
+        <div class="section-grid archive-intro">
+          <div class="section-heading">
+            <h2>Ciclos pasados</h2>
+          </div>
+          <div class="prose">
+            <p>
+              A continuación encontraréis un registro de los ciclos atravesados por nuestros
+              grupos de estudio. Podéis entrar en cada uno para consultar sus detalles.
+            </p>
+          </div>
+        </div>
+
+        <ol class="cycle-register" aria-label="Registro de ciclos de KDL">
+          <li class="cycle-register-row">
+            <span class="cycle-register-index" aria-hidden="true">00</span>
+            <h3>Ciclo inaugural: aceleracionismo y futuros comunes</h3>
+            <p class="cycle-register-period">Invierno 2025 — Verano 2026</p>
+            <p class="cycle-register-action">
+              <a href="ciclos/ciclo-01/">Ver contenidos</a>
+            </p>
+          </li>
+        </ol>
       </section>
 
       <section class="section archive-section publications" id="publicaciones">
         <div class="section-grid archive-intro">
-          <div class="section-heading">
-            <p class="kicker">Publicaciones</p>
-            <h2>Lo que el club escribe, filma, imagina y comparte.</h2>
+          <div class="section-heading has-title-action">
+            <h2>Publicaciones</h2>
+            <p class="intro-actions title-action">
+              <a href="mailto:info.klubdellibre@gmail.com?subject=Propuesta%20de%20publicaci%C3%B3n%20para%20KDL">Proponer una publicación</a>
+            </p>
           </div>
           <div class="prose">
             <p>
@@ -419,218 +469,99 @@
               colección crecerá como una editorial colaborativa y una memoria pública del
               pensamiento que circula alrededor de KDL.
             </p>
-            <p class="intro-actions">
-              <a href="mailto:info.klubdellibre@gmail.com?subject=Propuesta%20de%20publicaci%C3%B3n%20para%20KDL">Proponer una publicación</a>
-              <a href="https://www.are.na/klub-del-libre-research-creation/kdl-repo" target="_blank" rel="noopener noreferrer">Explorar Are.na</a>
-            </p>
           </div>
         </div>
-        <div class="archive-register" aria-label="Estado del archivo de publicaciones">
-          <p><span>Archivo</span> En construcción</p>
-          <p><span>Formatos</span> Texto · vídeo · audio · imagen</p>
-          <p><span>Participación</span> Propuestas abiertas</p>
-        </div>
+
+        <ol class="archive-card-list publication-index-list" aria-label="Publicaciones de KDL">
+          <li>
+            <article class="archive-card" aria-labelledby="fanzine-ciclo-inaugural-title">
+              <div class="archive-card-media is-contain">
+                <img src="assets/img/publications/fanzine-ciclo-inaugural-kdl-2026.png" alt="Portada del Fanzine del ciclo inaugural de KDL" />
+              </div>
+              <p class="card-label">Publicación 01 · 2026</p>
+              <h3 id="fanzine-ciclo-inaugural-title">Fanzine del ciclo inaugural — KDL</h3>
+              <p>
+                El dossier-fanzine del primer ciclo: un punto de encuentro entre textos,
+                referencias, imágenes, ideas y personas.
+              </p>
+              <p class="cycle-actions">
+                <a href="assets/docs/FANZINE-CICLO-INAUGURAL-KDL-2026.pdf" download="Fanzine-ciclo-inaugural-KDL-2026.pdf" data-file-download>Descargar</a>
+              </p>
+            </article>
+          </li>
+        </ol>
       </section>
 
-      <section class="section archive-section activities" id="actividades">
+      <section class="section archive-section curation" id="curaduria">
         <div class="section-grid archive-intro">
-          <div class="section-heading">
-            <p class="kicker">Actividades</p>
-            <h2>Encuentros y prácticas más allá de la lectura.</h2>
+          <div class="section-heading has-title-action">
+            <h2>Curaduría — Conectar ideas, prácticas e infraestructuras</h2>
+            <p class="intro-actions title-action">
+              <a href="https://www.are.na/klub-del-libre-research-creation" target="_blank" rel="noopener noreferrer">Abrir nuestro Are.na</a>
+            </p>
           </div>
           <div class="prose">
             <p>
-              Presentaciones, conversaciones, talleres, sesiones abiertas y colaboraciones
-              tendrán aquí su calendario y su memoria documental.
+              <strong>KLUB DEL LIBRE se concibe como un nodo integrante de una ecología de
+              las organizaciones, una red de inteligencia colectiva distribuida que deberá
+              mantenerse en constante retroalimentación sobre la base de la heterogeneidad
+              que entraña.</strong>
             </p>
             <p>
-              La sección distinguirá las próximas actividades de las ya realizadas para que
-              sea fácil participar y volver sobre lo ocurrido.
-            </p>
-            <p class="intro-actions">
-              <a href="mailto:info.klubdellibre@gmail.com?subject=Propuesta%20de%20actividad%20para%20KDL">Proponer una actividad</a>
-            </p>
-          </div>
-        </div>
-        <div class="archive-register" aria-label="Estado del archivo de actividades">
-          <p><span>Agenda</span> Próximamente</p>
-          <p><span>Archivo</span> En construcción</p>
-          <p><span>Colaboraciones</span> Abiertas</p>
-        </div>
-      </section>
-
-      <section class="section archive-section cycles" id="ciclos">
-        <div class="section-grid archive-intro">
-          <div class="section-heading">
-            <p class="kicker">Ciclos</p>
-            <h2>Archivo de itinerarios colectivos.</h2>
-          </div>
-          <div class="prose">
-            <p>
-              Los ciclos son recorridos de lectura e investigación organizados alrededor de
-              una pregunta común. Este archivo conserva sus programas, materiales y líneas de
-              trabajo para que cada experiencia pueda seguir circulando.
+              Entendemos la curaduría como una práctica de orientación compartida. Seleccionamos
+              y conectamos textos, herramientas, intervenciones, infraestructuras, iniciativas
+              y experimentos que atraviesan la cultura de red, la tecnopolítica, el software
+              libre, la investigación artística y las formas emergentes de cooperación.
             </p>
             <p>
-              Cada bloque documenta el marco del ciclo, sus fases y las lecturas compartidas.
-              El repositorio de investigación continúa en nuestra biblioteca digital de
-              <a class="own-link" href="https://www.are.na/klub-del-libre-research-creation/kdl-repo" target="_blank" rel="noopener noreferrer">Are.na</a>.
+              Usamos <a href="https://www.are.na/about" target="_blank" rel="noopener noreferrer">Are.na</a>
+              como infraestructura pública de esa memoria: un espacio independiente y sin
+              publicidad para guardar contenidos, construir colecciones llamadas canales y
+              establecer conexiones entre ideas sin someterlas a la cronología algorítmica de
+              un <span lang="en">feed</span>. Su API y su filosofía
+              <span lang="en">open source by default</span> permiten que estas colecciones
+              circulen también fuera de la plataforma.
             </p>
           </div>
         </div>
 
-        <div class="section-heading wide-heading cycle-heading">
-          <p class="kicker">Ciclo 01 · 2026</p>
-          <h2 id="ciclo-01-title">Ciclo inaugural: aceleracionismo y futuros comunes.</h2>
-          <p>
-            Un recorrido introductorio para situar la mutación tecnopolítica contemporánea
-            dentro de una trayectoria inteligible y ensayar estrategias capaces de volver más
-            probables los futuros que deseamos.
-          </p>
-          <p class="cycle-actions">
-            <a href="assets/docs/DOSIER-CICLO-INAUGURAL-2026.pdf" target="_blank">Abrir dossier completo</a>
-          </p>
+        <div class="arena-channels" data-arena-channels aria-label="Canales de curaduría en Are.na">
+          <section class="arena-channel" data-arena-channel data-channel-id="4034457">
+            <h3><a href="https://www.are.na/klub-del-libre-research-creation/_kdlmusings" target="_blank" rel="noopener noreferrer">_KDLmusings</a></h3>
+            <div class="arena-carousel" data-arena-carousel aria-busy="true" aria-describedby="arena-status-4034457" tabindex="0">
+              <p class="arena-carousel-status" id="arena-status-4034457" data-arena-status role="status">Cargando canal…</p>
+            </div>
+          </section>
+          <section class="arena-channel" data-arena-channel data-channel-id="4113618">
+            <h3><a href="https://www.are.na/klub-del-libre-research-creation/_handmade-html" target="_blank" rel="noopener noreferrer">_handmade.HTML</a></h3>
+            <div class="arena-carousel" data-arena-carousel aria-busy="true" aria-describedby="arena-status-4113618" tabindex="0">
+              <p class="arena-carousel-status" id="arena-status-4113618" data-arena-status role="status">Cargando canal…</p>
+            </div>
+          </section>
+          <section class="arena-channel" data-arena-channel data-channel-id="4151794">
+            <h3><a href="https://www.are.na/klub-del-libre-research-creation/_id-entities" target="_blank" rel="noopener noreferrer">_id(entities)</a></h3>
+            <div class="arena-carousel" data-arena-carousel aria-busy="true" aria-describedby="arena-status-4151794" tabindex="0">
+              <p class="arena-carousel-status" id="arena-status-4151794" data-arena-status role="status">Cargando canal…</p>
+            </div>
+          </section>
+          <section class="arena-channel" data-arena-channel data-channel-id="4310017">
+            <h3><a href="https://www.are.na/klub-del-libre-research-creation/_cybersecurity" target="_blank" rel="noopener noreferrer">_cybersecurity</a></h3>
+            <div class="arena-carousel" data-arena-carousel aria-busy="true" aria-describedby="arena-status-4310017" tabindex="0">
+              <p class="arena-carousel-status" id="arena-status-4310017" data-arena-status role="status">Cargando canal…</p>
+            </div>
+          </section>
+          <section class="arena-channel" data-arena-channel data-channel-id="4310059">
+            <h3><a href="https://www.are.na/klub-del-libre-research-creation/_free-repos" target="_blank" rel="noopener noreferrer">_free_repos</a></h3>
+            <div class="arena-carousel" data-arena-carousel aria-busy="true" aria-describedby="arena-status-4310059" tabindex="0">
+              <p class="arena-carousel-status" id="arena-status-4310059" data-arena-status role="status">Cargando canal…</p>
+            </div>
+          </section>
         </div>
-
-        <article class="cycle-archive" aria-labelledby="ciclo-01-title">
-          <div class="cycle-foundation">
-            <p class="card-label">Libro base</p>
-            <h3><em>Aceleracionismo. Estrategias para una transición hacia el postcapitalismo</em></h3>
-            <p>Armen Avanessian y Mauro Reis (comps.), 2017.</p>
-            <p>
-              La antología reúne debates sobre capitalismo y técnica, reorganización de la
-              economía, crisis de imaginación política y posibles rutas emancipatorias a
-              través del desarrollo tecnológico.
-            </p>
-          </div>
-
-          <ol class="phase-list">
-            <li class="cycle-phase">
-              <div class="phase-heading">
-                <p class="card-label">Fase 01</p>
-                <h3>Arqueología folk</h3>
-              </div>
-              <div class="phase-body">
-                <p>
-                  Rastreo de un presente agotado en la cultura popular junto a Fisher y Noys:
-                  allí aparecen las primeras interrupciones del capitalismo tardío.
-                </p>
-                <ul class="cycle-reading-list">
-                  <li>
-                    <span>Una revolución social y psíquica de magnitud casi inconcebible: los interrumpidos sueños aceleracionistas de la cultura popular</span>
-                    <small>Mark Fisher · 2013 · 14 págs.</small>
-                  </li>
-                  <li>
-                    <span>Baila y muere: obsolescencia y aceleración</span>
-                    <small>Benjamín Noys · 2014 · 20 págs.</small>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="cycle-phase">
-              <div class="phase-heading">
-                <p class="card-label">Fase 02</p>
-                <h3>Cuerpo y capital</h3>
-              </div>
-              <div class="phase-body">
-                <p>
-                  Lectura transversal del estado de las cosas, dentro y fuera de los cuerpos,
-                  a partir del manifiesto aceleracionista y la crítica somática de Berardi.
-                </p>
-                <ul class="cycle-reading-list">
-                  <li>
-                    <span>Manifiesto por una política aceleracionista <em>(primera mitad)</em></span>
-                    <small>Alex Williams y Nick Srnicek · 2013 · 16 págs.</small>
-                  </li>
-                  <li>
-                    <span>El aceleracionismo cuestionado desde el punto de vista del cuerpo</span>
-                    <small>Franco “Bifo” Berardi · 2013 · 8 págs.</small>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="cycle-phase">
-              <div class="phase-heading">
-                <p class="card-label">Fase 03</p>
-                <h3>Esbozar el programa</h3>
-              </div>
-              <div class="phase-body">
-                <p>
-                  Imaginación del programa aceleracionista y exploración de sus conflictos de
-                  sujeto, escala y composición junto a Negri, Terranova, Srnicek y Williams.
-                </p>
-                <ul class="cycle-reading-list">
-                  <li>
-                    <span>Manifiesto por una política aceleracionista <em>(segunda mitad)</em></span>
-                    <small>Alex Williams y Nick Srnicek · 2013 · 16 págs.</small>
-                  </li>
-                  <li>
-                    <span>Reflexiones sobre el «Manifiesto por una política aceleracionista»</span>
-                    <small>Antonio Negri · 2014 · 14 págs.</small>
-                  </li>
-                  <li>
-                    <span>Red Stack Attack! Algoritmos, capital y la automatización del común</span>
-                    <small>Tiziana Terranova · 2014 · 20 págs.</small>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="cycle-phase">
-              <div class="phase-heading">
-                <p class="card-label">Fase 04</p>
-                <h3>Futuros</h3>
-              </div>
-              <div class="phase-body">
-                <p>
-                  Giro imaginativo hacia el postindustrialismo y el xenofeminismo prometeico,
-                  convirtiendo cuerpos e identidades en terreno de diseño político.
-                </p>
-                <ul class="cycle-reading-list">
-                  <li>
-                    <span>El postcapitalismo será postindustrial</span>
-                    <small>Nick Srnicek · 2014 · 6 págs.</small>
-                  </li>
-                  <li>
-                    <span>Xenofeminismo: una política por la alienación</span>
-                    <small>Laboria Cuboniks · 2015 · 18 págs.</small>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="cycle-phase">
-              <div class="phase-heading">
-                <p class="card-label">Fase 05</p>
-                <h3>Formación y compromiso</h3>
-              </div>
-              <div class="phase-body">
-                <p>
-                  Cierre abierto para enfrentar el prometeísmo a sus críticas y entender el
-                  aprendizaje como una práctica de elaboración, torsión y renuncia de ideas.
-                </p>
-                <ul class="cycle-reading-list">
-                  <li>
-                    <span>El prometeísmo y sus críticos</span>
-                    <small>Ray Brassier · 2014 · 20 págs.</small>
-                  </li>
-                  <li>
-                    <span>La labor de lo inhumano</span>
-                    <small>Reza Negarestani · 2014 · 46 págs.</small>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ol>
-        </article>
       </section>
 
       <section class="section contact" id="contacto">
         <div class="section-heading wide-heading">
-          <p class="kicker">Contacto y colaboración</p>
-          <h2>Estamos disponibles para colaborar.</h2>
+          <h2>Contacto y colaboración — Estamos disponibles para colaborar</h2>
           <p>
             Nos interesan propuestas literarias, disciplinas artísticas, iniciativas de
             cultura abierta y libre, y proyectos de experimentación contracultural.
@@ -656,10 +587,13 @@
 
     <footer class="site-footer">
       <p>
-        Este manifiesto web está en constante evolución. Todo su contenido está bajo la
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer">
-          licencia Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
-        </a>.
+        En el metatítulo verás que esta web está en constante evolución. Esta versión fue
+        actualizada el 31 de julio de 2026, también puedes
+        <a href="archive/2025-10-27/">ver la versión anterior del 27 de octubre de 2025</a>.
+        Todo su contenido está protegido bajo la
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer">licencia Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.
+        No es necesario pedir permiso para utilizar su contenido, pero, por favor,
+        recuerda dar el crédito correspondiente a sus autorxs.
       </p>
     </footer>
   </body>

@@ -1,0 +1,60 @@
+.foot {
+    font-size: 13px;
+}
+html, body {
+  font-family: 'Fira Code', monospace;
+  line-height: 1.25;
+  margin: 0 auto;
+  padding: 0 5%;       /* margen proporcional */
+  max-width: 1200px;   /* no dejes que el texto se expanda demasiado */
+  text-align: justify;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url("../../assets/fonts/FiraCode-Regular.woff2") format("woff2"),
+       url("../../assets/fonts/FiraCode-Regular.woff") format("woff"),
+       url("../../assets/fonts/FiraCode-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.logo-top {
+  text-align: center;     /* centra horizontalmente */
+  margin: 30px 0 30px;    /* espacio arriba y abajo */
+}
+
+.logo-top img {
+  max-width: 550px;       /* tamaño máximo del logo */
+  width: 100%;            /* que sea responsive */
+  height: auto;           /* mantiene proporción */
+}
+a.obra {
+  background-color: #000000 !important;   /* fondo negro */
+  color: #FF2800 !important;              /* rojo Ferrari */
+  font-weight: bold !important;           /* texto en negrita */
+  font-style: italic !important;
+  text-decoration: none;                  /* opcional: quitar subrayado */
+}
+a.refe {
+	background-color: blue;
+	color: white;
+    font-style: italic !important;
+    text-decoration: none;
+}
+a {
+	color: #0000ff;
+	text-decoration: none;
+}
+a.crisis {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  text-decoration: none;
+}
+.centrado{
+  text-align: center;
+}
+a.nuestro {
+	background-color: #00ff00 !important;
+	color: black !important;
+}

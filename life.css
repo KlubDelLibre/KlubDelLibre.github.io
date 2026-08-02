@@ -1,6 +1,9 @@
 .life-page {
-  --life-panel: min(21rem, calc(100% - 3.4rem));
-  --life-control: 4.15rem;
+  --life-panel: min(11.25rem, calc(100% - 2rem));
+  --life-control: 2.2rem;
+  --life-fade-length: 12rem;
+  --life-fade-tail: 14rem;
+  --life-ui: var(--ink);
 }
 
 .life-page .hero {
@@ -16,45 +19,69 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  overflow: hidden;
-  contain: paint;
+  overflow: visible;
   background: var(--paper);
 }
 
 .life-canvas {
   width: 100%;
-  height: 100%;
+  height: calc(100% + var(--life-fade-tail));
   position: absolute;
-  inset: 0;
+  inset: 0 0 auto;
   display: block;
   cursor: crosshair;
   image-rendering: pixelated;
   touch-action: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0,
+    #000 calc(100% - var(--life-fade-length) - var(--life-fade-tail)),
+    rgb(0 0 0 / 96%) calc(100% - 22rem),
+    rgb(0 0 0 / 86%) calc(100% - 18rem),
+    rgb(0 0 0 / 72%) calc(100% - 14rem),
+    rgb(0 0 0 / 56%) calc(100% - 10rem),
+    rgb(0 0 0 / 38%) calc(100% - 6rem),
+    rgb(0 0 0 / 20%) calc(100% - 3rem),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0,
+    #000 calc(100% - var(--life-fade-length) - var(--life-fade-tail)),
+    rgb(0 0 0 / 96%) calc(100% - 22rem),
+    rgb(0 0 0 / 86%) calc(100% - 18rem),
+    rgb(0 0 0 / 72%) calc(100% - 14rem),
+    rgb(0 0 0 / 56%) calc(100% - 10rem),
+    rgb(0 0 0 / 38%) calc(100% - 6rem),
+    rgb(0 0 0 / 20%) calc(100% - 3rem),
+    transparent 100%
+  );
 }
 
 .life-toolbar {
   width: var(--life-panel);
   position: absolute;
-  top: 1.7rem;
-  left: calc(var(--rail) + 1.7rem);
+  top: 1rem;
+  right: 1rem;
+  left: auto;
   z-index: 4;
   margin: 0;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--life-ui);
   background: var(--paper);
-  color: var(--ink);
+  color: var(--life-ui);
   font-family: "Fira Code", Consolas, monospace;
-  font-size: 1.05rem;
+  font-size: 0.68rem;
   line-height: 1.2;
   letter-spacing: 0;
 }
 
 .life-toolbar-title {
-  min-height: 3.2rem;
+  min-height: 1.95rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  background: var(--ink);
+  background: var(--life-ui);
   color: var(--paper);
   cursor: grab;
   touch-action: none;
@@ -62,7 +89,7 @@
 }
 
 .life-toolbar.is-dragging {
-  box-shadow: 0 0 0 2px var(--active);
+  box-shadow: 0 0 0 2px var(--life-ui);
 }
 
 .life-toolbar.is-dragging .life-toolbar-title {
@@ -71,7 +98,7 @@
 
 .life-toolbar-title-actions {
   width: 100%;
-  min-height: 3.2rem;
+  min-height: 1.95rem;
   display: flex;
   flex: 0 0 auto;
   align-items: center;
@@ -80,26 +107,26 @@
 
 .life-title-button,
 .life-title-icon-button {
-  height: 3.2rem;
+  height: 1.95rem;
   margin: 0;
   padding: 0;
   border: 0;
-  border-left: 1px solid #555;
+  border-left: 1px solid rgb(255 255 255 / 55%);
   border-radius: 0;
-  background: var(--ink);
+  background: var(--life-ui);
   color: var(--paper);
   font: inherit;
   cursor: pointer;
 }
 
 .life-title-button {
-  padding: 0 0.85rem;
+  padding: 0 0.45rem;
   border-left: 0;
 }
 
 .life-title-icon-button {
-  width: 2.6rem;
-  font-size: 1.4rem;
+  width: 1.75rem;
+  font-size: 0.95rem;
   line-height: 1;
 }
 
@@ -108,6 +135,7 @@
 .life-title-button[aria-expanded="true"],
 .life-title-icon-button:hover,
 .life-title-icon-button:focus-visible {
+  background: var(--ink);
   color: #7ee29a;
 }
 
@@ -115,12 +143,12 @@
   width: 100%;
   height: var(--life-toolbar-body-height, 39rem);
   overflow: auto;
-  padding: 1rem;
+  padding: 0.5rem;
   background: var(--paper);
-  color: var(--ink);
+  color: var(--life-ui);
   font-family: "Fira Code", Consolas, monospace;
-  font-size: 1.15rem;
-  line-height: 1.35;
+  font-size: 0.74rem;
+  line-height: 1.3;
   letter-spacing: 0;
   overscroll-behavior: contain;
 }
@@ -131,7 +159,7 @@
 }
 
 .life-info-panel p {
-  margin: 0 0 1rem;
+  margin: 0 0 0.65rem;
 }
 
 .life-info-panel p:last-child {
@@ -147,20 +175,20 @@
   min-height: var(--life-control);
   display: flex;
   align-items: stretch;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--life-ui);
 }
 
 .life-action-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--life-ui);
   border-bottom: 0;
 }
 
 .life-action-row .life-icon-button {
   width: 100%;
   min-width: 0;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--life-ui);
 }
 
 .life-action-row .life-icon-button:nth-child(3n) {
@@ -179,10 +207,10 @@
   place-items: center;
   padding: 0;
   border: 0;
-  border-right: 1px solid var(--ink);
+  border-right: 1px solid var(--life-ui);
   border-radius: 0;
   background: var(--paper);
-  color: var(--ink);
+  color: var(--life-ui);
   cursor: pointer;
 }
 
@@ -191,9 +219,10 @@
 }
 
 .life-icon-button img {
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 0.9rem;
+  height: 0.9rem;
   max-width: none;
+  filter: none;
 }
 
 .life-icon-button:hover,
@@ -213,13 +242,13 @@
 }
 
 .life-color-trigger {
-  width: 3.15rem;
-  height: 3.15rem;
+  width: 1.7rem;
+  height: 1.7rem;
   align-self: center;
   margin-left: auto;
-  margin-right: 0.85rem;
+  margin-right: 0.35rem;
   padding: 0;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--life-ui);
   border-radius: 0;
   background: var(--paper);
   cursor: pointer;
@@ -229,8 +258,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  border: 0.38rem solid var(--paper);
-  background: var(--life-selected-color, #111111);
+  border: 0.2rem solid var(--paper);
+  background: var(--life-selected-color, #0000ff);
 }
 
 .life-color-trigger:hover,
@@ -242,12 +271,12 @@
 .life-color-picker {
   --life-picker-hue: 0;
   position: absolute;
-  top: calc(3.2rem + var(--life-control) - 1px);
+  top: calc(1.95rem + var(--life-control) - 1px);
   left: -1px;
   z-index: 8;
   width: calc(100% + 2px);
-  padding: 0.85rem;
-  border: 1px solid var(--ink);
+  padding: 0.5rem;
+  border: 1px solid var(--life-ui);
   background: var(--paper);
 }
 
@@ -258,8 +287,8 @@
 .life-color-surface {
   position: relative;
   width: 100%;
-  height: 10.5rem;
-  border: 1px solid var(--ink);
+  height: 5.5rem;
+  border: 1px solid var(--life-ui);
   background:
     linear-gradient(to top, #000, transparent),
     linear-gradient(to right, #fff, hsl(var(--life-picker-hue) 100% 50%));
@@ -281,20 +310,20 @@
 
 .life-hue-control,
 .life-color-value {
-  min-height: 3.2rem;
+  min-height: 2rem;
   display: grid;
-  grid-template-columns: 4.25rem minmax(0, 1fr);
+  grid-template-columns: 2.6rem minmax(0, 1fr);
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.4rem;
   font: inherit;
 }
 
 .life-hue-control input {
   width: 100%;
-  height: 1.55rem;
+  height: 1.2rem;
   margin: 0;
   appearance: none;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--life-ui);
   border-radius: 0;
   background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
   cursor: ew-resize;
@@ -302,24 +331,24 @@
 
 .life-hue-control input::-webkit-slider-thumb {
   width: 0.72rem;
-  height: 2rem;
+  height: 1.55rem;
   appearance: none;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--life-ui);
   border-radius: 0;
   background: rgb(255 255 255 / 82%);
 }
 
 .life-hue-control input::-moz-range-thumb {
   width: 0.72rem;
-  height: 2rem;
-  border: 1px solid var(--ink);
+  height: 1.55rem;
+  border: 1px solid var(--life-ui);
   border-radius: 0;
   background: rgb(255 255 255 / 82%);
 }
 
 .life-color-value {
-  min-height: 2rem;
-  border-top: 1px solid var(--ink);
+  min-height: 1.6rem;
+  border-top: 1px solid var(--life-ui);
 }
 
 .life-color-value output {
@@ -328,13 +357,13 @@
 }
 
 .life-field {
-  min-height: 5.1rem;
+  min-height: 2.25rem;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) 6rem;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.65rem 0.85rem 0.8rem;
-  border-bottom: 1px solid var(--ink);
+  gap: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  border-bottom: 1px solid var(--life-ui);
 }
 
 .life-field > span,
@@ -352,19 +381,19 @@
 }
 
 .life-select-field {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) 6rem;
 }
 
 .life-field select,
 .life-field input[type="number"] {
   width: 100%;
   min-width: 0;
-  height: 2.65rem;
-  padding: 0 0.65rem;
-  border: 1px solid var(--ink);
+  height: 1.5rem;
+  padding: 0 0.3rem;
+  border: 1px solid var(--life-ui);
   border-radius: 0;
   background: var(--paper);
-  color: var(--ink);
+  color: var(--life-ui);
   font: inherit;
 }
 
@@ -385,12 +414,12 @@
 }
 
 .life-toggle {
-  min-height: 3.45rem;
+  min-height: 1.9rem;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.55rem 0.85rem;
-  border-right: 1px solid var(--ink);
+  gap: 0.25rem;
+  padding: 0.25rem 0.4rem;
+  border-right: 1px solid var(--life-ui);
   cursor: pointer;
 }
 
@@ -399,27 +428,27 @@
 }
 
 .life-toggle input {
-  width: 1rem;
-  height: 1rem;
+  width: 0.7rem;
+  height: 0.7rem;
   margin: 0;
   border-radius: 0;
-  accent-color: var(--active);
+  accent-color: var(--life-ui);
 }
 
 .life-readout {
   position: absolute;
-  right: 1.7rem;
-  bottom: 1.7rem;
+  right: 1rem;
+  bottom: 1rem;
   z-index: 4;
   display: flex;
-  gap: 1.1rem;
-  padding: 0.32rem 0.5rem;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+  gap: 0.8rem;
+  padding: 0.24rem 0.4rem;
+  border-top: 1px solid rgb(0 0 255 / 35%);
+  border-bottom: 1px solid rgb(0 0 255 / 35%);
   background: rgb(255 255 255 / 90%);
-  color: var(--ink);
+  color: rgb(0 0 255 / 55%);
   font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   line-height: 1.25;
   letter-spacing: 0;
 }
@@ -430,13 +459,17 @@
 
 .life-page .hero-inner {
   z-index: 3;
-  left: 1.7rem;
+  left: 1rem;
+}
+
+.life-page .hero-wordmark {
+  filter: none;
 }
 
 @media (max-width: 920px) {
   .life-page {
-    --life-panel: min(20rem, calc(100% - 2rem));
-    --life-control: 3.8rem;
+    --life-panel: min(11.25rem, calc(100% - 2rem));
+    --life-control: 2.2rem;
   }
 
   .life-page .hero {
@@ -446,7 +479,8 @@
 
   .life-toolbar {
     top: 1rem;
-    left: 1rem;
+    right: 1rem;
+    left: auto;
   }
 
   .life-page .hero-inner {
@@ -461,69 +495,90 @@
 
 @media (max-width: 560px) {
   .life-page {
-    --life-panel: min(18.5rem, calc(100% - 1.5rem));
-    --life-control: 3.45rem;
+    --life-panel: calc(var(--life-control) * 4);
+    --life-control: 2.2rem;
   }
 
   .life-toolbar {
+    width: var(--life-panel);
     top: 0.75rem;
-    left: 0.75rem;
-    font-size: 0.92rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.66rem;
   }
 
-  .life-toolbar-title {
-    min-height: 2.8rem;
-  }
-
-  .life-toolbar-title-actions {
-    min-height: 2.8rem;
-  }
-
-  .life-title-button,
-  .life-title-icon-button {
-    height: 2.8rem;
-  }
-
-  .life-title-icon-button {
-    width: 2.35rem;
-  }
-
+  .life-toolbar-title,
   .life-info-panel {
-    font-size: 1rem;
+    display: none;
   }
 
-  .life-field {
-    min-height: 4.35rem;
-    grid-template-columns: 1fr;
-    padding-top: 0.5rem;
-    padding-bottom: 0.6rem;
+  .life-toolbar-body {
+    min-height: var(--life-control);
+    display: flex;
+    align-items: stretch;
   }
 
-  .life-select-field {
-    grid-template-columns: 1fr;
+  .life-tool-row,
+  .life-action-row {
+    display: contents;
+    min-height: 0;
+    border: 0;
   }
 
-  .life-field select,
-  .life-field input[type="number"] {
-    height: 2.3rem;
+  .life-tool-row [data-life-tool],
+  .life-action-row [data-life-action="step"],
+  .life-action-row [data-life-action="reset"],
+  .life-action-row [data-life-action="play"]:disabled,
+  .life-action-row [data-life-action="pause"]:disabled,
+  .life-field,
+  .life-toggle-row {
+    display: none;
   }
 
-  .life-toggle {
-    min-height: 3rem;
+  .life-color-trigger {
+    width: var(--life-control);
+    min-width: var(--life-control);
+    height: var(--life-control);
+    align-self: stretch;
+    margin: 0;
+    border: 0;
+    border-right: 1px solid var(--life-ui);
+  }
+
+  .life-toolbar-body .life-action-row .life-icon-button {
+    width: var(--life-control);
+    min-width: var(--life-control);
+    height: var(--life-control);
+    border-right: 1px solid var(--life-ui);
+    border-bottom: 0;
+  }
+
+  .life-toolbar-body .life-action-row [data-life-action="clear"] {
+    border-right: 0;
+  }
+
+  .life-action-row [data-life-action="pause"] {
+    box-shadow: inset 0 0 0 2px var(--life-ui);
   }
 
   .life-color-picker {
-    top: calc(2.8rem + var(--life-control) - 1px);
+    top: calc(var(--life-control) + 0.35rem);
+    left: 50%;
+    width: min(17rem, calc(100vw - 2rem));
+    transform: translateX(-50%);
   }
 
   .life-color-surface {
-    height: 8rem;
+    height: 7rem;
   }
 
   .life-readout {
-    right: 0.75rem;
-    bottom: 12.5rem;
-    gap: 0.65rem;
-    font-size: 0.62rem;
+    display: none;
+  }
+
+  .life-page .hero-inner {
+    left: 1rem;
+    width: min(12rem, calc(100% - 2rem));
   }
 }

@@ -32,6 +32,7 @@ if (stage && canvas) {
   const actionButtons = [...document.querySelectorAll("[data-life-action]")];
   const playButton = document.querySelector('[data-life-action="play"]');
   const pauseButton = document.querySelector('[data-life-action="pause"]');
+  const mobileToolbarQuery = window.matchMedia("(max-width: 560px)");
 
   const patterns = {
     acorn: [
@@ -94,20 +95,20 @@ if (stage && canvas) {
   let trailColors = new Uint32Array();
   let selectedCellColor = Number.parseInt(colorInput.value.slice(1), 16);
   let lastStepAt = 0;
-  let lastStageWidth = 0;
-  let lastStageHeight = 0;
+  let lastCanvasWidth = 0;
+  let lastCanvasHeight = 0;
   let resizeFrame = 0;
   let toolbarDrag = null;
   let toolbarPosition = null;
   let toolbarMinimized = false;
   let infoOpen = false;
   let colorSurfacePointer = null;
-  let selectedHue = 0;
-  let selectedSaturation = 0;
-  let selectedValue = 17 / 255;
+  let selectedHue = 240;
+  let selectedSaturation = 1;
+  let selectedValue = 1;
 
-  const toolbarStorageKey = "kdl-life-toolbar-position-v2";
-  const toolbarMinimizedStorageKey = "kdl-life-toolbar-minimized";
+  const toolbarStorageKey = "kdl-life-toolbar-position-v4";
+  const toolbarMinimizedStorageKey = "kdl-life-toolbar-minimized-v2";
   const toolbarInset = 8;
   const colorCssCache = new Map();
 
@@ -206,6 +207,12 @@ if (stage && canvas) {
   };
 
   const applyToolbarPosition = () => {
+    if (mobileToolbarQuery.matches) {
+      toolbar.style.removeProperty("left");
+      toolbar.style.removeProperty("top");
+      return;
+    }
+
     if (!toolbarPosition) return;
     const { maxLeft, maxTop } = toolbarLimits();
     setToolbarPosition(
@@ -325,6 +332,17 @@ if (stage && canvas) {
   };
 
   const syncToolbarView = (anchor = null) => {
+    if (mobileToolbarQuery.matches) {
+      toolbarBody.hidden = false;
+      infoPanel.hidden = true;
+      infoOpen = false;
+      toolbar.classList.remove("is-minimized");
+      infoButton.setAttribute("aria-expanded", "false");
+      setColorPickerOpen(false);
+      window.requestAnimationFrame(() => applyToolbarPosition());
+      return;
+    }
+
     toolbarBody.hidden = toolbarMinimized || infoOpen;
     infoPanel.hidden = !infoOpen;
     infoButton.setAttribute("aria-expanded", String(infoOpen));
@@ -368,12 +386,6 @@ if (stage && canvas) {
     }
     infoOpen = value;
     syncToolbarView(anchor);
-  };
-
-  const updateSeedControls = () => {
-    const densityDisabled = seedInput.value !== "random";
-    densityInput.disabled = densityDisabled;
-    densityInput.closest(".life-field").classList.toggle("is-disabled", densityDisabled);
   };
 
   const setRunning = (value) => {
@@ -423,6 +435,7 @@ if (stage && canvas) {
 
   infoButton.addEventListener("click", () => setInfoOpen(!infoOpen));
   minimizeButton.addEventListener("click", () => setToolbarMinimized(!toolbarMinimized));
+  mobileToolbarQuery.addEventListener("change", () => syncToolbarView());
 
   const setHardEdges = () => {
     engine.loopCurrentState = function clearGhostCells() {
@@ -492,7 +505,7 @@ if (stage && canvas) {
 
   const randomCells = () => {
     const cells = [];
-    const density = numericInputValue(densityInput, 28) / 100;
+    const density = numericInputValue(densityInput, 55) / 100;
 
     for (let row = 0; row < rows; row += 1) {
       for (let column = 0; column < columns; column += 1) {
@@ -583,8 +596,8 @@ if (stage && canvas) {
   };
 
   const render = () => {
-    const width = stage.clientWidth;
-    const height = stage.clientHeight;
+    const width = Math.max(1, canvas.clientWidth);
+    const height = Math.max(1, canvas.clientHeight);
     const gap = cellSize >= 7 ? 1 : 0.5;
     const cellFill = Math.max(1, cellSize - gap);
 
@@ -610,8 +623,8 @@ if (stage && canvas) {
   };
 
   const sizeCanvas = () => {
-    const width = Math.max(1, stage.clientWidth);
-    const height = Math.max(1, stage.clientHeight);
+    const width = Math.max(1, canvas.clientWidth);
+    const height = Math.max(1, canvas.clientHeight);
     const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
     canvas.width = Math.round(width * pixelRatio);
@@ -621,8 +634,8 @@ if (stage && canvas) {
 
     columns = Math.max(8, Math.floor(width / cellSize));
     rows = Math.max(8, Math.floor(height / cellSize));
-    lastStageWidth = width;
-    lastStageHeight = height;
+    lastCanvasWidth = width;
+    lastCanvasHeight = height;
   };
 
   const seedUniverse = (cells = selectedSeedCells()) => {
@@ -640,7 +653,7 @@ if (stage && canvas) {
   };
 
   const rebuildUniverse = () => {
-    cellSize = numericInputValue(scaleInput, 7);
+    cellSize = numericInputValue(scaleInput, 5);
     sizeCanvas();
     seedUniverse();
   };
@@ -770,7 +783,6 @@ if (stage && canvas) {
         stepUniverse();
       } else if (action === "randomize") {
         seedInput.value = "random";
-        updateSeedControls();
         seedUniverse(randomCells());
       } else if (action === "reset") {
         seedUniverse(initialCells);
@@ -782,15 +794,18 @@ if (stage && canvas) {
 
   toolbar.addEventListener("submit", (event) => event.preventDefault());
 
-  densityInput.addEventListener("change", () => {
-    commitNumericInput(densityInput, 28);
-    if (seedInput.value === "random") seedUniverse();
+  densityInput.addEventListener("input", () => {
+    if (!densityInput.value.trim()) return;
+    seedInput.value = "random";
+    seedUniverse(randomCells());
   });
 
-  speedInput.addEventListener("change", () => commitNumericInput(speedInput, 12));
+  densityInput.addEventListener("change", () => commitNumericInput(densityInput, 55));
+
+  speedInput.addEventListener("change", () => commitNumericInput(speedInput, 9));
 
   scaleInput.addEventListener("change", () => {
-    commitNumericInput(scaleInput, 7);
+    commitNumericInput(scaleInput, 5);
     rebuildUniverse();
   });
 
@@ -803,7 +818,6 @@ if (stage && canvas) {
   });
 
   seedInput.addEventListener("change", () => {
-    updateSeedControls();
     seedUniverse();
   });
   wrapInput.addEventListener("change", preserveUniverse);
@@ -883,7 +897,7 @@ if (stage && canvas) {
     window.requestAnimationFrame(animate);
     if (!running || !stageVisible || document.hidden) return;
 
-    const interval = 1000 / numericInputValue(speedInput, 12);
+    const interval = 1000 / numericInputValue(speedInput, 9);
     const elapsed = now - lastStepAt;
     if (elapsed < interval) return;
 
@@ -904,8 +918,8 @@ if (stage && canvas) {
     const resizeObserver = new ResizeObserver(() => {
       window.cancelAnimationFrame(resizeFrame);
       resizeFrame = window.requestAnimationFrame(() => {
-        const widthChanged = Math.abs(stage.clientWidth - lastStageWidth) > 2;
-        const heightChanged = Math.abs(stage.clientHeight - lastStageHeight) > 2;
+        const widthChanged = Math.abs(canvas.clientWidth - lastCanvasWidth) > 2;
+        const heightChanged = Math.abs(canvas.clientHeight - lastCanvasHeight) > 2;
         if (widthChanged || heightChanged) rebuildUniverse();
         syncInfoPanelHeight();
         applyToolbarPosition();
@@ -920,7 +934,6 @@ if (stage && canvas) {
   });
 
   syncSelectedColor();
-  updateSeedControls();
   rebuildUniverse();
   syncInfoPanelHeight();
   syncToolbarView();
