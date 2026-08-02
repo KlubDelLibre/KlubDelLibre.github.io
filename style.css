@@ -19,12 +19,12 @@
   --rule: #d9d9d9;
   --rail: 18rem;
   --content: 49rem;
-  --section-type: 1.125rem;
+  --section-type: 1.375rem;
   --section-leading: 1.25;
-  --section-meta: 0.875rem;
-  --footer-type: 1.0625rem;
-  --nav-type: 0.875rem;
-  --button-type: 0.75rem;
+  --section-meta: 1.0625rem;
+  --footer-type: 1.25rem;
+  --nav-type: 1.0625rem;
+  --button-type: 0.9375rem;
   --font-narrow: "Arial Narrow", "Aptos Narrow", "Helvetica Neue Condensed", "Liberation Sans Narrow", Arial, sans-serif;
 }
 
@@ -1245,9 +1245,9 @@ blockquote {
 
 @media (max-width: 560px) {
   :root {
-    --section-type: 1.125rem;
-    --section-meta: 0.875rem;
-    --footer-type: 1.0625rem;
+    --section-type: 1.375rem;
+    --section-meta: 1.0625rem;
+    --footer-type: 1.25rem;
   }
 
   body {

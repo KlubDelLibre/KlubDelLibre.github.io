@@ -108,7 +108,7 @@ if (stage && canvas) {
   let selectedValue = 1;
 
   const toolbarStorageKey = "kdl-life-toolbar-position-v4";
-  const toolbarMinimizedStorageKey = "kdl-life-toolbar-minimized-v2";
+  const toolbarMinimizedStorageKey = "kdl-life-toolbar-minimized-v3";
   const toolbarInset = 8;
   const colorCssCache = new Map();
 
@@ -516,7 +516,90 @@ if (stage && canvas) {
     return cells;
   };
 
+  const invitationCells = () => {
+    const artCanvas = document.createElement("canvas");
+    artCanvas.width = columns;
+    artCanvas.height = rows;
+    const artContext = artCanvas.getContext("2d", { willReadFrequently: true });
+    const fontSize = clamp(Math.floor(columns * 0.07), 10, 28);
+    const firstLine = "GIVE US";
+    const secondLine = "A TRY!";
+
+    artContext.font = `${fontSize}px "Segoe Print", "Comic Sans MS", cursive`;
+    artContext.textBaseline = "top";
+    artContext.strokeStyle = "#ffffff";
+    artContext.fillStyle = "#ffffff";
+    artContext.lineWidth = Math.max(0.55, fontSize / 48);
+    artContext.lineCap = "round";
+    artContext.lineJoin = "round";
+
+    const firstWidth = artContext.measureText(firstLine).width;
+    const secondWidth = artContext.measureText(secondLine).width;
+    const textWidth = Math.max(firstWidth, secondWidth);
+    const preferredCenter = columns * 0.62;
+    const centerColumn = clamp(
+      preferredCenter,
+      textWidth / 2 + 4,
+      columns - textWidth / 2 - 4,
+    );
+    const startRow = Math.max(6, Math.floor(rows * 0.11));
+
+    artContext.strokeText(firstLine, centerColumn - firstWidth / 2, startRow);
+    artContext.strokeText(
+      secondLine,
+      centerColumn - secondWidth / 2,
+      startRow + fontSize * 1.2,
+    );
+
+    const smileCenterX = centerColumn - fontSize * 0.25;
+    const smileTop = startRow + fontSize * 2.6;
+    const eyeSize = Math.max(1, fontSize * 0.11);
+    artContext.fillRect(smileCenterX - fontSize * 0.45, smileTop, eyeSize, eyeSize);
+    artContext.fillRect(smileCenterX + fontSize * 0.32, smileTop, eyeSize, eyeSize);
+    artContext.lineWidth = Math.max(1.25, fontSize / 20);
+    artContext.beginPath();
+    artContext.moveTo(smileCenterX - fontSize * 0.68, smileTop + fontSize * 0.28);
+    artContext.quadraticCurveTo(
+      smileCenterX,
+      smileTop + fontSize * 0.95,
+      smileCenterX + fontSize * 0.68,
+      smileTop + fontSize * 0.28,
+    );
+    artContext.stroke();
+
+    const arrowStartX = smileCenterX + fontSize * 1.05;
+    const arrowStartY = smileTop + fontSize * 0.3;
+    const arrowTipX = Math.min(columns - 5, smileCenterX + fontSize * 3.05);
+    const arrowTipY = Math.max(5, smileTop - fontSize * 0.45);
+    artContext.beginPath();
+    artContext.moveTo(arrowStartX, arrowStartY);
+    artContext.bezierCurveTo(
+      arrowStartX + fontSize * 0.15,
+      smileTop + fontSize * 1.1,
+      arrowTipX - fontSize * 0.55,
+      smileTop + fontSize * 1.05,
+      arrowTipX,
+      arrowTipY,
+    );
+    artContext.lineTo(arrowTipX - fontSize * 0.42, arrowTipY + fontSize * 0.08);
+    artContext.moveTo(arrowTipX, arrowTipY);
+    artContext.lineTo(arrowTipX - fontSize * 0.12, arrowTipY + fontSize * 0.42);
+    artContext.stroke();
+
+    const pixels = artContext.getImageData(0, 0, columns, rows).data;
+    const cells = [];
+
+    for (let row = 0; row < rows; row += 1) {
+      for (let column = 0; column < columns; column += 1) {
+        if (pixels[(row * columns + column) * 4 + 3] > 150) cells.push([column, row]);
+      }
+    }
+
+    return cells;
+  };
+
   const selectedSeedCells = () => {
+    if (seedInput.value === "invitation") return invitationCells();
     if (seedInput.value === "random") return randomCells();
     return centerPattern(patterns[seedInput.value] || patterns.acorn);
   };
