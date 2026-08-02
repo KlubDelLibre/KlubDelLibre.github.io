@@ -62,6 +62,103 @@ if (stage && canvas) {
     ],
   };
 
+  // Exact run lengths recovered from the original hand-drawn canvas (825 cells).
+  const invitationWidth = 183;
+  const invitationRuns = [
+    [0, 107, 112],
+    [1, 105, 106, 113, 113],
+    [2, 96, 96, 104, 105],
+    [3, 96, 97, 103, 104],
+    [4, 41, 41, 83, 83, 97, 97, 103, 103],
+    [5, 41, 41, 51, 60, 82, 82, 98, 98, 103, 103],
+    [6, 7, 13, 27, 27, 40, 41, 50, 51, 61, 61, 82, 82, 98, 98, 103, 103],
+    [7, 5, 7, 13, 15, 27, 27, 40, 40, 49, 50, 62, 63, 82, 82, 98, 98, 103, 103],
+    [8, 3, 5, 15, 16, 22, 22, 28, 28, 40, 40, 48, 48, 63, 64, 82, 82, 99, 99, 103, 104],
+    [9, 3, 3, 22, 22, 29, 29, 40, 40, 48, 48, 64, 64, 82, 82, 99, 99, 104, 104],
+    [10, 2, 2, 23, 23, 30, 30, 40, 40, 47, 47, 64, 64, 82, 82, 99, 99, 105, 106, 109, 114],
+    [11, 1, 2, 23, 23, 30, 30, 40, 40, 47, 47, 63, 64, 82, 82, 99, 99, 106, 109, 114, 116],
+    [12, 1, 1, 23, 23, 31, 31, 40, 40, 47, 49, 62, 63, 82, 82, 99, 99, 116, 116],
+    [13, 1, 1, 23, 23, 31, 31, 39, 39, 47, 47, 50, 53, 60, 62, 82, 82, 99, 99, 117, 117],
+    [14, 1, 1, 23, 23, 31, 31, 39, 39, 47, 47, 54, 59, 82, 82, 99, 99, 117, 117],
+    [15, 0, 0, 23, 24, 32, 32, 39, 39, 47, 47, 82, 82, 99, 99, 117, 117],
+    [16, 0, 0, 24, 24, 32, 32, 39, 39, 47, 47, 82, 82, 98, 99, 117, 117],
+    [17, 0, 0, 12, 17, 24, 24, 33, 33, 39, 39, 47, 47, 83, 83, 98, 98, 103, 103, 117, 117],
+    [18, 0, 0, 11, 12, 17, 19, 24, 24, 33, 34, 39, 39, 48, 49, 83, 84, 97, 97, 104, 104, 116, 116],
+    [19, 0, 0, 19, 19, 25, 25, 34, 34, 39, 39, 49, 50, 84, 84, 96, 97, 104, 106, 115, 116],
+    [20, 1, 1, 20, 20, 25, 25, 34, 34, 39, 39, 50, 51, 85, 86, 95, 96, 106, 114],
+    [21, 1, 1, 20, 21, 25, 26, 34, 35, 38, 38, 52, 64, 86, 95],
+    [22, 1, 1, 21, 21, 26, 26, 35, 35, 38, 38],
+    [23, 2, 2, 20, 21, 26, 27, 35, 36, 38, 38],
+    [24, 2, 2, 20, 20, 27, 27, 36, 36, 38, 38],
+    [25, 3, 3, 19, 19, 27, 27, 37, 38],
+    [26, 3, 4, 19, 19, 28, 28, 37, 38],
+    [27, 4, 5, 17, 18],
+    [28, 6, 7, 16, 17],
+    [29, 8, 16, 128, 128],
+    [30, 109, 109, 128, 128],
+    [31, 109, 109, 128, 128],
+    [32, 109, 109, 128, 128],
+    [33, 97, 97, 109, 110, 128, 128],
+    [34, 98, 98, 109, 110, 128, 128],
+    [35, 81, 82, 99, 99, 109, 110, 128, 128],
+    [36, 77, 80, 84, 87, 99, 99, 109, 110, 128, 128],
+    [37, 75, 77, 83, 84, 87, 88, 100, 100, 109, 110, 128, 128, 175, 176],
+    [38, 72, 74, 81, 82, 89, 89, 101, 101, 109, 110, 128, 128, 176, 179],
+    [39, 70, 72, 80, 80, 90, 90, 102, 103, 110, 110, 128, 128, 178, 181],
+    [40, 68, 70, 79, 79, 91, 91, 103, 104, 110, 110, 128, 128, 178, 181],
+    [41, 66, 68, 71, 71, 78, 78, 91, 91, 104, 105, 110, 110, 128, 128, 177, 177, 181, 182],
+    [42, 63, 65, 71, 71, 78, 78, 91, 91, 106, 107, 110, 110, 128, 128, 175, 176, 180, 180],
+    [43, 60, 62, 71, 71, 78, 78, 91, 91, 108, 110, 128, 128, 174, 174, 180, 180],
+    [44, 57, 60, 72, 72, 78, 78, 91, 91, 110, 110, 128, 128, 172, 173, 179, 180],
+    [45, 18, 21, 72, 72, 79, 79, 90, 90, 110, 110, 128, 128, 171, 172, 179, 179],
+    [46, 14, 17, 21, 23, 72, 72, 79, 79, 89, 90, 110, 110, 128, 128, 171, 171, 179, 179],
+    [47, 13, 13, 26, 26, 73, 73, 80, 80, 88, 89, 110, 110, 128, 128, 170, 171, 179, 179],
+    [48, 11, 12, 26, 26, 73, 73, 81, 81, 86, 87, 110, 110, 128, 128, 170, 170],
+    [49, 10, 11, 26, 26, 73, 73, 81, 81, 84, 86, 110, 110, 169, 169],
+    [50, 9, 9, 26, 26, 73, 73, 82, 91, 110, 110, 168, 169],
+    [51, 9, 9, 26, 26, 73, 73, 82, 82, 92, 92, 110, 110, 168, 168],
+    [52, 8, 8, 26, 26, 73, 74, 82, 82, 93, 96, 110, 110, 168, 168],
+    [53, 8, 8, 25, 27, 74, 74, 83, 83, 96, 97, 110, 110, 168, 168],
+    [54, 8, 8, 25, 25, 27, 27, 74, 74, 83, 83, 98, 99, 110, 110, 167, 168],
+    [55, 7, 7, 24, 25, 28, 28, 74, 75, 84, 84, 100, 101, 110, 110, 167, 167],
+    [56, 7, 7, 24, 24, 28, 29, 75, 75, 84, 84, 110, 110, 127, 129, 167, 167],
+    [57, 7, 7, 23, 24, 29, 30, 75, 75, 85, 85, 110, 110, 127, 129, 167, 167],
+    [58, 7, 7, 22, 23, 30, 33, 76, 76, 86, 86, 110, 110, 128, 128, 166, 166],
+    [59, 7, 7, 22, 22, 33, 38, 76, 76, 87, 87, 110, 110, 166, 166],
+    [60, 7, 7, 20, 21, 76, 77, 87, 87, 109, 109, 166, 166],
+    [61, 7, 8, 19, 20, 77, 77, 88, 88, 109, 109, 166, 166],
+    [62, 8, 9, 17, 19, 77, 78, 109, 109, 165, 165],
+    [63, 9, 11, 15, 16, 78, 78, 109, 109, 165, 165],
+    [64, 12, 14, 78, 78, 108, 108, 165, 165],
+    [65, 107, 108, 165, 165],
+    [66, 106, 107, 165, 165],
+    [67, 105, 106, 164, 164],
+    [68, 164, 164],
+    [69, 163, 164],
+    [70, 163, 163],
+    [71, 163, 163],
+    [72, 162, 162],
+    [73, 162, 162],
+    [74, 47, 49, 161, 161],
+    [75, 47, 49, 161, 161],
+    [76, 47, 49, 66, 68, 161, 161],
+    [77, 47, 49, 65, 68, 161, 161],
+    [78, 65, 68, 159, 160],
+    [79, 39, 39, 158, 159],
+    [80, 39, 39, 157, 157],
+    [81, 39, 39, 114, 114, 156, 156],
+    [82, 40, 40, 114, 114, 156, 156],
+    [83, 40, 40, 115, 115, 154, 155],
+    [84, 40, 41, 78, 78, 115, 115, 153, 154],
+    [85, 41, 41, 77, 78, 116, 116, 152, 153],
+    [86, 41, 42, 75, 76, 117, 118, 151, 151],
+    [87, 42, 43, 74, 75, 118, 119, 150, 150],
+    [88, 43, 45, 72, 73, 119, 120, 148, 149],
+    [89, 45, 47, 69, 71, 121, 123, 146, 147],
+    [90, 47, 50, 67, 68, 124, 126, 142, 145],
+    [91, 50, 58, 63, 67, 127, 141],
+    [92, 58, 63],
+  ];
   patterns.pulsar = (() => {
     const cells = [];
     const arms = [2, 3, 4, 8, 9, 10];
@@ -517,87 +614,30 @@ if (stage && canvas) {
   };
 
   const invitationCells = () => {
-    const artCanvas = document.createElement("canvas");
-    artCanvas.width = columns;
-    artCanvas.height = rows;
-    const artContext = artCanvas.getContext("2d", { willReadFrequently: true });
-    const fontSize = clamp(Math.floor(columns * 0.07), 10, 28);
-    const firstLine = "GIVE US";
-    const secondLine = "A TRY!";
-
-    artContext.font = `${fontSize}px "Segoe Print", "Comic Sans MS", cursive`;
-    artContext.textBaseline = "top";
-    artContext.strokeStyle = "#ffffff";
-    artContext.fillStyle = "#ffffff";
-    artContext.lineWidth = Math.max(0.55, fontSize / 48);
-    artContext.lineCap = "round";
-    artContext.lineJoin = "round";
-
-    const firstWidth = artContext.measureText(firstLine).width;
-    const secondWidth = artContext.measureText(secondLine).width;
-    const textWidth = Math.max(firstWidth, secondWidth);
-    const preferredCenter = columns * 0.62;
-    const centerColumn = clamp(
-      preferredCenter,
-      textWidth / 2 + 4,
-      columns - textWidth / 2 - 4,
-    );
-    const startRow = Math.max(6, Math.floor(rows * 0.11));
-
-    artContext.strokeText(firstLine, centerColumn - firstWidth / 2, startRow);
-    artContext.strokeText(
-      secondLine,
-      centerColumn - secondWidth / 2,
-      startRow + fontSize * 1.2,
-    );
-
-    const smileCenterX = centerColumn - fontSize * 0.25;
-    const smileTop = startRow + fontSize * 2.6;
-    const eyeSize = Math.max(1, fontSize * 0.11);
-    artContext.fillRect(smileCenterX - fontSize * 0.45, smileTop, eyeSize, eyeSize);
-    artContext.fillRect(smileCenterX + fontSize * 0.32, smileTop, eyeSize, eyeSize);
-    artContext.lineWidth = Math.max(1.25, fontSize / 20);
-    artContext.beginPath();
-    artContext.moveTo(smileCenterX - fontSize * 0.68, smileTop + fontSize * 0.28);
-    artContext.quadraticCurveTo(
-      smileCenterX,
-      smileTop + fontSize * 0.95,
-      smileCenterX + fontSize * 0.68,
-      smileTop + fontSize * 0.28,
-    );
-    artContext.stroke();
-
-    const arrowStartX = smileCenterX + fontSize * 1.05;
-    const arrowStartY = smileTop + fontSize * 0.3;
-    const arrowTipX = Math.min(columns - 5, smileCenterX + fontSize * 3.05);
-    const arrowTipY = Math.max(5, smileTop - fontSize * 0.45);
-    artContext.beginPath();
-    artContext.moveTo(arrowStartX, arrowStartY);
-    artContext.bezierCurveTo(
-      arrowStartX + fontSize * 0.15,
-      smileTop + fontSize * 1.1,
-      arrowTipX - fontSize * 0.55,
-      smileTop + fontSize * 1.05,
-      arrowTipX,
-      arrowTipY,
-    );
-    artContext.lineTo(arrowTipX - fontSize * 0.42, arrowTipY + fontSize * 0.08);
-    artContext.moveTo(arrowTipX, arrowTipY);
-    artContext.lineTo(arrowTipX - fontSize * 0.12, arrowTipY + fontSize * 0.42);
-    artContext.stroke();
-
-    const pixels = artContext.getImageData(0, 0, columns, rows).data;
     const cells = [];
+    const offsetColumn = Math.max(
+      0,
+      columns - invitationWidth - Math.round(columns * 0.1),
+    );
+    const offsetRow = Math.max(0, Math.round(rows * 0.1));
 
-    for (let row = 0; row < rows; row += 1) {
-      for (let column = 0; column < columns; column += 1) {
-        if (pixels[(row * columns + column) * 4 + 3] > 150) cells.push([column, row]);
+    invitationRuns.forEach(([row, ...runs]) => {
+      const targetRow = row + offsetRow;
+      if (targetRow >= rows) return;
+
+      for (let index = 0; index < runs.length; index += 2) {
+        const start = runs[index];
+        const end = runs[index + 1];
+
+        for (let column = start; column <= end; column += 1) {
+          const targetColumn = column + offsetColumn;
+          if (targetColumn < columns) cells.push([targetColumn, targetRow]);
+        }
       }
-    }
+    });
 
     return cells;
   };
-
   const selectedSeedCells = () => {
     if (seedInput.value === "invitation") return invitationCells();
     if (seedInput.value === "random") return randomCells();
