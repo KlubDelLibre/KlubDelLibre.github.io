@@ -22,7 +22,7 @@
   --section-type: 1.3125rem;
   --section-leading: 1.25;
   --section-meta: 1rem;
-  --footer-type: 1.1875rem;
+  --footer-type: 1.15625rem;
   --nav-type: 1.0625rem;
   --button-type: 0.875rem;
   --font-narrow: "Arial Narrow", "Aptos Narrow", "Helvetica Neue Condensed", "Liberation Sans Narrow", Arial, sans-serif;
@@ -1138,7 +1138,7 @@ blockquote {
   margin-left: 0;
   padding: 1rem 1.7rem 1.25rem;
   border-top: 0;
-  color: var(--ink);
+  color: rgb(17 17 17 / 88%);
   font-size: var(--footer-type);
   line-height: var(--section-leading);
 }
@@ -1247,7 +1247,7 @@ blockquote {
   :root {
     --section-type: 1.3125rem;
     --section-meta: 1rem;
-    --footer-type: 1.1875rem;
+    --footer-type: 1.15625rem;
   }
 
   body {
