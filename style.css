@@ -640,7 +640,7 @@ main {
 }
 
 .publication-index-list {
-  grid-template-columns: minmax(0, 9rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 9rem));
 }
 
 .cycle-index-list {
