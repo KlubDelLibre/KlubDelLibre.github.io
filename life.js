@@ -696,20 +696,21 @@ if (stage && canvas) {
     const horizontalInset = Math.max(
       0,
       63 - centerColumn,
-      64 - (columns - 1 - centerColumn),
+      63 - (columns - 1 - centerColumn),
     );
     const verticalInset = Math.max(
       0,
       63 - centerRow,
-      64 - (visibleRows - 1 - centerRow),
+      63 - (visibleRows - 1 - centerRow),
     );
 
     capturedSeedRuns.forEach(([relativeRow, ...runs]) => {
-      const adjustedRow = relativeRow < -40
-        ? relativeRow + verticalInset
-        : relativeRow > 40
-          ? relativeRow - verticalInset
-          : relativeRow;
+      const symmetricRow = relativeRow > 40 ? relativeRow - 1 : relativeRow;
+      const adjustedRow = symmetricRow < -40
+        ? symmetricRow + verticalInset
+        : symmetricRow > 40
+          ? symmetricRow - verticalInset
+          : symmetricRow;
       const targetRow = centerRow + adjustedRow;
       if (targetRow < 0 || targetRow >= rows) return;
 
@@ -718,11 +719,12 @@ if (stage && canvas) {
         const end = runs[index + 1];
 
         for (let relativeColumn = start; relativeColumn <= end; relativeColumn += 1) {
-          const adjustedColumn = relativeColumn < -40
-            ? relativeColumn + horizontalInset
-            : relativeColumn > 40
-              ? relativeColumn - horizontalInset
-              : relativeColumn;
+          const symmetricColumn = relativeColumn > 40 ? relativeColumn - 1 : relativeColumn;
+          const adjustedColumn = symmetricColumn < -40
+            ? symmetricColumn + horizontalInset
+            : symmetricColumn > 40
+              ? symmetricColumn - horizontalInset
+              : symmetricColumn;
           const targetColumn = centerColumn + adjustedColumn;
           if (targetColumn >= 0 && targetColumn < columns) cells.push([targetColumn, targetRow]);
         }
