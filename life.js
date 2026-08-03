@@ -824,6 +824,16 @@ if (stage && canvas) {
     setRunning(wasRunning, wasRunning ? "VIVO" : "PAUSA");
   };
 
+  const resizeUniverse = () => {
+    const cells = getAliveCells();
+    const wasRunning = running;
+    sizeCanvas();
+    createEngine();
+    applyCells(cells);
+    render();
+    setRunning(wasRunning, wasRunning ? "VIVO" : "PAUSA");
+  };
+
   const stepUniverse = () => {
     for (let row = 0; row < rows; row += 1) {
       for (let column = 0; column < columns; column += 1) {
@@ -1077,7 +1087,7 @@ if (stage && canvas) {
       resizeFrame = window.requestAnimationFrame(() => {
         const widthChanged = Math.abs(canvas.clientWidth - lastCanvasWidth) > 2;
         const heightChanged = Math.abs(canvas.clientHeight - lastCanvasHeight) > 2;
-        if (widthChanged || heightChanged) rebuildUniverse();
+        if (widthChanged || heightChanged) resizeUniverse();
         syncInfoPanelHeight();
         applyToolbarPosition();
         if (moveToolbarClearOfHeader()) saveToolbarPosition();
