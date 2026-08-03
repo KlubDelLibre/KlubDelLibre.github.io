@@ -692,9 +692,17 @@ if (stage && canvas) {
       Math.floor(Math.min(canvas.clientHeight, document.documentElement.clientHeight) / cellSize),
     );
     const centerColumn = Math.floor(columns / 2);
-    const centerRow = Math.floor((visibleRows - 1) / 2);
-    const horizontalInset = Math.max(0, 64 - Math.max(8, centerColumn - 8));
-    const verticalInset = Math.max(0, 64 - Math.max(8, centerRow - 8));
+    const centerRow = Math.max(0, Math.floor(visibleRows / 2) - 1);
+    const horizontalInset = Math.max(
+      0,
+      63 - centerColumn,
+      64 - (columns - 1 - centerColumn),
+    );
+    const verticalInset = Math.max(
+      0,
+      63 - centerRow,
+      64 - (visibleRows - 1 - centerRow),
+    );
 
     capturedSeedRuns.forEach(([relativeRow, ...runs]) => {
       const adjustedRow = relativeRow < -40
