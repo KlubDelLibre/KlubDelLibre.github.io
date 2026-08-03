@@ -192,6 +192,45 @@ if (stage && canvas) {
     return arrowCells;
   })();
 
+  // Exact living cells captured from the user-composed universe at generation 40.
+  const capturedSeedRuns = [
+    [-63, 0, 0],
+    [-62, -1, -1, 1, 1],
+    [-61, -1, -1, 1, 1],
+    [-60, 0, 0],
+    [-58, -5, -4, 4, 5],
+    [-57, -6, -6, -3, -3, 3, 3, 6, 6],
+    [-56, -5, -4, 4, 5],
+    [-54, 0, 0],
+    [-53, -1, -1, 1, 1],
+    [-52, -1, -1, 1, 1],
+    [-51, 0, 0],
+    [-50, 0, 0],
+    [-6, -57, -57, 58, 58],
+    [-5, -58, -58, -56, -56, 57, 57, 59, 59],
+    [-4, -58, -58, -56, -56, 57, 57, 59, 59],
+    [-3, -57, -57, 58, 58],
+    [-1, -62, -61, -53, -52, 53, 54, 62, 63],
+    [0, -63, -63, -60, -60, -54, -54, -51, -50, 51, 52, 55, 55, 61, 61, 64, 64],
+    [1, -62, -61, -53, -52, 53, 54, 62, 63],
+    [3, -57, -57, 58, 58],
+    [4, -58, -58, -56, -56, 57, 57, 59, 59],
+    [5, -58, -58, -56, -56, 57, 57, 59, 59],
+    [6, -57, -57, 58, 58],
+    [51, 0, 0],
+    [52, 0, 0],
+    [53, -1, -1, 1, 1],
+    [54, -1, -1, 1, 1],
+    [55, 0, 0],
+    [57, -5, -4, 4, 5],
+    [58, -6, -6, -3, -3, 3, 3, 6, 6],
+    [59, -5, -4, 4, 5],
+    [61, 0, 0],
+    [62, -1, -1, 1, 1],
+    [63, -1, -1, 1, 1],
+    [64, 0, 0],
+  ];
+
   patterns.pulsar = (() => {
     const cells = [];
     const arms = [2, 3, 4, 8, 9, 10];
@@ -648,24 +687,36 @@ if (stage && canvas) {
 
   const invitationCells = () => {
     const cells = [];
-    const offsetColumn = Math.max(
-      0,
-      columns - invitationWidth - Math.round(columns * 0.1),
+    const visibleRows = Math.max(
+      1,
+      Math.floor(Math.min(canvas.clientHeight, document.documentElement.clientHeight) / cellSize),
     );
-    const offsetRow = Math.max(0, Math.round(rows * 0.1));
+    const centerColumn = Math.floor(columns / 2);
+    const centerRow = Math.floor((visibleRows - 1) / 2);
+    const horizontalInset = Math.max(0, 64 - Math.max(8, centerColumn - 8));
+    const verticalInset = Math.max(0, 64 - Math.max(8, centerRow - 8));
 
-    invitationRuns.forEach(([row, ...runs]) => {
-      const targetRow = row + offsetRow;
-      if (targetRow >= rows) return;
+    capturedSeedRuns.forEach(([relativeRow, ...runs]) => {
+      const adjustedRow = relativeRow < -40
+        ? relativeRow + verticalInset
+        : relativeRow > 40
+          ? relativeRow - verticalInset
+          : relativeRow;
+      const targetRow = centerRow + adjustedRow;
+      if (targetRow < 0 || targetRow >= rows) return;
 
       for (let index = 0; index < runs.length; index += 2) {
         const start = runs[index];
         const end = runs[index + 1];
 
-        for (let column = start; column <= end; column += 1) {
-          if (invitationArrowCells.has(`${column},${row}`)) continue;
-          const targetColumn = column + offsetColumn;
-          if (targetColumn < columns) cells.push([targetColumn, targetRow]);
+        for (let relativeColumn = start; relativeColumn <= end; relativeColumn += 1) {
+          const adjustedColumn = relativeColumn < -40
+            ? relativeColumn + horizontalInset
+            : relativeColumn > 40
+              ? relativeColumn - horizontalInset
+              : relativeColumn;
+          const targetColumn = centerColumn + adjustedColumn;
+          if (targetColumn >= 0 && targetColumn < columns) cells.push([targetColumn, targetRow]);
         }
       }
     });
