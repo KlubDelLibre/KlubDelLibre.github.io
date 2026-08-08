@@ -280,6 +280,9 @@ if (stage && canvas) {
   const toolbarMinimizedStorageKey = "kdl-life-toolbar-minimized-v3";
   const toolbarInset = 8;
   const colorCssCache = new Map();
+  const neonCellColor = 0x00ff00;
+
+  const neonThemeActive = () => document.documentElement.dataset.theme === "neon";
 
   const colorToCss = (color) => {
     if (colorCssCache.has(color)) return colorCssCache.get(color);
@@ -818,8 +821,9 @@ if (stage && canvas) {
     const height = Math.max(1, canvas.clientHeight);
     const gap = cellSize >= 7 ? 1 : 0.5;
     const cellFill = Math.max(1, cellSize - gap);
+    const neonTheme = neonThemeActive();
 
-    context.fillStyle = "#ffffff";
+    context.fillStyle = neonTheme ? "#000000" : "#ffffff";
     context.fillRect(0, 0, width, height);
 
     for (let row = 0; row < rows; row += 1) {
@@ -831,7 +835,8 @@ if (stage && canvas) {
         if (!alive && (!trailsInput.checked || history === 0)) continue;
 
         context.globalAlpha = alive ? 1 : (history / 255) * 0.2;
-        context.fillStyle = colorToCss(alive ? cellColors[index] : trailColors[index]);
+        const cellColor = alive ? cellColors[index] : trailColors[index];
+        context.fillStyle = colorToCss(neonTheme ? neonCellColor : cellColor);
         context.fillRect(column * cellSize, row * cellSize, cellFill, cellFill);
       }
     }
@@ -1159,6 +1164,10 @@ if (stage && canvas) {
 
   document.addEventListener("visibilitychange", () => {
     lastStepAt = performance.now();
+  });
+
+  window.addEventListener("kdl:themechange", () => {
+    render();
   });
 
   syncSelectedColor();

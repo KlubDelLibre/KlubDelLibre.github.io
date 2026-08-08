@@ -8,6 +8,54 @@ window.setInterval(() => {
   document.title = titleTrack.slice(titleOffset) + titleTrack.slice(0, titleOffset);
 }, 300);
 
+const neonToggle = document.querySelector("[data-neon-toggle]");
+const neonStorageKey = "kdl-neon-theme-v1";
+const themeColorMetas = [...document.querySelectorAll('meta[name="theme-color"]')];
+
+themeColorMetas.forEach((meta) => {
+  meta.dataset.defaultContent = meta.content;
+});
+
+const setNeonTheme = (enabled, remember = true) => {
+  if (enabled) document.documentElement.dataset.theme = "neon";
+  else document.documentElement.removeAttribute("data-theme");
+
+  if (neonToggle) {
+    neonToggle.setAttribute("aria-pressed", String(enabled));
+    neonToggle.setAttribute(
+      "aria-label",
+      enabled ? "Desactivar modo neón oscuro" : "Activar modo neón oscuro",
+    );
+    neonToggle.textContent = enabled ? "LUZ" : "NEÓN";
+  }
+
+  themeColorMetas.forEach((meta) => {
+    meta.content = enabled ? "#000000" : meta.dataset.defaultContent;
+  });
+
+  if (remember) {
+    try {
+      window.localStorage.setItem(neonStorageKey, enabled ? "on" : "off");
+    } catch (error) {
+      // The theme still works when storage is unavailable.
+    }
+  }
+
+  window.dispatchEvent(new CustomEvent("kdl:themechange", { detail: { neon: enabled } }));
+};
+
+let savedNeonTheme = false;
+try {
+  savedNeonTheme = window.localStorage.getItem(neonStorageKey) === "on";
+} catch (error) {
+  savedNeonTheme = false;
+}
+
+setNeonTheme(savedNeonTheme, false);
+neonToggle?.addEventListener("click", () => {
+  setNeonTheme(document.documentElement.dataset.theme !== "neon");
+});
+
 const sections = [...document.querySelectorAll("main section[id]")];
 const navLinks = [...document.querySelectorAll(".site-nav a")];
 let navFrame = 0;

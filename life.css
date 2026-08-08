@@ -23,13 +23,14 @@
   background: var(--paper);
 }
 
-.life-canvas {
+.life-canvas,
+.life-cursor-trail {
   width: 100%;
   height: calc(100% + var(--life-fade-tail));
   position: absolute;
   inset: 0 0 auto;
   display: block;
-  cursor: url("assets/img/ui/pencil-cursor.png") 3 30, crosshair;
+  cursor: default;
   image-rendering: pixelated;
   touch-action: none;
   -webkit-mask-image: linear-gradient(
@@ -56,6 +57,12 @@
     rgb(0 0 0 / 20%) calc(100% - 3rem),
     transparent 100%
   );
+}
+
+.life-cursor-trail {
+  z-index: 2;
+  pointer-events: none;
+  touch-action: auto;
 }
 
 .life-toolbar {
@@ -457,6 +464,33 @@
   font: inherit;
 }
 
+.neon-toggle {
+  min-width: 3.5rem;
+  height: 1.75rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  padding: 0 0.45rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 0.68rem;
+  line-height: 1;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.neon-toggle:hover,
+.neon-toggle:focus-visible {
+  border-color: var(--link-blue);
+  background: var(--link-blue);
+  color: var(--paper);
+}
+
 .life-page .hero-inner {
   z-index: 3;
   left: 1rem;
@@ -581,4 +615,53 @@
     left: 1rem;
     width: min(12rem, calc(100% - 2rem));
   }
+}
+
+html[data-theme="neon"] .life-toolbar-title,
+html[data-theme="neon"] .life-title-button,
+html[data-theme="neon"] .life-title-icon-button {
+  background: #00ff00;
+  color: #000000;
+}
+
+html[data-theme="neon"] .life-title-button,
+html[data-theme="neon"] .life-title-icon-button {
+  border-color: rgb(0 0 0 / 55%);
+}
+
+html[data-theme="neon"] .life-title-button:hover,
+html[data-theme="neon"] .life-title-button:focus-visible,
+html[data-theme="neon"] .life-title-button[aria-expanded="true"],
+html[data-theme="neon"] .life-title-icon-button:hover,
+html[data-theme="neon"] .life-title-icon-button:focus-visible {
+  background: #00ff00;
+  color: #000000;
+  box-shadow: inset 0 0 0 2px #000000;
+}
+
+html[data-theme="neon"] .life-icon-button:hover,
+html[data-theme="neon"] .life-icon-button:focus-visible,
+html[data-theme="neon"] .life-icon-button.is-active {
+  background: rgb(0 255 0 / 14%);
+}
+
+html[data-theme="neon"] .life-icon-button img {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(100%) saturate(4800%) hue-rotate(84deg) brightness(118%) contrast(119%);
+}
+
+html[data-theme="neon"] .life-color-trigger span {
+  border-color: #000000;
+  background: #00ff00;
+}
+
+html[data-theme="neon"] .life-readout {
+  border-color: rgb(0 255 0 / 35%);
+  background: rgb(0 0 0 / 90%);
+  color: rgb(0 255 0 / 58%);
+}
+
+html[data-theme="neon"] .neon-toggle[aria-pressed="true"] {
+  border-color: #00ff00;
+  background: #00ff00;
+  color: #000000;
 }

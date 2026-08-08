@@ -1451,6 +1451,94 @@ blockquote {
 
 }
 
+html[data-theme="neon"] {
+  --paper: #000000;
+  --ink: #00ff00;
+  --quiet: rgb(0 255 0 / 62%);
+  --active: #00ff00;
+  --link-blue: #00ff00;
+  --marker-green: #00ff00;
+  --rule: rgb(0 255 0 / 28%);
+  color-scheme: dark;
+}
+
+html[data-theme="neon"] ::selection {
+  background: #00ff00;
+  color: #000000;
+}
+
+html[data-theme="neon"] a:hover,
+html[data-theme="neon"] a:focus-visible {
+  color: #000000;
+}
+
+html[data-theme="neon"] .nav-row.registration-alert,
+html[data-theme="neon"] .nav-row.event-alert {
+  background: #000000;
+  color: #00ff00;
+}
+
+html[data-theme="neon"] .nav-row.registration-alert.is-alert-on,
+html[data-theme="neon"] .nav-row.event-alert.is-alert-on,
+html[data-theme="neon"] .nav-row.registration-alert:hover,
+html[data-theme="neon"] .nav-row.registration-alert:focus-visible,
+html[data-theme="neon"] .nav-row.event-alert:hover,
+html[data-theme="neon"] .nav-row.event-alert:focus-visible {
+  background: #00ff00;
+  color: #000000;
+}
+
+html[data-theme="neon"] .nav-partner img,
+html[data-theme="neon"] .hero-wordmark {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(100%) saturate(4800%) hue-rotate(84deg) brightness(118%) contrast(119%);
+}
+
+html[data-theme="neon"] .intro-actions a,
+html[data-theme="neon"] .cycle-actions a,
+html[data-theme="neon"] .arena-channel h3 a,
+html[data-theme="neon"] .cycle-register-action a {
+  border-color: #00ff00;
+  background: #000000;
+  color: #00ff00;
+}
+
+html[data-theme="neon"] .intro-actions a:hover,
+html[data-theme="neon"] .intro-actions a:focus-visible,
+html[data-theme="neon"] .cycle-actions a:hover,
+html[data-theme="neon"] .cycle-actions a:focus-visible,
+html[data-theme="neon"] .arena-channel h3 a:hover,
+html[data-theme="neon"] .arena-channel h3 a:focus-visible,
+html[data-theme="neon"] .cycle-register-action a:hover,
+html[data-theme="neon"] .cycle-register-action a:focus-visible,
+html[data-theme="neon"] .cycle-register-action a.is-alert-on {
+  border-color: #00ff00;
+  background: #00ff00;
+  color: #000000;
+}
+
+html[data-theme="neon"] .cycle-register,
+html[data-theme="neon"] .publication-index-list {
+  border-color: rgb(0 255 0 / 32%);
+}
+
+html[data-theme="neon"] .cycle-register-row,
+html[data-theme="neon"] .publication-index-list > li {
+  border-color: rgb(0 255 0 / 32%);
+}
+
+html[data-theme="neon"] .cycle-register-row.is-open,
+html[data-theme="neon"] .arena-card-media,
+html[data-theme="neon"] .archive-card-media,
+html[data-theme="neon"] .archive-card-media.is-contain {
+  background: #000000;
+}
+
+html[data-theme="neon"] .arena-card-media img,
+html[data-theme="neon"] .archive-card-media img,
+html[data-theme="neon"] .event-visual img {
+  filter: grayscale(1) contrast(1.65) brightness(0.72) sepia(1) saturate(9) hue-rotate(70deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
