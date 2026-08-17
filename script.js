@@ -26,7 +26,10 @@ const setNeonTheme = (enabled, remember = true) => {
       "aria-label",
       enabled ? "Desactivar modo neón oscuro" : "Activar modo neón oscuro",
     );
-    neonToggle.textContent = enabled ? "LUZ" : "NEÓN";
+    neonToggle.setAttribute(
+      "title",
+      enabled ? "Volver al modo claro" : "Activar modo neón oscuro",
+    );
   }
 
   themeColorMetas.forEach((meta) => {

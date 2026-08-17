@@ -7,8 +7,8 @@ if (lifeCanvas && trailCanvas) {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const finePointer = window.matchMedia("(pointer: fine)");
   const generationInterval = 1000 / 7.5;
-  const minimumRadius = 38;
-  const maximumRadius = 150;
+  const minimumRadius = 16;
+  const maximumRadius = 58;
   const maximumLiveCells = 1400;
   const neighborOffsets = [
     [-1, -1], [0, -1], [1, -1],
@@ -27,7 +27,7 @@ if (lifeCanvas && trailCanvas) {
   let lastSeedPoint = null;
   let pointerPressed = false;
   let shapePhase = Math.random() * Math.PI * 2;
-  let smoothedRadius = 92;
+  let smoothedRadius = 36;
 
   const neonThemeActive = () => document.documentElement.dataset.theme === "neon";
   const trailColor = () => (neonThemeActive() ? "#00ff00" : "#0000ff");
@@ -214,14 +214,14 @@ if (lifeCanvas && trailCanvas) {
 
   const seedAmoeba = (point, now, intensity = 1) => {
     const radiusWave =
-      94 +
-      Math.sin(now * 0.00043 + shapePhase) * 31 +
-      Math.sin(now * 0.00017 - shapePhase * 0.7) * 19;
+      38 +
+      Math.sin(now * 0.00043 + shapePhase) * 12 +
+      Math.sin(now * 0.00017 - shapePhase * 0.7) * 8;
     const targetRadius = clamp(radiusWave, minimumRadius, maximumRadius);
     smoothedRadius += (targetRadius - smoothedRadius) * 0.16;
     shapePhase += 0.055;
 
-    const sampleCount = Math.round((4 + smoothedRadius * 0.045) * intensity);
+    const sampleCount = Math.round((5 + smoothedRadius * 0.055) * intensity);
     const centerColumn = Math.floor(point.x / cellSize);
     const centerRow = Math.floor(point.y / cellSize);
     const lifetime = 1750 + Math.random() * 850;
@@ -236,19 +236,19 @@ if (lifeCanvas && trailCanvas) {
         0.42,
         1,
       );
-      const distance = Math.sqrt(Math.random()) * smoothedRadius * envelope;
+      const distance = Math.pow(Math.random(), 1.3) * smoothedRadius * envelope;
       const column = centerColumn + Math.round((Math.cos(angle) * distance) / cellSize);
       const row = centerRow + Math.round((Math.sin(angle) * distance) / cellSize);
       const expiresAt = now + lifetime - Math.random() * 360;
 
       seedCell(column, row, now, expiresAt);
 
-      if (Math.random() < 0.18) {
+      if (Math.random() < 0.22) {
         const [neighborX, neighborY] = neighborOffsets[Math.floor(Math.random() * neighborOffsets.length)];
         seedCell(column + neighborX, row + neighborY, now + Math.random() * 35, expiresAt);
       }
 
-      if (Math.random() < 0.035) {
+      if (Math.random() < 0.05) {
         const horizontal = Math.random() < 0.5 ? -1 : 1;
         const vertical = Math.random() < 0.5 ? -1 : 1;
         seedCell(column + horizontal, row, now + Math.random() * 45, expiresAt);
@@ -282,9 +282,9 @@ if (lifeCanvas && trailCanvas) {
     const deltaX = point.x - lastSeedPoint.x;
     const deltaY = point.y - lastSeedPoint.y;
     const distance = Math.hypot(deltaX, deltaY);
-    if (distance < 3 || now - lastSeedAt < 92) return;
+    if (distance < 2 || now - lastSeedAt < 76) return;
 
-    const steps = Math.min(2, Math.max(1, Math.ceil(distance / 48)));
+    const steps = Math.min(3, Math.max(1, Math.ceil(distance / 30)));
     for (let step = 1; step <= steps; step += 1) {
       const progress = step / steps;
       seedAmoeba({

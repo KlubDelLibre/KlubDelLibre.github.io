@@ -465,30 +465,76 @@
 }
 
 .neon-toggle {
-  min-width: 3.5rem;
-  height: 1.75rem;
+  width: 1.8rem;
+  min-width: 0;
+  height: 1.8rem;
+  position: absolute;
+  right: 0.85rem;
+  bottom: 2.7rem;
+  z-index: 5;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgb(0 0 255 / 62%);
+  opacity: 0.58;
+  cursor: pointer;
+  transition: opacity 140ms linear;
+}
+
+.neon-toggle::before,
+.neon-toggle::after {
+  content: "";
+  width: 3px;
+  height: 3px;
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 5;
   transform: translate(-50%, -50%);
-  padding: 0 0.45rem;
-  border: 1px solid var(--ink);
-  border-radius: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.68rem;
-  line-height: 1;
-  letter-spacing: 0;
-  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.neon-toggle::before {
+  background: currentColor;
+  box-shadow:
+    0 -5px 0 currentColor,
+    0 5px 0 currentColor,
+    -5px 0 0 currentColor,
+    5px 0 0 currentColor;
+}
+
+.neon-toggle::after {
+  background: transparent;
+  box-shadow:
+    0 -10px 0 currentColor,
+    0 10px 0 currentColor,
+    -10px 0 0 currentColor,
+    10px 0 0 currentColor;
+  animation: neon-star-breathe 1.8s steps(1, end) infinite;
+}
+
+@keyframes neon-star-breathe {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  28%,
+  62% {
+    opacity: 0.85;
+  }
 }
 
 .neon-toggle:hover,
 .neon-toggle:focus-visible {
-  border-color: var(--link-blue);
-  background: var(--link-blue);
-  color: var(--paper);
+  background: transparent;
+  color: var(--link-blue);
+  opacity: 1;
+}
+
+.neon-toggle:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
 }
 
 .life-page .hero-inner {
@@ -611,6 +657,12 @@
     display: none;
   }
 
+  .neon-toggle {
+    top: 0.55rem;
+    right: 0.55rem;
+    bottom: auto;
+  }
+
   .life-page .hero-inner {
     left: 1rem;
     width: min(12rem, calc(100% - 2rem));
@@ -661,7 +713,8 @@ html[data-theme="neon"] .life-readout {
 }
 
 html[data-theme="neon"] .neon-toggle[aria-pressed="true"] {
-  border-color: #00ff00;
-  background: #00ff00;
-  color: #000000;
+  border: 0;
+  background: transparent;
+  color: #00ff00;
+  opacity: 0.82;
 }
