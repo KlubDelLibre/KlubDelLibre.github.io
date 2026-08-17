@@ -17,14 +17,14 @@
   --link-blue: #0000ff;
   --marker-green: #00ff00;
   --rule: #d9d9d9;
-  --rail: 18rem;
+  --rail: 16rem;
   --content: 49rem;
-  --section-type: 1.3125rem;
+  --section-type: 1.125rem;
   --section-leading: 1.25;
-  --section-meta: 1rem;
-  --footer-type: 1.15625rem;
-  --nav-type: 1.0625rem;
-  --button-type: 0.875rem;
+  --section-meta: 0.875rem;
+  --footer-type: 1rem;
+  --nav-type: 0.9375rem;
+  --button-type: 0.75rem;
   --font-narrow: "Arial Narrow", "Aptos Narrow", "Helvetica Neue Condensed", "Liberation Sans Narrow", Arial, sans-serif;
 }
 
@@ -92,7 +92,7 @@ a:focus-visible {
   left: 0;
   z-index: 10;
   width: var(--rail);
-  padding: 1rem;
+  padding: 0.85rem;
 }
 
 .header-inner {
@@ -115,14 +115,14 @@ a:focus-visible {
 .nav-row,
 .nav-spacer {
   width: 100%;
-  min-height: 1.75rem;
+  min-height: 1.55rem;
   border-bottom: 1px solid var(--ink);
 }
 
 .nav-row {
   display: flex;
   align-items: center;
-  padding: 0.2rem 0.4rem;
+  padding: 0.15rem 0.35rem;
   color: var(--ink);
   font-family: var(--font-narrow);
   font-size: var(--nav-type);
@@ -176,7 +176,7 @@ a:focus-visible {
 
 .nav-partner img {
   width: auto;
-  height: 1.05rem;
+  height: 0.9rem;
   max-width: none;
   flex: 0 0 auto;
 }
@@ -204,10 +204,10 @@ main {
 
 .hero-inner {
   position: absolute;
-  bottom: 1rem;
-  left: calc(-1 * var(--rail) + 1rem);
+  bottom: 0.85rem;
+  left: calc(-1 * var(--rail) + 0.85rem);
   z-index: 2;
-  width: min(17.5rem, calc(100vw - 2rem));
+  width: min(15rem, calc(100vw - 1.7rem));
   pointer-events: none;
 }
 
@@ -246,7 +246,7 @@ main {
 
 .section {
   width: 100%;
-  padding: 4rem 3rem;
+  padding: 3.25rem 2.5rem;
 }
 
 .archive-intro + .cycle-heading {
@@ -262,8 +262,8 @@ main {
 
 .section-grid {
   display: grid;
-  grid-template-columns: 12rem minmax(0, 1fr);
-  gap: 3rem;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 2.5rem;
 }
 
 .section-heading h2,
@@ -296,7 +296,7 @@ main {
 .manifesto .section {
   width: 100%;
   max-width: none;
-  padding: 1.5rem 1.7rem 0;
+  padding: 1.25rem 1.45rem 0;
 }
 
 .manifesto {
@@ -305,11 +305,11 @@ main {
 }
 
 .manifesto .section:last-child {
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 .manifesto .manifesto-unified {
-  padding-top: 2.75rem;
+  padding-top: 2.25rem;
 }
 
 .manifesto .section-grid {
@@ -654,12 +654,12 @@ main {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   align-items: center;
-  min-height: 14rem;
+  min-height: 12rem;
   padding: 0.6rem 0;
 }
 
 .publication-index-list .publication-register-media {
-  width: 9rem;
+  width: 8rem;
   justify-self: start;
 }
 
@@ -707,7 +707,7 @@ main {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
   gap: 0;
-  min-height: 3rem;
+  min-height: 2.6rem;
   padding: 0.42rem 0;
   border-bottom: 1px solid rgb(17 17 17 / 22%);
 }
@@ -824,7 +824,7 @@ main {
 }
 
 .cycle-card-media {
-  width: 9rem;
+  width: 8rem;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-narrow);
@@ -840,7 +840,7 @@ main {
 .cycle-card-media span {
   display: grid;
   place-items: center;
-  font-size: 2.5rem;
+  font-size: 2.15rem;
   line-height: 1;
 }
 
@@ -1190,7 +1190,7 @@ blockquote {
   width: 100%;
   max-width: none;
   margin-left: 0;
-  padding: 1rem 1.7rem 1.25rem;
+  padding: 0.85rem 1.45rem 1rem;
   border-top: 0;
   color: rgb(17 17 17 / 88%);
   font-size: var(--footer-type);
@@ -1211,7 +1211,7 @@ blockquote {
   .site-header {
     position: static;
     width: 100%;
-    padding: 1rem;
+    padding: 0.85rem;
   }
 
   .header-inner {
@@ -1237,9 +1237,9 @@ blockquote {
   }
 
   .hero-inner {
-    bottom: 1rem;
-    left: 1rem;
-    width: min(17.5rem, calc(100% - 2rem));
+    bottom: 0.85rem;
+    left: 0.85rem;
+    width: min(15rem, calc(100% - 1.7rem));
   }
 
   .hero-wordmark {
@@ -1247,23 +1247,23 @@ blockquote {
   }
 
   .section {
-    width: min(100% - 2.7rem, 60rem);
+    width: min(100% - 2.4rem, 60rem);
   }
 
   .site-footer {
     width: 100%;
-    padding-right: 1.35rem;
-    padding-left: 1.35rem;
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
   }
 
   .section {
-    padding: 2.5rem 0;
+    padding: 2.1rem 0;
   }
 
   .archive-section,
   .contact {
     width: 100%;
-    padding: 2.5rem 1.35rem;
+    padding: 2.1rem 1.2rem;
   }
 
   .section-grid,
@@ -1299,9 +1299,9 @@ blockquote {
 
 @media (max-width: 560px) {
   :root {
-    --section-type: 1.3125rem;
-    --section-meta: 1rem;
-    --footer-type: 1.15625rem;
+    --section-type: 1.125rem;
+    --section-meta: 0.875rem;
+    --footer-type: 1rem;
   }
 
   body {
@@ -1323,13 +1323,13 @@ blockquote {
   }
 
   .nav-row {
-    min-height: 1.75rem;
-    padding: 0.2rem 0.4rem;
+    min-height: 1.55rem;
+    padding: 0.15rem 0.35rem;
     font-size: var(--nav-type);
   }
 
   .nav-spacer {
-    min-height: 1.75rem;
+    min-height: 1.55rem;
   }
 
   .hero {
@@ -1337,12 +1337,12 @@ blockquote {
   }
 
   .section {
-    padding: 2rem 0;
+    padding: 1.65rem 0;
   }
 
   .archive-section,
   .contact {
-    padding: 2rem 1.35rem;
+    padding: 1.65rem 1.15rem;
   }
 
   .manifesto .section-heading h2,
@@ -1394,7 +1394,7 @@ blockquote {
   }
 
   .publication-register-row {
-    grid-template-columns: 5.25rem minmax(0, 1fr);
+    grid-template-columns: 4.75rem minmax(0, 1fr);
     gap: 0.25rem 0.85rem;
     min-height: 0;
     padding: 0.75rem 0;
@@ -1402,7 +1402,7 @@ blockquote {
 
   .publication-index-list .publication-register-media {
     grid-row: 1 / span 4;
-    width: 5.25rem;
+    width: 4.75rem;
     align-self: start;
   }
 

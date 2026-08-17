@@ -1,6 +1,6 @@
 .life-page {
-  --life-panel: min(11.25rem, calc(100% - 2rem));
-  --life-control: 2.2rem;
+  --life-panel: min(10rem, calc(100% - 1.7rem));
+  --life-control: 1.95rem;
   --life-fade-length: 12rem;
   --life-fade-tail: 14rem;
   --life-ui: var(--ink);
@@ -68,8 +68,8 @@
 .life-toolbar {
   width: var(--life-panel);
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.85rem;
+  right: 0.85rem;
   left: auto;
   z-index: 4;
   margin: 0;
@@ -77,13 +77,13 @@
   background: var(--paper);
   color: var(--life-ui);
   font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   line-height: 1.2;
   letter-spacing: 0;
 }
 
 .life-toolbar-title {
-  min-height: 1.95rem;
+  min-height: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -105,7 +105,7 @@
 
 .life-toolbar-title-actions {
   width: 100%;
-  min-height: 1.95rem;
+  min-height: 1.75rem;
   display: flex;
   flex: 0 0 auto;
   align-items: center;
@@ -114,7 +114,7 @@
 
 .life-title-button,
 .life-title-icon-button {
-  height: 1.95rem;
+  height: 1.75rem;
   margin: 0;
   padding: 0;
   border: 0;
@@ -132,8 +132,8 @@
 }
 
 .life-title-icon-button {
-  width: 1.75rem;
-  font-size: 0.95rem;
+  width: 1.6rem;
+  font-size: 0.85rem;
   line-height: 1;
 }
 
@@ -154,7 +154,7 @@
   background: var(--paper);
   color: var(--life-ui);
   font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   line-height: 1.3;
   letter-spacing: 0;
   overscroll-behavior: contain;
@@ -444,8 +444,8 @@
 
 .life-readout {
   position: absolute;
-  right: 1rem;
-  bottom: 1rem;
+  right: 0.85rem;
+  bottom: 0.85rem;
   z-index: 4;
   display: flex;
   gap: 0.8rem;
@@ -455,7 +455,7 @@
   background: rgb(255 255 255 / 90%);
   color: rgb(0 0 255 / 55%);
   font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   line-height: 1.25;
   letter-spacing: 0;
 }
@@ -469,8 +469,8 @@
   min-width: 0;
   height: 1.8rem;
   position: absolute;
-  right: 0.85rem;
-  bottom: 2.7rem;
+  right: 0.7rem;
+  bottom: 2.4rem;
   z-index: 5;
   padding: 0;
   border: 0;
@@ -548,8 +548,8 @@
 
 @media (max-width: 920px) {
   .life-page {
-    --life-panel: min(11.25rem, calc(100% - 2rem));
-    --life-control: 2.2rem;
+    --life-panel: min(10rem, calc(100% - 1.7rem));
+    --life-control: 1.95rem;
   }
 
   .life-page .hero {
@@ -558,34 +558,34 @@
   }
 
   .life-toolbar {
-    top: 1rem;
-    right: 1rem;
+    top: 0.85rem;
+    right: 0.85rem;
     left: auto;
   }
 
   .life-page .hero-inner {
-    left: 1.35rem;
+    left: 1.15rem;
   }
 
   .life-readout {
-    right: 1rem;
-    bottom: 1rem;
+    right: 0.85rem;
+    bottom: 0.85rem;
   }
 }
 
 @media (max-width: 560px) {
   .life-page {
     --life-panel: calc(var(--life-control) * 4);
-    --life-control: 2.2rem;
+    --life-control: 1.95rem;
   }
 
   .life-toolbar {
     width: var(--life-panel);
-    top: 0.75rem;
+    top: 0.65rem;
     right: auto;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 0.78rem;
+    font-size: 0.7rem;
   }
 
   .life-toolbar-title,
@@ -664,8 +664,8 @@
   }
 
   .life-page .hero-inner {
-    left: 1rem;
-    width: min(12rem, calc(100% - 2rem));
+    left: 0.85rem;
+    width: min(10.5rem, calc(100% - 1.7rem));
   }
 }
 

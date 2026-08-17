@@ -252,7 +252,6 @@ if (stage && canvas) {
   let generation = 0;
   let population = 0;
   let running = false;
-  let stageVisible = true;
   let activeTool = "pencil";
   let pointerDrawing = false;
   let previousPointerCell = null;
@@ -1128,7 +1127,7 @@ if (stage && canvas) {
 
   const animate = (now) => {
     window.requestAnimationFrame(animate);
-    if (!running || !stageVisible || document.hidden) return;
+    if (!running || document.hidden) return;
 
     const interval = 1000 / numericInputValue(speedInput, 9);
     const elapsed = now - lastStepAt;
@@ -1138,14 +1137,6 @@ if (stage && canvas) {
     for (let index = 0; index < steps && running; index += 1) stepUniverse();
     lastStepAt = now - (elapsed % interval);
   };
-
-  if ("IntersectionObserver" in window) {
-    const visibilityObserver = new IntersectionObserver(([entry]) => {
-      stageVisible = entry.isIntersecting;
-      lastStepAt = performance.now();
-    });
-    visibilityObserver.observe(stage);
-  }
 
   if ("ResizeObserver" in window) {
     const resizeObserver = new ResizeObserver(() => {
