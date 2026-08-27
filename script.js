@@ -1,4 +1,4 @@
-const titleText = "KLUB DEL LIBRE — Lectura, Investigación y Creación Colectiva — Website en constante evolución —";
+const titleText = "KLUB DEL LIBRE — Lectura, Investigación y Creación Colectiva —";
 const titleTrack = `${titleText}${" ".repeat(24)}`;
 let titleOffset = 0;
 
