@@ -1,0 +1,235 @@
+.jornadas-page {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.jornadas-page main,
+.jornadas-page .jornadas-footer {
+  margin-left: 0;
+}
+
+.jornadas-shell {
+  width: min(48rem, calc(100% - 3rem));
+  margin: 0;
+  padding: 2.75rem 0 1.5rem 3rem;
+}
+
+.jornadas-language-toggle {
+  margin-bottom: 1.4rem;
+  font-size: 1rem;
+}
+
+.jornadas-heading {
+  margin: 0;
+}
+
+.jornadas-kicker,
+.jornadas-meta,
+.jornadas-program-intro {
+  margin: 0;
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.jornadas-title {
+  max-width: 47rem;
+  margin: 0.6rem 0 0.85rem;
+  font-size: 3.75rem;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.jornadas-meta {
+  max-width: 42rem;
+}
+
+.jornadas-lead {
+  max-width: 44rem;
+  margin-top: 2rem;
+  font-size: 1.28rem;
+  line-height: 1.22;
+}
+
+.jornadas-lead p,
+.jornadas-saturday p {
+  margin: 0 0 0.85rem;
+}
+
+.jornadas-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 1.25rem 0 0;
+  font-size: 1rem;
+}
+
+.jornadas-actions a {
+  color: var(--link-blue);
+  text-decoration: none;
+}
+
+.jornadas-actions a::before {
+  content: "[";
+}
+
+.jornadas-actions a::after {
+  content: "]";
+}
+
+.jornadas-program {
+  margin-top: 3.1rem;
+}
+
+.jornadas-program h2 {
+  margin: 0 0 0.55rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.jornadas-program-intro {
+  max-width: 46rem;
+  margin-bottom: 1.25rem;
+}
+
+.jornadas-talks {
+  display: grid;
+  gap: 0.68rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jornadas-talks li {
+  display: grid;
+  grid-template-columns: 2.15rem minmax(0, 1fr) 10rem;
+  gap: 0.8rem;
+  align-items: baseline;
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.16;
+}
+
+.talk-index,
+.talk-speaker {
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+.talk-speaker {
+  text-align: right;
+}
+
+.jornadas-saturday {
+  max-width: 46rem;
+  margin-top: 2.3rem;
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
+.jornadas-saturday strong {
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 0.86rem;
+  font-weight: 400;
+}
+
+.jornadas-partners {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  margin-top: 2.5rem;
+}
+
+.jornadas-partners a {
+  display: block;
+  background: transparent;
+}
+
+.jornadas-partners a:hover,
+.jornadas-partners a:focus-visible {
+  background: transparent;
+}
+
+.jornadas-partners img {
+  height: auto;
+  filter: invert(1);
+}
+
+.jornadas-partners .uv-logo {
+  width: 18rem;
+}
+
+.jornadas-partners .juby-logo {
+  width: 11.5rem;
+}
+
+.jornadas-footer {
+  width: min(48rem, calc(100% - 3rem));
+  margin: 0;
+  padding: 1rem 0 2.5rem 3rem;
+  border: 0;
+  color: rgb(17 17 17 / 70%);
+  font-size: 0.84rem;
+  line-height: 1.2;
+}
+
+.jornadas-footer p {
+  margin: 0 0 0.8rem;
+}
+
+.jornadas-footer a {
+  color: var(--link-blue);
+}
+
+@media (max-width: 760px) {
+  .jornadas-shell,
+  .jornadas-footer {
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .jornadas-shell {
+    padding-top: 1.25rem;
+  }
+
+  .jornadas-title {
+    font-size: 2.35rem;
+    line-height: 0.98;
+  }
+
+  .jornadas-lead {
+    font-size: 1.12rem;
+  }
+
+  .jornadas-talks li {
+    grid-template-columns: 1.8rem minmax(0, 1fr);
+    gap: 0.25rem 0.65rem;
+  }
+
+  .talk-speaker {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .jornadas-partners {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .jornadas-partners .uv-logo {
+    width: 12rem;
+  }
+
+  .jornadas-partners .juby-logo {
+    width: 8rem;
+  }
+}

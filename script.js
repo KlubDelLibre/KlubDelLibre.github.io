@@ -1,8 +1,23 @@
-const titleText = "KLUB DEL LIBRE — Lectura, Investigación y Creación Colectiva —";
-const titleTrack = `${titleText}${" ".repeat(24)}`;
+const i18nText = (key, spanishFallback) => window.KDLI18n?.t(key, spanishFallback) || spanishFallback;
+const englishActive = () => window.KDLI18n?.language === "en";
+const titleTexts = {
+  es: "KLUB DEL LIBRE — Lectura, Investigación y Creación Colectiva —",
+  en: "KLUB DEL LIBRE — Reading, Research and Collective Creation —",
+};
+let titleText = titleTexts.es;
+let titleTrack = `${titleText}${" ".repeat(24)}`;
 let titleOffset = 0;
 
-document.title = titleText;
+const setTitleLanguage = () => {
+  titleText = englishActive() ? titleTexts.en : titleTexts.es;
+  titleTrack = `${titleText}${" ".repeat(24)}`;
+  titleOffset = 0;
+  document.title = titleText;
+};
+
+setTitleLanguage();
+window.addEventListener("kdl:languagechange", setTitleLanguage);
+
 window.setInterval(() => {
   titleOffset = (titleOffset + 1) % titleTrack.length;
   document.title = titleTrack.slice(titleOffset) + titleTrack.slice(0, titleOffset);
@@ -24,11 +39,15 @@ const setNeonTheme = (enabled, remember = true) => {
     neonToggle.setAttribute("aria-pressed", String(enabled));
     neonToggle.setAttribute(
       "aria-label",
-      enabled ? "Desactivar modo neón oscuro" : "Activar modo neón oscuro",
+      enabled
+        ? i18nText("neon.disable", "Desactivar modo neón oscuro")
+        : i18nText("neon.enable", "Activar modo neón oscuro"),
     );
     neonToggle.setAttribute(
       "title",
-      enabled ? "Volver al modo claro" : "Activar modo neón oscuro",
+      enabled
+        ? i18nText("neon.return", "Volver al modo claro")
+        : i18nText("neon.enable", "Activar modo neón oscuro"),
     );
   }
 
@@ -57,6 +76,9 @@ try {
 setNeonTheme(savedNeonTheme, false);
 neonToggle?.addEventListener("click", () => {
   setNeonTheme(document.documentElement.dataset.theme !== "neon");
+});
+window.addEventListener("kdl:languagechange", () => {
+  setNeonTheme(document.documentElement.dataset.theme === "neon", false);
 });
 
 const sections = [...document.querySelectorAll("main section[id]")];
@@ -153,20 +175,21 @@ if (arenaChannels.length) {
     const media = document.createElement("span");
     const copy = document.createElement("span");
     const title = document.createElement("span");
-    const blockTitle = block.title || block.source?.title || "Archivo sin título";
+    const blockTitle = block.title || block.source?.title || i18nText("arena.untitled", "Archivo sin título");
     const imageSource = block.image?.small?.src || block.image?.src;
     const blockKind =
       block.type === "Attachment"
-        ? "Archivo"
+        ? i18nText("arena.file", "Archivo")
         : block.type === "Link"
-          ? "Enlace"
-          : block.type || "Bloque";
+          ? i18nText("arena.link", "Enlace")
+          : block.type || i18nText("arena.block", "Bloque");
 
     card.className = "arena-card";
     card.href = `https://www.are.na/block/${encodeURIComponent(block.id)}`;
     card.target = "_blank";
     card.rel = "noopener noreferrer";
-    card.setAttribute("aria-label", `${blockTitle}. Abrir en Are.na`);
+    card.dataset.arenaBlockTitle = blockTitle;
+    card.setAttribute("aria-label", `${blockTitle}. ${i18nText("arena.open", "Abrir en Are.na")}`);
 
     media.className = "arena-card-media";
     if (imageSource) {
@@ -178,6 +201,10 @@ if (arenaChannels.length) {
       media.append(image);
     } else {
       media.textContent = blockKind;
+      media.dataset.arenaKindEs =
+        block.type === "Attachment" ? "Archivo" : block.type === "Link" ? "Enlace" : block.type || "Bloque";
+      media.dataset.arenaKindEn =
+        block.type === "Attachment" ? "File" : block.type === "Link" ? "Link" : block.type || "Block";
     }
 
     copy.className = "arena-card-copy";
@@ -270,8 +297,32 @@ if (arenaChannels.length) {
         enableAutomaticLoop(carousel, track, cards);
       })
       .catch(() => {
-        status.textContent = "Este canal no está disponible ahora. Puedes abrirlo desde su título.";
+        status.dataset.arenaState = "unavailable";
+        status.textContent = i18nText(
+          "arena.unavailable",
+          "Este canal no está disponible ahora. Puedes abrirlo desde su título.",
+        );
         carousel.setAttribute("aria-busy", "false");
       });
+  });
+
+  window.addEventListener("kdl:languagechange", () => {
+    document.querySelectorAll(".arena-card[data-arena-block-title]").forEach((card) => {
+      card.setAttribute(
+        "aria-label",
+        `${card.dataset.arenaBlockTitle}. ${i18nText("arena.open", "Abrir en Are.na")}`,
+      );
+    });
+
+    document.querySelectorAll("[data-arena-kind-es]").forEach((media) => {
+      media.textContent = englishActive() ? media.dataset.arenaKindEn : media.dataset.arenaKindEs;
+    });
+
+    document.querySelectorAll('[data-arena-status][data-arena-state="unavailable"]').forEach((status) => {
+      status.textContent = i18nText(
+        "arena.unavailable",
+        "Este canal no está disponible ahora. Puedes abrirlo desde su título.",
+      );
+    });
   });
 }

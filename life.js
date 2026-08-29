@@ -33,6 +33,8 @@ if (stage && canvas) {
   const playButton = document.querySelector('[data-life-action="play"]');
   const pauseButton = document.querySelector('[data-life-action="pause"]');
   const mobileToolbarQuery = window.matchMedia("(max-width: 560px)");
+  const lifeLabel = (spanish, english) =>
+    document.documentElement.lang === "en" ? english : spanish;
 
   const patterns = {
     acorn: [
@@ -520,7 +522,9 @@ if (stage && canvas) {
     toolbar.classList.toggle("is-minimized", toolbarMinimized && !infoOpen);
 
     const expanded = !toolbarMinimized;
-    const minimizeLabel = expanded ? "Minimizar panel" : "Expandir panel";
+    const minimizeLabel = expanded
+      ? lifeLabel("Minimizar panel", "Minimise panel")
+      : lifeLabel("Expandir panel", "Expand panel");
     minimizeButton.setAttribute("aria-expanded", String(expanded));
     minimizeButton.setAttribute("aria-label", minimizeLabel);
     minimizeButton.title = minimizeLabel;
@@ -607,6 +611,7 @@ if (stage && canvas) {
   infoButton.addEventListener("click", () => setInfoOpen(!infoOpen));
   minimizeButton.addEventListener("click", () => setToolbarMinimized(!toolbarMinimized));
   mobileToolbarQuery.addEventListener("change", () => syncToolbarView());
+  window.addEventListener("kdl:languagechange", () => syncToolbarView());
 
   const setHardEdges = () => {
     engine.loopCurrentState = function clearGhostCells() {

@@ -24,8 +24,8 @@
     />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-    <link rel="stylesheet" href="style.css?v=20260817b" />
-    <link rel="stylesheet" href="life.css?v=20260827a" />
+    <link rel="stylesheet" href="style.css?v=20260827c" />
+    <link rel="stylesheet" href="life.css?v=20260827c" />
     <link rel="icon" type="image/png" href="assets/img/favicon/favicon-96x96.png" sizes="96x96" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon/favicon.svg" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
@@ -34,14 +34,16 @@
     <link rel="manifest" href="assets/img/favicon/site.webmanifest" />
     <link rel="me" href="https://kolektiva.social/@klub_del_libre" />
     <title>KLUB DEL LIBRE — Lectura, Investigación y Creación Colectiva —</title>
-    <script src="script.js?v=20260827a" defer></script>
-    <script type="module" src="life.js?v=20260827a"></script>
+    <script src="language.js?v=20260827c" defer></script>
+    <script src="script.js?v=20260827c" defer></script>
+    <script type="module" src="life.js?v=20260827c"></script>
   </head>
-  <body class="life-page">
+  <body class="life-page" data-page="main">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header class="site-header" aria-label="Cabecera principal">
       <div class="header-inner">
+        <button class="language-toggle" type="button" data-language-toggle aria-pressed="false">[ENGLISH]</button>
         <nav class="site-nav" aria-label="Secciones">
           <a class="nav-row" href="#inicio">INICIO</a>
           <a class="nav-row" href="#manifiesto">MANIFIESTO</a>
@@ -262,7 +264,7 @@
 
           <div class="life-readout" aria-live="off">
             <span>GEN <output data-life-generation>000000</output></span>
-            <span>POB <output data-life-population>00000</output></span>
+            <span><span class="life-population-label">POB</span> <output data-life-population>00000</output></span>
             <span>B3/S23</span>
           </div>
         </div>
