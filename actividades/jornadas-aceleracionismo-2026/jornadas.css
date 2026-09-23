@@ -8,6 +8,7 @@
   --helvetica: "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --col: 50rem;            /* columna de contenido */
   --pad-left: 3rem;
+  --k: 0.8;                /* escala general del contenido (−20 %) */
   min-height: 100vh;
   background: var(--paper);
   color: var(--ink);
@@ -52,9 +53,9 @@
 
 /* ---------------------------------------------------------------- bloque 1 */
 .j-actividades {
-  margin: 0 0 clamp(2.5rem, 9cqi, 6rem);
-  font-size: calc((100vw - 2rem) / 15);
-  font-size: calc(100cqi / 14.6);
+  margin: 0 0 clamp(2rem, 7.2cqi, 4.8rem);
+  font-size: calc((100vw - 2rem) / 15 * var(--k));
+  font-size: calc(100cqi / 14.6 * var(--k));
   font-weight: 500;
   line-height: 0.92;
   letter-spacing: -0.075em;
@@ -65,9 +66,9 @@
    jornadas de arranca donde acaba la primera c; y pensamiento al 37 % del bloque;
    especulativo, con su última letra bajo la última de pensamiento */
 .j-titulo {
-  margin: 0 0 clamp(2rem, 7cqi, 4.5rem);
-  font-size: min(calc((100vw - 2rem) / 7.35), 6.8rem);
-  font-size: calc(100cqi / 7.35);
+  margin: 0 0 clamp(1.6rem, 5.6cqi, 3.6rem);
+  font-size: min(calc((100vw - 2rem) / 7.35 * var(--k)), 5.44rem);
+  font-size: calc(100cqi / 7.35 * var(--k));
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: -0.06em;
@@ -111,7 +112,7 @@
 /* ---------------------------------------------------------------- texto corrido */
 .jornadas-lead {
   max-width: 40rem;
-  font-size: max(1.08rem, calc(100cqi / 34));
+  font-size: max(0.95rem, calc(100cqi / 34 * var(--k)));
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
@@ -125,7 +126,7 @@
 .jornadas-actions {
   margin: 1.6rem 0 0;
   font-family: var(--font-narrow);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .jornadas-actions a {
@@ -157,13 +158,13 @@
 
 /* ---------------------------------------------------------------- bloque 3: los días */
 .j-dia {
-  margin-top: clamp(3rem, 11cqi, 7rem);
+  margin-top: clamp(2.4rem, 8.8cqi, 5.6rem);
 }
 
 .j-cab,
 .j-sede {
   margin: 0;
-  font-size: max(1.2rem, calc(100cqi / 18.8));
+  font-size: max(1rem, calc(100cqi / 18.8 * var(--k)));
   font-weight: 400;
   line-height: 0.86;
   letter-spacing: -0.05em;
@@ -176,16 +177,16 @@
 
 .j-entrada {
   margin: 0.12em 0 0;
-  font-size: max(0.95rem, calc(100cqi / 18.8 * 0.65));
+  font-size: max(0.8rem, calc(100cqi / 18.8 * 0.65 * var(--k)));
   line-height: 1;
   letter-spacing: -0.04em;
 }
 
 .j-ponencias {
-  margin: clamp(1.4rem, 4cqi, 2.4rem) 0 0;
+  margin: clamp(1.1rem, 3.2cqi, 1.9rem) 0 0;
   padding: 0;
   list-style: none;
-  font-size: max(1.05rem, calc(100cqi / 30));
+  font-size: max(0.95rem, calc(100cqi / 30 * var(--k)));
   line-height: 1.12;
   letter-spacing: -0.025em;
 }
@@ -200,8 +201,8 @@
 
 .j-franjas {
   max-width: 40rem;
-  margin: clamp(1.4rem, 4cqi, 2.4rem) 0 0;
-  font-size: max(1.05rem, calc(100cqi / 34));
+  margin: clamp(1.1rem, 3.2cqi, 1.9rem) 0 0;
+  font-size: max(0.95rem, calc(100cqi / 34 * var(--k)));
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
@@ -215,11 +216,11 @@
 
 /* ---------------------------------------------------------------- bloque 4: logos */
 .jornadas-partners {
-  --logo-h: 4.2rem;       /* alto de la tinta de los dos logos */
+  --logo-h: 3.36rem;       /* alto de la tinta de los dos logos */
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-top: clamp(3rem, 10cqi, 6rem);
+  margin-top: clamp(2.4rem, 8cqi, 4.8rem);
 }
 
 .jornadas-partners a {
@@ -288,7 +289,7 @@
 
   /* mismos altos de tinta, más pequeños: los dos caben en una línea de 375 px */
   .jornadas-partners {
-    --logo-h: 2.6rem;
+    --logo-h: 2.1rem;
     gap: 1rem;
   }
 }
