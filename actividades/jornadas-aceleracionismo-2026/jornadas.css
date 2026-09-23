@@ -1,7 +1,7 @@
 /*
   Jornadas de aceleracionismo — misma lógica que el cartel:
   Helvética apretada, titular en minúsculas escalonado, días al estilo
-  «VIE 02.10.26 · 17-21 H @», grano de imprenta y trozos de palabra «comidos».
+  «VIE 02.10.26 · 17-21 H @» y grano de imprenta.
 */
 
 .jornadas-page {
@@ -13,13 +13,6 @@
   color: var(--ink);
   font-family: var(--helvetica);
   font-stretch: normal;
-}
-
-.j-filtros {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
 }
 
 /* ---------------------------------------------------------------- grano de imprenta
@@ -55,37 +48,6 @@
 
 .jornadas-heading {
   margin: 0;
-}
-
-/* ---------------------------------------------------------------- trozos comidos
-   cada trozo lleva su dosis (c1 suave, c2 media, c3 fuerte); la escala del
-   filtro depende del tamaño de letra del bloque en el que está */
-.c {
-  display: inline-block;
-}
-
-.c1 { filter: var(--comido-1, none); }
-.c2 { filter: var(--comido-2, none); }
-.c3 { filter: var(--comido-3, none); }
-
-.j-titulo {
-  --comido-1: url(#comido-g1);
-  --comido-2: url(#comido-g2);
-  --comido-3: url(#comido-g3);
-}
-
-.j-actividades,
-.j-cab,
-.j-sede {
-  --comido-1: url(#comido-m1);
-  --comido-2: url(#comido-m2);
-  --comido-3: url(#comido-m3);
-}
-
-.j-entrada {
-  --comido-1: url(#comido-p1);
-  --comido-2: url(#comido-p2);
-  --comido-3: url(#comido-p3);
 }
 
 /* ---------------------------------------------------------------- bloque 1 */
@@ -159,8 +121,7 @@
   margin: 0 0 0.85rem;
 }
 
-/* ---------------------------------------------------------------- enviar propuesta
-   en el hueco blanco de la derecha, centrado; en pantallas estrechas va en línea */
+/* ---------------------------------------------------------------- enviar propuesta */
 .jornadas-actions {
   margin: 1.6rem 0 0;
   font-family: var(--font-narrow);
@@ -319,27 +280,6 @@
 
   .jornadas-shell {
     padding-top: 1.25rem;
-  }
-
-  /* a la mitad de tamaño, el filtro baja un escalón para que no se coma la letra */
-  .j-titulo {
-    --comido-1: url(#comido-m1);
-    --comido-2: url(#comido-m2);
-    --comido-3: url(#comido-m3);
-  }
-
-  .j-actividades,
-  .j-cab,
-  .j-sede {
-    --comido-1: url(#comido-p1);
-    --comido-2: url(#comido-p2);
-    --comido-3: url(#comido-p3);
-  }
-
-  .j-entrada {
-    --comido-1: none;
-    --comido-2: none;
-    --comido-3: none;
   }
 
   .j-franjas {

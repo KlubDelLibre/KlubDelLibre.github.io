@@ -345,11 +345,11 @@
     { selector: ".skip-link", text: "Skip to content" },
     {
       selector: ".j-actividades",
-      html: '<span class="c c1">talk</span>s, <span class="c c2">symp</span>osia, <span class="c c3">open</span> mic,<br>dj <span class="c c1">set</span> &amp; <span class="c c2">perform</span>ance',
+      html: 'talks, symposia, open mic,<br>dj set &amp; performance',
     },
     {
       selector: ".j-titulo",
-      html: '<span class="j-l1">con<span class="c c2">feren</span>ce on</span> <span class="j-l2">ac<span class="c c1">celera</span>tio<span class="c c2">nism</span></span> <span class="j-l3"><span class="j-y">and</span> <span class="c c1">spec</span>ula<span class="c c3">tive</span></span> <span class="j-l4">th<span class="c c2">ough</span>t</span>',
+      html: '<span class="j-l1">conference on</span> <span class="j-l2">accelerationism</span> <span class="j-l3"><span class="j-y">and</span> speculative</span> <span class="j-l4">thought</span>',
     },
     {
       selector: ".jornadas-lead p:nth-child(1)",
@@ -362,9 +362,9 @@
     { selector: ".j-propuesta a", text: "Submit a proposal" },
     {
       selector: ".j-dia-1 .j-cab",
-      html: 'FRI <span class="c c1">02.10</span>.26 · <span class="c c2">17-21</span> H @',
+      html: 'FRI 02.10.26 · 17-21 H @',
     },
-    { selector: ".j-entrada", html: 'free <span class="c c2">entry</span>' },
+    { selector: ".j-entrada", html: 'free entry' },
     { selector: ".j-ponencias li:nth-child(1) .talk-title", text: "Intelligence, spirit and anonymity: pedagogical implications" },
     { selector: ".j-ponencias li:nth-child(2) .talk-title", html: "Presentation of the book <em>Homo Noumenon</em>" },
     { selector: ".j-ponencias li:nth-child(3) .talk-title", text: "Ascetic accelerationism" },
@@ -373,7 +373,7 @@
     { selector: ".j-ponencias li:nth-child(6) .talk-title", text: "Manifesto for a disintegrationist aesthetics" },
     {
       selector: ".j-dia-2 .j-cab",
-      html: '<span class="c c2">SAT</span> 03.10.26 · <span class="c c3">10-13</span> / 18-22 H @',
+      html: 'SAT 03.10.26 · 10-13 / 18-22 H @',
     },
     {
       selector: ".j-franjas p:nth-child(1)",
