@@ -134,6 +134,17 @@
   text-decoration: none;
 }
 
+/* al pasar por encima: fondo azul y letra blanca, como el resto de la web.
+   Sin esto, el color azul de arriba gana al a:hover de style.css y el texto
+   desaparece sobre el fondo azul */
+.jornadas-actions a:hover,
+.jornadas-actions a:focus-visible,
+.jornadas-footer a:hover,
+.jornadas-footer a:focus-visible {
+  background: var(--link-blue);
+  color: #ffffff;
+}
+
 .jornadas-actions a::before {
   content: "[";
 }
@@ -216,7 +227,7 @@
 
 /* ---------------------------------------------------------------- bloque 4: logos */
 .jornadas-partners {
-  --logo-h: 3.36rem;       /* alto de la tinta de los dos logos */
+  --logo-h: 3.36rem;       /* alto de la tinta de los logos */
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -233,10 +244,11 @@
   background: transparent;
 }
 
-/* los dos logos con la tinta al mismo alto, así quedan alineados arriba, abajo y
+/* los logos con la tinta al mismo alto, así quedan alineados arriba, abajo y
    por el centro. La imagen de la UV trae mucho aire arriba y abajo (96 px de 450):
    se recorta con object-fit a la proporción de su tinta (778 × 258).
-   Además viene en blanco y se invierte; la de Juby ya es negra sobre transparente */
+   Además viene en blanco y se invierte; las de Juby y KDL ya son negras sobre
+   transparente y sin margen, así que encajan solas */
 .jornadas-partners img {
   height: var(--logo-h);
   width: auto;
@@ -248,10 +260,11 @@
   filter: invert(1);
 }
 
+/* el pie ocupa todo el ancho de la página, con el mismo margen a los dos lados */
 .jornadas-footer {
-  width: min(var(--col), 100%);
+  width: 100%;
   margin: 0;
-  padding: 1rem 0 2.5rem var(--pad-left);
+  padding: 1rem var(--pad-left) 2.5rem;
   border: 0;
   color: rgb(17 17 17 / 70%);
   font-family: var(--font-narrow);
@@ -287,7 +300,7 @@
     max-width: none;
   }
 
-  /* mismos altos de tinta, más pequeños: los dos caben en una línea de 375 px */
+  /* mismos altos de tinta, más pequeños: los tres caben en una línea de 375 px */
   .jornadas-partners {
     --logo-h: 2.1rem;
     gap: 1rem;
