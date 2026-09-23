@@ -366,7 +366,7 @@
     },
     { selector: ".j-entrada", html: 'free entry' },
     { selector: ".j-ponencias li:nth-child(1) .talk-title", text: "Intelligence, spirit and anonymity: pedagogical implications" },
-    { selector: ".j-ponencias li:nth-child(2) .talk-title", html: "Presentation of the book <em>Homo Noumenon</em>" },
+    { selector: ".j-ponencias li:nth-child(2) .talk-title", text: "Technocapitalism as the matrix for configuring the Real" },
     { selector: ".j-ponencias li:nth-child(3) .talk-title", text: "Ascetic accelerationism" },
     { selector: ".j-ponencias li:nth-child(4) .talk-title", text: "Acceleration movement for a lost cause" },
     { selector: ".j-ponencias li:nth-child(5) .talk-title", text: "Robotina will be a whore too" },
