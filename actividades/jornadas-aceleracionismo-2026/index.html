@@ -11,27 +11,120 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <link rel="stylesheet" href="../../style.css?v=20260827c" />
-    <link rel="stylesheet" href="jornadas.css?v=20260827c" />
+    <link rel="stylesheet" href="jornadas.css?v=20260923b" />
     <link rel="icon" type="image/png" href="../../assets/img/favicon/favicon-96x96.png" sizes="96x96" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon/favicon.svg" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
     <link rel="shortcut icon" href="../../assets/img/favicon/favicon.ico" media="(prefers-color-scheme: light)" />
     <title>I Jornadas de Aceleracionismo y Pensamiento Especulativo — KLUB DEL LIBRE</title>
-    <script src="../../language.js?v=20260827c" defer></script>
+    <script src="../../language.js?v=20260923a" defer></script>
   </head>
   <body class="jornadas-page" data-page="jornadas">
+    <!--
+      Efecto «comido» del cartel: ruido metido en la tinta, difusión que lo
+      agrupa en manchas y umbral. Tres dosis (1 suave, 2 media, 3 fuerte) en tres
+      escalas de letra (g grande, m media, p pequeña); jornadas.css elige cuál.
+    -->
+    <svg class="j-filtros" aria-hidden="true" focusable="false" width="0" height="0">
+      <defs>
+        <filter id="comido-g1" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.308" numOctaves="2" seed="3" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="0.8" k4="-0.4" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="1.3" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-g2" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.2" numOctaves="2" seed="11" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="-0.45" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="2" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-g3" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.133" numOctaves="2" seed="27" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="1" k4="-0.5" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="3" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-m1" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.678" numOctaves="2" seed="5" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="0.8" k4="-0.4" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="0.59" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-m2" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.444" numOctaves="2" seed="13" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="-0.45" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="0.9" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-m3" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.296" numOctaves="2" seed="29" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="1" k4="-0.5" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="1.35" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-p1" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="1.379" numOctaves="2" seed="7" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="0.8" k4="-0.4" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="0.29" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-p2" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.909" numOctaves="2" seed="17" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="-0.45" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="0.44" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+        <filter id="comido-p3" x="-8%" y="-25%" width="116%" height="150%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.606" numOctaves="2" seed="31" result="ruido" />
+          <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="ruidoA" />
+          <feComposite in="SourceAlpha" in2="ruidoA" operator="arithmetic" k1="0" k2="1" k3="1" k4="-0.5" result="mezcla" />
+          <feGaussianBlur in="mezcla" stdDeviation="0.66" result="difuso" />
+          <feComponentTransfer in="difuso" result="umbral"><feFuncA type="discrete" tableValues="0 0 0 1 1" /></feComponentTransfer>
+          <feFlood flood-color="#111111" result="tinta" />
+          <feComposite in="tinta" in2="umbral" operator="in" />
+        </filter>
+      </defs>
+    </svg>
+
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <main class="jornadas-shell" id="contenido">
       <button class="language-toggle jornadas-language-toggle" type="button" data-language-toggle aria-pressed="false">[ENGLISH]</button>
 
       <header class="jornadas-heading">
-        <p class="jornadas-kicker">ACTIVIDAD 01 · 2–3 OCTUBRE 2026</p>
-        <h1 class="jornadas-title">I JORNADAS DE ACELERACIONISMO Y PENSAMIENTO ESPECULATIVO</h1>
-        <p class="jornadas-meta">
-          2–3 OCTUBRE 2026<br />
-          UNIVERSITAT DE VALÈNCIA · CENTRO CULTURAL PROYECTO JUBY
-        </p>
+        <p class="j-actividades"><span class="c c1">ponenc</span>ias, <span class="c c2">simp</span>osios, <span class="c c3">micro</span> abierto,<br />dj <span class="c c1">set</span> &amp; <span class="c c2">perform</span>ance</p>
+
+        <h1 class="j-titulo">
+          <span class="j-l1">jor<span class="c c2">nadas</span> de</span>
+          <span class="j-l2">ac<span class="c c1">elera</span>cio<span class="c c2">nismo</span></span>
+          <span class="j-l3"><span class="j-y">y</span> <span class="c c1">pens</span>ami<span class="c c3">ento</span></span>
+          <span class="j-l4">espe<span class="c c2">culat</span>ivo</span>
+        </h1>
 
         <div class="jornadas-lead">
           <p>
@@ -46,59 +139,38 @@
           </p>
         </div>
 
-        <p class="jornadas-actions">
+        <p class="jornadas-actions j-propuesta">
           <a href="https://form.jotform.com/261442561121042" target="_blank" rel="noopener noreferrer">Enviar una propuesta</a>
-          <a href="https://linktr.ee/proyectojuby" target="_blank" rel="noopener noreferrer">Proyecto Juby</a>
         </p>
       </header>
 
-      <section class="jornadas-program" aria-labelledby="programa-jornadas">
-        <h2 id="programa-jornadas">PONENCIAS PREVISTAS</h2>
-        <p class="jornadas-program-intro">
-          VIERNES 2 DE OCTUBRE · 17:00–21:00 · FACULTAT DE FILOSOFIA I CIÈNCIES DE L’EDUCACIÓ · SALÓN DE GRADOS
-        </p>
+      <section class="j-dia j-dia-1" aria-labelledby="dia-1">
+        <h2 class="j-cab" id="dia-1">VIE <span class="c c1">02.10</span>.26 · <span class="c c2">17-21</span> H @</h2>
+        <p class="j-sede"><span class="c c1">Facul</span>tat de <span class="c c2">Filoso</span>fia<br />i <span class="c c1">Ciènci</span>es de l’<span class="c c3">Educa</span>ció<br /><em>Saló de <span class="c c1">Graus</span></em></p>
+        <p class="j-entrada">entrada <span class="c c2">libre</span></p>
 
-        <ol class="jornadas-talks">
-          <li>
-            <span class="talk-index">01</span>
-            <span class="talk-title">Inteligencia, espíritu y anonimato: implicaciones pedagógicas</span>
-            <span class="talk-speaker">Joshua Beneite</span>
-          </li>
-          <li>
-            <span class="talk-index">02</span>
-            <span class="talk-title">Presentación del libro <em>Homo Noumenon</em></span>
-            <span class="talk-speaker">Luis Giner</span>
-          </li>
-          <li>
-            <span class="talk-index">03</span>
-            <span class="talk-title">Aceleracionismo ascético</span>
-            <span class="talk-speaker">Xavier Laudo</span>
-          </li>
-          <li>
-            <span class="talk-index">04</span>
-            <span class="talk-title">Movimiento de aceleración por una causa perdida</span>
-            <span class="talk-speaker">Diego Medina</span>
-          </li>
-          <li>
-            <span class="talk-index">05</span>
-            <span class="talk-title">Robotina también será puta</span>
-            <span class="talk-speaker">Joan Palomares</span>
-          </li>
-          <li>
-            <span class="talk-index">06</span>
-            <span class="talk-title">Manifiesto para una estética desintegracionista</span>
-            <span class="talk-speaker">May Polo</span>
-          </li>
-        </ol>
+        <ul class="j-ponencias">
+          <li><span class="talk-speaker">Joshua Beneite</span>: <span class="talk-title">Inteligencia, espíritu y anonimato: implicaciones pedagógicas</span></li>
+          <li><span class="talk-speaker">Luis Giner</span>: <span class="talk-title">Presentación del libro <em>Homo Noumenon</em></span></li>
+          <li><span class="talk-speaker">Xavier Laudo</span>: <span class="talk-title">Aceleracionismo ascético</span></li>
+          <li><span class="talk-speaker">Diego Medina</span>: <span class="talk-title">Movimiento de aceleración por una causa perdida</span></li>
+          <li><span class="talk-speaker">Joan Palomares</span>: <span class="talk-title">Robotina también será puta</span></li>
+          <li><span class="talk-speaker">May Polo</span>: <span class="talk-title">Manifiesto para una estética desintegracionista</span></li>
+        </ul>
+      </section>
 
-        <div class="jornadas-saturday">
+      <section class="j-dia j-dia-2" aria-labelledby="dia-2">
+        <h2 class="j-cab" id="dia-2"><span class="c c2">SAB</span> 03.10.26 · <span class="c c3">10-13</span> / 18-22 H @</h2>
+        <p class="j-sede"><span class="c c1">Centro</span> Cultural <span class="c c3">Juby</span><br /><em>La <span class="c c2">Petxina</span></em></p>
+
+        <div class="j-franjas">
           <p>
-            <strong>SÁBADO 3 DE OCTUBRE · 10:00–13:00 · CENTRO CULTURAL PROYECTO JUBY</strong><br />
+            <span class="j-hora">10-13 H</span>
             Presentación de las propuestas recibidas y micro abierto para cualquier persona
             que quiera participar, sin requisitos de forma, titulación o estructura previa.
           </p>
           <p>
-            <strong>SÁBADO 3 DE OCTUBRE · 18:00–22:00 · CIERRE DE LAS JORNADAS</strong><br />
+            <span class="j-hora">18-22 H · cierre de las jornadas</span>
             Porque el pensamiento especulativo no puede disociarse de la experiencia sensible
             y corpórea, las jornadas cierran cruzando la línea entre la teoría y la carne
             mediante la dispersión corporal y el exceso sonoro: tardeo con sesión de DJ y
@@ -120,10 +192,10 @@
         <a href="https://linktr.ee/proyectojuby" target="_blank" rel="noopener noreferrer" aria-label="Centro Cultural Proyecto Juby">
           <img
             class="juby-logo"
-            src="../../assets/img/partners/proyecto-juby-logo.png"
+            src="../../assets/img/partners/proyecto-juby-logo-alpha.png"
             alt="C. C. Proyecto Juby"
-            width="300"
-            height="148"
+            width="881"
+            height="311"
           />
         </a>
       </section>

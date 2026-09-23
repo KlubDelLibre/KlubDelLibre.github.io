@@ -1,7 +1,38 @@
+/*
+  Jornadas de aceleracionismo — misma lógica que el cartel:
+  Helvética apretada, titular en minúsculas escalonado, días al estilo
+  «VIE 02.10.26 · 17-21 H @», grano de imprenta y trozos de palabra «comidos».
+*/
+
 .jornadas-page {
+  --helvetica: "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --col: 50rem;            /* columna de contenido */
+  --pad-left: 3rem;
   min-height: 100vh;
   background: var(--paper);
   color: var(--ink);
+  font-family: var(--helvetica);
+  font-stretch: normal;
+}
+
+.j-filtros {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------- grano de imprenta
+   motas negras sueltas sobre todo, como el grano general del cartel */
+.jornadas-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -5 0 0 0 1.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  opacity: 0.35;
 }
 
 .jornadas-page main,
@@ -10,13 +41,15 @@
 }
 
 .jornadas-shell {
-  width: min(48rem, calc(100% - 3rem));
+  container-type: inline-size;
+  width: min(var(--col), 100%);
   margin: 0;
-  padding: 2.75rem 0 1.5rem 3rem;
+  padding: 2.75rem 0 1.5rem var(--pad-left);
 }
 
 .jornadas-language-toggle {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
+  font-family: var(--font-narrow);
   font-size: 1rem;
 }
 
@@ -24,48 +57,114 @@
   margin: 0;
 }
 
-.jornadas-kicker,
-.jornadas-meta,
-.jornadas-program-intro {
-  margin: 0;
-  font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.9rem;
-  line-height: 1.2;
-  text-transform: uppercase;
+/* ---------------------------------------------------------------- trozos comidos
+   cada trozo lleva su dosis (c1 suave, c2 media, c3 fuerte); la escala del
+   filtro depende del tamaño de letra del bloque en el que está */
+.c {
+  display: inline-block;
 }
 
-.jornadas-title {
-  max-width: 47rem;
-  margin: 0.6rem 0 0.85rem;
-  font-size: 3.75rem;
+.c1 { filter: var(--comido-1, none); }
+.c2 { filter: var(--comido-2, none); }
+.c3 { filter: var(--comido-3, none); }
+
+.j-titulo {
+  --comido-1: url(#comido-g1);
+  --comido-2: url(#comido-g2);
+  --comido-3: url(#comido-g3);
+}
+
+.j-actividades,
+.j-cab,
+.j-sede {
+  --comido-1: url(#comido-m1);
+  --comido-2: url(#comido-m2);
+  --comido-3: url(#comido-m3);
+}
+
+.j-entrada {
+  --comido-1: url(#comido-p1);
+  --comido-2: url(#comido-p2);
+  --comido-3: url(#comido-p3);
+}
+
+/* ---------------------------------------------------------------- bloque 1 */
+.j-actividades {
+  margin: 0 0 clamp(2.5rem, 9cqi, 6rem);
+  font-size: calc((100vw - 2rem) / 15);
+  font-size: calc(100cqi / 14.6);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+}
+
+/* ---------------------------------------------------------------- bloque 2: titular
+   medidas del cartel, en «em» del cuerpo grande (el de aceleracionismo):
+   jornadas de arranca donde acaba la primera c; y pensamiento al 37 % del bloque;
+   especulativo, con su última letra bajo la última de pensamiento */
+.j-titulo {
+  margin: 0 0 clamp(2rem, 7cqi, 4.5rem);
+  font-size: min(calc((100vw - 2rem) / 7.35), 6.8rem);
+  font-size: calc(100cqi / 7.35);
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  text-transform: none;
 }
 
-.jornadas-meta {
-  max-width: 42rem;
+.j-titulo > span {
+  display: block;
+  white-space: nowrap;
 }
 
+.j-l1 {
+  font-size: 0.58em;
+  margin-left: 1.828em;
+  line-height: 1.05;
+}
+
+.j-l2 {
+  line-height: 0.92;
+}
+
+.j-l3 {
+  font-size: 0.58em;
+  margin-left: 4.534em;
+  line-height: 1.12;
+}
+
+.j-y {
+  font-size: 0.517em;
+}
+
+.j-l4 {
+  margin-left: 0.628em;
+  line-height: 0.92;
+}
+
+/* en inglés cambian las palabras y con ellas los encajes */
+.is-english .j-l3 { margin-left: 4.369em; }
+.is-english .j-l4 { margin-left: 2.187em; }
+
+/* ---------------------------------------------------------------- texto corrido */
 .jornadas-lead {
-  max-width: 44rem;
-  margin-top: 2rem;
-  font-size: 1.28rem;
-  line-height: 1.22;
+  max-width: 40rem;
+  font-size: max(1.08rem, calc(100cqi / 34));
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .jornadas-lead p,
-.jornadas-saturday p {
+.j-franjas p {
   margin: 0 0 0.85rem;
 }
 
+/* ---------------------------------------------------------------- enviar propuesta
+   en el hueco blanco de la derecha, centrado; en pantallas estrechas va en línea */
 .jornadas-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  margin: 1.25rem 0 0;
-  font-size: 1rem;
+  margin: 1.6rem 0 0;
+  font-family: var(--font-narrow);
+  font-size: 1.25rem;
 }
 
 .jornadas-actions a {
@@ -81,71 +180,85 @@
   content: "]";
 }
 
-.jornadas-program {
-  margin-top: 3.1rem;
+/* centro exacto de la mitad derecha de la pantalla: 75 % de ancho, 50 % de alto.
+   Por debajo de 1200 px chocaría con la columna de texto, así que va en línea */
+@media (min-width: 1200px) {
+  .j-propuesta {
+    position: fixed;
+    top: 50%;
+    left: 75vw;
+    z-index: 20;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
 }
 
-.jornadas-program h2 {
-  margin: 0 0 0.55rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0;
-  text-transform: uppercase;
+/* ---------------------------------------------------------------- bloque 3: los días */
+.j-dia {
+  margin-top: clamp(3rem, 11cqi, 7rem);
 }
 
-.jornadas-program-intro {
-  max-width: 46rem;
-  margin-bottom: 1.25rem;
-}
-
-.jornadas-talks {
-  display: grid;
-  gap: 0.68rem;
+.j-cab,
+.j-sede {
   margin: 0;
+  font-size: max(1.2rem, calc(100cqi / 18.8));
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-transform: none;
+}
+
+.j-sede em {
+  font-style: italic;
+}
+
+.j-entrada {
+  margin: 0.12em 0 0;
+  font-size: max(0.95rem, calc(100cqi / 18.8 * 0.65));
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.j-ponencias {
+  margin: clamp(1.4rem, 4cqi, 2.4rem) 0 0;
   padding: 0;
   list-style: none;
+  font-size: max(1.05rem, calc(100cqi / 30));
+  line-height: 1.12;
+  letter-spacing: -0.025em;
 }
 
-.jornadas-talks li {
-  display: grid;
-  grid-template-columns: 2.15rem minmax(0, 1fr) 10rem;
-  gap: 0.8rem;
-  align-items: baseline;
-  margin: 0;
-  font-size: 1.08rem;
-  line-height: 1.16;
+.j-ponencias li {
+  margin: 0 0 0.2em;
 }
 
-.talk-index,
-.talk-speaker {
-  font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.82rem;
+.j-ponencias .talk-speaker {
+  font-weight: 700;
+}
+
+.j-franjas {
+  max-width: 40rem;
+  margin: clamp(1.4rem, 4cqi, 2.4rem) 0 0;
+  font-size: max(1.05rem, calc(100cqi / 34));
   line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-.talk-speaker {
-  text-align: right;
+.j-hora {
+  display: block;
+  margin-bottom: 0.15em;
+  font-size: 1.05em;
+  letter-spacing: -0.03em;
 }
 
-.jornadas-saturday {
-  max-width: 46rem;
-  margin-top: 2.3rem;
-  font-size: 1.08rem;
-  line-height: 1.2;
-}
-
-.jornadas-saturday strong {
-  font-family: "Fira Code", Consolas, monospace;
-  font-size: 0.86rem;
-  font-weight: 400;
-}
-
+/* ---------------------------------------------------------------- bloque 4: logos */
 .jornadas-partners {
+  --logo-h: 4.2rem;       /* alto de la tinta de los dos logos */
   display: flex;
   align-items: center;
-  gap: 1.35rem;
-  margin-top: 2.5rem;
+  gap: 2rem;
+  margin-top: clamp(3rem, 10cqi, 6rem);
 }
 
 .jornadas-partners a {
@@ -158,25 +271,28 @@
   background: transparent;
 }
 
+/* los dos logos con la tinta al mismo alto, así quedan alineados arriba, abajo y
+   por el centro. La imagen de la UV trae mucho aire arriba y abajo (96 px de 450):
+   se recorta con object-fit a la proporción de su tinta (778 × 258).
+   Además viene en blanco y se invierte; la de Juby ya es negra sobre transparente */
 .jornadas-partners img {
-  height: auto;
-  filter: invert(1);
+  height: var(--logo-h);
+  width: auto;
 }
 
 .jornadas-partners .uv-logo {
-  width: 18rem;
-}
-
-.jornadas-partners .juby-logo {
-  width: 11.5rem;
+  width: calc(var(--logo-h) * 3.016);
+  object-fit: cover;
+  filter: invert(1);
 }
 
 .jornadas-footer {
-  width: min(48rem, calc(100% - 3rem));
+  width: min(var(--col), 100%);
   margin: 0;
-  padding: 1rem 0 2.5rem 3rem;
+  padding: 1rem 0 2.5rem var(--pad-left);
   border: 0;
   color: rgb(17 17 17 / 70%);
+  font-family: var(--font-narrow);
   font-size: 0.84rem;
   line-height: 1.2;
 }
@@ -189,47 +305,50 @@
   color: var(--link-blue);
 }
 
+/* ---------------------------------------------------------------- móvil */
 @media (max-width: 760px) {
+  .jornadas-page {
+    --pad-left: 1rem;
+  }
+
   .jornadas-shell,
   .jornadas-footer {
     width: 100%;
     padding-right: 1rem;
-    padding-left: 1rem;
   }
 
   .jornadas-shell {
     padding-top: 1.25rem;
   }
 
-  .jornadas-title {
-    font-size: 2.35rem;
-    line-height: 0.98;
+  /* a la mitad de tamaño, el filtro baja un escalón para que no se coma la letra */
+  .j-titulo {
+    --comido-1: url(#comido-m1);
+    --comido-2: url(#comido-m2);
+    --comido-3: url(#comido-m3);
   }
 
-  .jornadas-lead {
-    font-size: 1.12rem;
+  .j-actividades,
+  .j-cab,
+  .j-sede {
+    --comido-1: url(#comido-p1);
+    --comido-2: url(#comido-p2);
+    --comido-3: url(#comido-p3);
   }
 
-  .jornadas-talks li {
-    grid-template-columns: 1.8rem minmax(0, 1fr);
-    gap: 0.25rem 0.65rem;
+  .j-entrada {
+    --comido-1: none;
+    --comido-2: none;
+    --comido-3: none;
   }
 
-  .talk-speaker {
-    grid-column: 2;
-    text-align: left;
+  .j-franjas {
+    max-width: none;
   }
 
+  /* mismos altos de tinta, más pequeños: los dos caben en una línea de 375 px */
   .jornadas-partners {
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .jornadas-partners .uv-logo {
-    width: 12rem;
-  }
-
-  .jornadas-partners .juby-logo {
-    width: 8rem;
+    --logo-h: 2.6rem;
+    gap: 1rem;
   }
 }
