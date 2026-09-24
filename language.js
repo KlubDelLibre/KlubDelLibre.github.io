@@ -258,16 +258,10 @@
       text: "This section distinguishes forthcoming activities from completed ones, making it easy to take part and return to what happened.",
     },
     { selector: "#actividades .activity-index-list", attrs: { "aria-label": "Forthcoming activities" } },
-    {
-      selector: "#actividades .archive-card-media",
-      attrs: { "aria-label": "View the 1st Conference on Accelerationism and Speculative Thought" },
-    },
-    { selector: "#actividades .archive-card-media img", attrs: { alt: "Orbital diagram for the conference" } },
     { selector: "#actividades .card-label", text: "Activity 01 · 2–3 October 2026" },
-    { selector: "#actividades .archive-card h3", text: "1st Conference on Accelerationism and Speculative Thought" },
     {
-      selector: "#actividades .archive-card > p:not(.card-label, .cycle-actions)",
-      text: "An urgent laboratory for theoretical inquiry and radical creativity, created to speculate on the contingent futures already operating in our present.",
+      selector: "#actividades .activity-titulo",
+      html: '<span class="j-l1">conference on</span> <span class="j-l2">accelerationism</span> <span class="j-l3"><span class="j-y">and</span> speculative</span> <span class="j-l4">thought</span>',
     },
     { selector: "#actividades .cycle-actions a:nth-child(1)", text: "View conference" },
     { selector: "#actividades .cycle-actions a:nth-child(2)", text: "Submit a proposal" },

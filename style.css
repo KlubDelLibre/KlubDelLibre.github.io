@@ -892,6 +892,47 @@ main {
   margin-top: 2rem;
 }
 
+/* titular escalonado de las jornadas (mismas medidas que el cartel y la página de las jornadas),
+   en lugar de la imagen de la tarjeta: «aceleracionismo» ocupa el ancho de la tarjeta */
+.activity-index-list .archive-card {
+  container-type: inline-size;
+}
+
+.activity-title-link {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.activity-title-link:hover,
+.activity-title-link:focus-visible {
+  background: transparent;
+  color: var(--link-blue);
+}
+
+.archive-card .activity-titulo {
+  margin: 0;
+  font-family: "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: calc(100cqi / 7.35);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  text-transform: none;
+}
+
+.activity-titulo > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.activity-titulo .j-l1 { font-size: 0.58em; margin-left: 1.828em; line-height: 1.05; }
+.activity-titulo .j-l2 { line-height: 0.92; }
+.activity-titulo .j-l3 { font-size: 0.58em; margin-left: 4.534em; line-height: 1.12; }
+.activity-titulo .j-y { font-size: 0.517em; }
+.activity-titulo .j-l4 { margin-left: 0.628em; line-height: 0.92; }
+.is-english .activity-titulo .j-l3 { margin-left: 4.369em; }
+.is-english .activity-titulo .j-l4 { margin-left: 2.187em; }
+
 .cycle-actions {
   display: flex;
   flex-wrap: wrap;
